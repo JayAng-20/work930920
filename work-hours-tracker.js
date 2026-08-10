@@ -242,7 +242,7 @@ You might need to use a local HTTP server (instead of file://): https://react.de
   let root = createRoot(domContainer);
   root.render(<App />);`),!0===t.unstable_strictMode&&(n=!0),t.identifierPrefix!==void 0&&(r=t.identifierPrefix),t.onUncaughtError!==void 0&&(i=t.onUncaughtError),t.onCaughtError!==void 0&&(a=t.onCaughtError),t.onRecoverableError!==void 0&&(o=t.onRecoverableError)),t=Xd(e,1,!1,null,null,n,r,null,i,a,o,xf),e[Kp]=t.current,cu(e),new Sf(t)},e.hydrateRoot=function(e,t,n){if(!b(e))throw Error(`Target container is not a DOM element.`);wf(e),t===void 0&&console.error(`Must provide initial children as second argument to hydrateRoot. Example usage: hydrateRoot(domContainer, <App />)`);var r=!1,i=``,a=$o,o=es,s=ts,c=null;return n!=null&&(!0===n.unstable_strictMode&&(r=!0),n.identifierPrefix!==void 0&&(i=n.identifierPrefix),n.onUncaughtError!==void 0&&(a=n.onUncaughtError),n.onCaughtError!==void 0&&(o=n.onCaughtError),n.onRecoverableError!==void 0&&(s=n.onRecoverableError),n.formState!==void 0&&(c=n.formState)),t=Xd(e,1,!0,t,n??null,r,i,c,a,o,s,xf),t.context=Zd(null),n=t.current,r=Qc(n),r=Be(r),i=Zi(r),i.callback=null,Qi(n,i,r),ai(r,`hydrateRoot()`,null),n=r,t.current.lanes=n,Fe(t,n),ql(t),e[Kp]=t.current,cu(e),new Cf(t)},e.version=`19.2.6`,typeof __REACT_DEVTOOLS_GLOBAL_HOOK__<`u`&&typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop==`function`&&__REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error())})()})),f=e(((e,t)=>{function n(){if(!(typeof __REACT_DEVTOOLS_GLOBAL_HOOK__>`u`||typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE!=`function`)){if(process.env.NODE_ENV!==`production`)throw Error(`^_^`);try{__REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(n)}catch(e){console.error(e)}}}process.env.NODE_ENV===`production`?(n(),t.exports=u()):t.exports=d()})),p=o(),m=f(),h=2026,g=e=>String(e).padStart(2,`0`);function _(e=`item`){return typeof crypto<`u`&&`randomUUID`in crypto?`${e}-${crypto.randomUUID()}`:`${e}-${Date.now()}-${Math.random().toString(36).slice(2,9)}`}function v(){return new Date().toISOString()}function y(e,t,n){return`${e}-${g(t)}-${g(n)}`}function b(e){let[t,n,r]=e.split(`-`).map(Number);return new Date(Date.UTC(t,n-1,r))}function x(e){if(!/^\d{4}-\d{2}-\d{2}$/.test(e))return!1;let t=b(e);return t.getUTCFullYear()===Number(e.slice(0,4))&&t.getUTCMonth()+1===Number(e.slice(5,7))&&t.getUTCDate()===Number(e.slice(8,10))}function ee(){try{let e=new Intl.DateTimeFormat(`en-CA`,{timeZone:`Asia/Taipei`,year:`numeric`,month:`2-digit`,day:`2-digit`}).formatToParts(new Date),t=Object.fromEntries(e.map(e=>[e.type,e.value])),n=`${t.year}-${t.month}-${t.day}`;return x(n)&&Number(t.year)===2026?n:y(h,1,1)}catch{let e=new Date;return y((e.getFullYear(),h),e.getMonth()+1,e.getDate())}}function te(e,t=h){let n=e.trim();if(!n)return{iso:null,error:`請輸入日期。`};let r=t,i=0,a=0;if(/^\d{3,4}$/.test(n))n.length===4?(i=Number(n.slice(0,2)),a=Number(n.slice(2))):(i=Number(n.slice(0,1)),a=Number(n.slice(1)));else if(/^\d{4}[-/]\d{1,2}[-/]\d{1,2}$/.test(n)){let e=n.split(/[-/]/).map(Number);[r,i,a]=e}else if(/^\d{1,2}[-/]\d{1,2}$/.test(n))[i,a]=n.split(/[-/]/).map(Number);else return{iso:null,error:`日期格式不正確，請使用 0815、815、8/15 或 2026-08-15。`};if(r!==2026)return{iso:null,error:`目前第一階段只支援 2026 年（民國 115 年）。`};if(i<1||i>12||a<1||a>31)return{iso:null,error:`月份或日期超出範圍，請重新輸入。`};let o=y(r,i,a);return x(o)?{iso:o,error:null}:{iso:null,error:`這不是有效日期，請確認月份的天數。`}}function S(e){let t=b(e);return`${t.getUTCFullYear()}/${g(t.getUTCMonth()+1)}/${g(t.getUTCDate())}`}function ne(e){let t=b(e);return`${t.getUTCMonth()+1}/${t.getUTCDate()}`}function re(e){let t=b(e);return`民國 ${t.getUTCFullYear()-1911} 年 ${t.getUTCMonth()+1} 月 ${t.getUTCDate()} 日`}function ie(e){if(!e)return`—`;let t=new Date(e);return Number.isNaN(t.valueOf())?e:new Intl.DateTimeFormat(`zh-TW`,{timeZone:`Asia/Taipei`,month:`numeric`,day:`numeric`,hour:`2-digit`,minute:`2-digit`}).format(t)}function C(e){return b(e).getUTCDay()}function ae(e){return[`日`,`一`,`二`,`三`,`四`,`五`,`六`][C(e)]}function w(e){return new Date(Date.UTC(h,e,0)).getUTCDate()}function oe(e){return`${e} 月`}function se(e){return Array.from({length:w(e)},(t,n)=>y(h,e,n+1))}function T(){return Array.from({length:12},(e,t)=>se(t+1)).flat()}function ce(e){if(!/^\d{1,2}:\d{2}$/.test(e))return null;let[t,n]=e.split(`:`).map(Number);return t<0||t>23||n<0||n>59?null:t*60+n}function le(e,t,n=0){let r=ce(e),i=ce(t);return r===null||i===null||i<=r?0:Math.max(0,i-r-Math.max(0,n))}function E(e){let t=Number(e)||0;return(t<0?-1:1)*Math.floor(Math.abs(t)/30)*30}function D(e){return E((Number(e)||0)*60)/60}function ue(e){return Math.round((Number(e)||0)*100)/100}function de(e,t){if(t!==null&&Number.isFinite(t))return{morningHours:0,afternoonHours:0,customHours:0,dailyTotalHours:D(Math.max(0,t))};let n=e.reduce((e,t)=>{let n=E(Number.isFinite(t.calculatedMinutes)?t.calculatedMinutes:le(t.start,t.end,t.breakMinutes))/60;return t.shift===`morning`?e.morningHours+=n:t.shift===`afternoon`?e.afternoonHours+=n:e.customHours+=n,e},{morningHours:0,afternoonHours:0,customHours:0}),r=D(n.morningHours),i=D(n.afternoonHours),a=D(n.customHours);return{morningHours:r,afternoonHours:i,customHours:a,dailyTotalHours:r+i+a}}function O(e){return D(e)}function k(e){if(e==null||Number.isNaN(e))return`—`;let t=D(e);return Number.isInteger(t)?String(t):t.toFixed(1).replace(/0+$/,``).replace(/\.$/,``)}function fe(e){return`${e.start}-${e.end}`}function pe(e){return e?e.manualHours===null?[...e.segments].sort((e,t)=>e.sequence-t.sequence).map(e=>`${fe(e)}（${k((e.roundedMinutes??E(e.calculatedMinutes))/60)}）`).join(`
 `):`直接輸入總時數（${k(e.manualHours)} 小時）`:``}function me(e){if(!e)return``;if(e.manualHours!==null)return pe(e);let t=e.segments.filter(e=>e.shift===`morning`),n=e.segments.filter(e=>e.shift===`afternoon`),r=e.segments.filter(e=>e.shift===`custom`),i=[];return t.length&&i.push(`早上班：${t.map(fe).join(`、`)}`),n.length&&i.push(`下午班：${n.map(fe).join(`、`)}`),r.length&&i.push(`其他：${r.map(fe).join(`、`)}`),i.join(`
-`)}function he(){return[[`第 1 節`,`08:10`,`09:00`],[`第 2 節`,`09:10`,`10:00`],[`第 3 節`,`10:10`,`11:00`],[`第 4 節`,`11:10`,`12:00`],[`第 5 節`,`12:50`,`13:40`],[`第 6 節`,`13:50`,`14:40`],[`第 7 節`,`14:50`,`15:40`],[`第 8 節`,`15:50`,`16:40`],[`第 9 節`,`16:50`,`17:40`]].map(([e,t,n],r)=>({id:`preset-${r+1}`,label:e,start:t,end:n}))}var ge=[{value:1,label:`一`},{value:2,label:`二`},{value:3,label:`三`},{value:4,label:`四`},{value:5,label:`五`},{value:6,label:`六`},{value:0,label:`日`}];function _e(e,t){return`${e}:${t}`}function ve(e){if(!e)return``;if(typeof e==`string`){let t=e.trim().split(`-`).map(e=>e.trim());return t.length===2||t.length===3?[t[0],t.slice(1).filter(Boolean).join(` `)].filter(Boolean).join(`
+`)}function he(){return[[`第 1 節`,`08:10`,`09:00`],[`第 2 節`,`09:10`,`10:00`],[`第 3 節`,`10:10`,`11:00`],[`第 4 節`,`11:10`,`12:00`],[`第 5 節`,`12:50`,`13:40`],[`第 6 節`,`13:50`,`14:40`],[`第 7 節`,`14:50`,`15:40`],[`第 8 節`,`15:50`,`16:40`],[`第 9 節`,`16:50`,`17:40`]].map(([e,t,n],r)=>({id:`preset-${r+1}`,label:e,start:t,end:n}))}var ge=[{value:0,label:`日`},{value:1,label:`一`},{value:2,label:`二`},{value:3,label:`三`},{value:4,label:`四`},{value:5,label:`五`},{value:6,label:`六`}];function _e(e,t){return`${e}:${t}`}function ve(e){if(!e)return``;if(typeof e==`string`){let t=e.trim().split(`-`).map(e=>e.trim());return t.length===2||t.length===3?[t[0],t.slice(1).filter(Boolean).join(` `)].filter(Boolean).join(`
 `):e.trim()}return e.mode===`course`?[e.course.trim(),[e.teacher.trim(),e.room.trim()].filter(Boolean).join(` `)].filter(Boolean).join(`
 `):e.value.trim()}function ye(){return{courseNames:[],teacherNames:[],rooms:[],workStudyOptions:[`秘書室工讀`]}}function A(e,t,n,r,i){e.push({id:`official-${t}-${r}`,date:t,name:n,type:r,isDayOff:!0,source:`official`,note:i,enabled:!0})}function j(){let e=[],t=`行政院人事行政總處 115 年政府行政機關辦公日曆表之預設參考資料。實際是否放假仍以雇主、學校或工作單位規定為準。`;A(e,`2026-01-01`,`元旦／中華民國開國紀念日`,`nationalHoliday`,t);for(let n of[14,15,16,17,18,19,21,22])A(e,y(2026,2,n),`除夕及春節連假`,`holidayPeriod`,t);return A(e,`2026-02-20`,`春節補假`,`makeupHoliday`,`春節連續假期補假日。`+t),A(e,`2026-02-27`,`和平紀念日補假`,`makeupHoliday`,`和平紀念日補假日。`+t),A(e,`2026-02-28`,`和平紀念日`,`nationalHoliday`,t),A(e,`2026-03-01`,`和平紀念日連假`,`holidayPeriod`,t),A(e,`2026-04-03`,`兒童節補假`,`makeupHoliday`,`兒童節補假日。`+t),A(e,`2026-04-04`,`兒童節`,`nationalHoliday`,t),A(e,`2026-04-05`,`清明節`,`nationalHoliday`,t),A(e,`2026-04-06`,`清明節補假`,`makeupHoliday`,`清明節補假日。`+t),A(e,`2026-05-01`,`勞動節`,`nationalHoliday`,t),A(e,`2026-05-02`,`勞動節連假`,`holidayPeriod`,t),A(e,`2026-05-03`,`勞動節連假`,`holidayPeriod`,t),A(e,`2026-06-19`,`端午節`,`nationalHoliday`,t),A(e,`2026-06-20`,`端午節連假`,`holidayPeriod`,t),A(e,`2026-06-21`,`端午節連假`,`holidayPeriod`,t),A(e,`2026-09-25`,`中秋節`,`nationalHoliday`,t),A(e,`2026-09-26`,`中秋節及教師節連假`,`holidayPeriod`,t),A(e,`2026-09-27`,`中秋節及教師節連假`,`holidayPeriod`,t),A(e,`2026-09-28`,`孔子誕辰紀念日／教師節`,`nationalHoliday`,t),A(e,`2026-10-09`,`國慶日補假`,`makeupHoliday`,`國慶日補假日。`+t),A(e,`2026-10-10`,`國慶日`,`nationalHoliday`,t),A(e,`2026-10-11`,`國慶日連假`,`holidayPeriod`,t),A(e,`2026-10-24`,`臺灣光復暨金門古寧頭大捷紀念日連假`,`holidayPeriod`,t),A(e,`2026-10-25`,`臺灣光復暨金門古寧頭大捷紀念日`,`nationalHoliday`,t),A(e,`2026-10-26`,`臺灣光復暨金門古寧頭大捷紀念日補假`,`makeupHoliday`,`紀念日補假日。`+t),A(e,`2026-12-25`,`行憲紀念日`,`nationalHoliday`,t),A(e,`2026-12-26`,`行憲紀念日連假`,`holidayPeriod`,t),A(e,`2026-12-27`,`行憲紀念日連假`,`holidayPeriod`,t),e}function be(){return{year:h,rocYear:115,timezone:`Asia/Taipei`,displayName:``,workplace:``,hourlyWage:196,annualBudgetHours:null,annualBudgetAmount:null,saturdayDefaultStatus:`休息日`,sundayDefaultStatus:`例假日`,timetablePresets:he(),timetableCells:{},timetableOptions:ye(),holidaySource:`行政院人事行政總處 115 年政府行政機關辦公日曆表`,messageBoardCategories:[`加班`,`活動支援`,`時數異動`,`補登`,`更正`,`行政說明`,`排班調整`,`薪資差異`,`其他`],defaultAuditTags:[`待確認`,`已核對`,`需補件`,`已更正`],auditPromptOnEdit:!0,leaveTotalHours:null}}function xe(){return{version:2,appConfig:be(),workRecords:[],holidays:j(),leaveRecords:[],auditNotes:[]}}function Se(e){let t=Array.isArray(e)?e.filter(e=>typeof e==`string`):typeof e==`string`?[e]:[],n=[],r=new Set;return t.forEach(e=>{e.split(/[,，、\r\n]+/).forEach(e=>{let t=e.trim();t&&!r.has(t)&&(r.add(t),n.push(t))})}),n}function Ce(e,t){return Array.isArray(e)||typeof e==`string`?Se(e):[...t]}function M(e){return Array.isArray(e)?e.filter(e=>!!e&&typeof e==`object`).map((e,t)=>({id:typeof e.id==`string`&&e.id?e.id:`legacy-preset-${t+1}`,label:typeof e.label==`string`?e.label:`舊時段 ${t+1}`,start:typeof e.start==`string`?e.start:``,end:typeof e.end==`string`?e.end:``})).filter(e=>e.start&&e.end):[]}function we(e){if(typeof e==`string`){let t=e.trim();if(!t)return null;let n=t.split(`-`).map(e=>e.trim());return n.length===2||n.length===3?{mode:`course`,course:n[0],teacher:n[1],room:n.length===3?n[2]:``}:{mode:`custom`,value:t}}if(!e||typeof e!=`object`||Array.isArray(e))return null;let t=e;if(t.mode===`course`){let e=typeof t.course==`string`?t.course.trim():``,n=typeof t.teacher==`string`?t.teacher.trim():``,r=typeof t.room==`string`?t.room.trim():``;return e||n||r?{mode:`course`,course:e,teacher:n,room:r}:null}if(t.mode===`work-study`||t.mode===`custom`){let e=typeof t.value==`string`?t.value.trim():``;return e?{mode:t.mode,value:e}:null}return null}function Te(e){return!e||typeof e!=`object`||Array.isArray(e)?{}:Object.entries(e).reduce((e,[t,n])=>{let r=we(n);return r&&(e[t]=r),e},{})}function Ee(e){let t=ye();if(!e||typeof e!=`object`||Array.isArray(e))return t;let n=e;return{courseNames:Ce(n.courseNames,[]),teacherNames:Ce(n.teacherNames,[]),rooms:Ce(n.rooms,[]),workStudyOptions:Ce(n.workStudyOptions,t.workStudyOptions)}}function De(e,t){if(e===null)return null;if(e===void 0||e===``)return t;let n=Number(e);return Number.isFinite(n)&&n>=0?n:t}function Oe(e){let t=xe();if(!e||typeof e!=`object`)return t;let n=e,r=n.appConfig&&typeof n.appConfig==`object`?n.appConfig:{},i={...t.appConfig,...r},a=Number(n.version)||1,o=M(r.legacyTimetablePresets),s=M(r.timetablePresets),c=o.length?o:a<2?s:[],l=Object.prototype.hasOwnProperty.call(r,`hourlyWage`),u=Array.isArray(n.holidays)&&n.holidays.length?n.holidays.map(e=>({...e,enabled:e.enabled!==!1})):t.holidays,d=Array.isArray(n.workRecords)?n.workRecords.map(e=>{let t=Array.isArray(e.segments)?e.segments.map((e,t)=>{let n=Number.isFinite(Number(e.calculatedMinutes))?Number(e.calculatedMinutes):le(e.start||``,e.end||``,Number(e.breakMinutes)||0);return{id:e.id||_(`segment`),shift:e.shift||`custom`,sequence:Number(e.sequence)||t+1,start:e.start||``,end:e.end||``,breakMinutes:Number(e.breakMinutes)||0,calculatedMinutes:n,roundedMinutes:E(n)}}):[],n=e.manualHours===null||e.manualHours===void 0?null:Number(e.manualHours),r=de(t,n),i=t.length>0||n!==null,a={morningHours:O(Number(e.morningHours)||0),afternoonHours:O(Number(e.afternoonHours)||0),customHours:O(Number(e.customHours)||0),dailyTotalHours:O(Number(e.dailyTotalHours)||0)},o=i?r:a;return{id:e.id||_(`record`),date:e.date,recordType:e.recordType||`actual`,status:e.status||`上班`,segments:t,manualHours:n,calculatedHours:o.dailyTotalHours,plannedHours:e.plannedHours===null||e.plannedHours===void 0?null:O(Number(e.plannedHours)),morningHours:o.morningHours,afternoonHours:o.afternoonHours,customHours:o.customHours,dailyTotalHours:o.dailyTotalHours,note:e.note||``,tags:Array.isArray(e.tags)?e.tags:[],createdAt:e.createdAt||v(),updatedAt:e.updatedAt||v()}}):[],f=Array.isArray(n.leaveRecords)?n.leaveRecords.map(e=>({...e,hours:O(Number(e.hours)||0)})):[],p=Array.isArray(n.auditNotes)?n.auditNotes.map(e=>{let t=e.originalHours===null||e.originalHours===void 0?null:O(Number(e.originalHours)),n=e.adjustedHours===null||e.adjustedHours===void 0?null:O(Number(e.adjustedHours));return{...e,originalHours:t,adjustedHours:n,hoursDifference:t!==null&&n!==null?O(n-t):0}}):[];return{version:2,appConfig:{...i,year:h,rocYear:115,hourlyWage:l?De(r.hourlyWage,t.appConfig.hourlyWage??196):t.appConfig.hourlyWage,annualBudgetHours:i.annualBudgetHours===null||i.annualBudgetHours===void 0?null:O(Number(i.annualBudgetHours)),annualBudgetAmount:i.annualBudgetAmount===null||i.annualBudgetAmount===void 0?null:Math.max(0,Number(i.annualBudgetAmount)||0),leaveTotalHours:i.leaveTotalHours===null||i.leaveTotalHours===void 0?null:O(Number(i.leaveTotalHours)),timetablePresets:t.appConfig.timetablePresets,timetableCells:Te(r.timetableCells),timetableOptions:Ee(r.timetableOptions),...c.length?{legacyTimetablePresets:c}:{},messageBoardCategories:Ce(i.messageBoardCategories,t.appConfig.messageBoardCategories),defaultAuditTags:Ce(i.defaultAuditTags,t.appConfig.defaultAuditTags)},workRecords:d,holidays:u,leaveRecords:f,auditNotes:p}}function ke(e){return e.filter(e=>e.enabled&&e.isDayOff).sort((e,t)=>{let n=e=>e.type===`makeupHoliday`?0:e.type===`nationalHoliday`?1:e.type===`customHoliday`?2:3;return n(e)-n(t)})[0]??null}function Ae(e,t){return t.filter(t=>t.date===e&&t.enabled)}function je(e,t){let n=C(e),r=t.workRecords.find(t=>t.date===e&&t.recordType!==`planned`)??null,i=t.workRecords.find(t=>t.date===e&&t.recordType===`planned`)??null,a=t.leaveRecords.find(t=>t.date===e)??null,o=Ae(e,t.holidays),s=ke(o),c=`未記錄`,l=`unrecorded`,u=`未記錄`,d=0;return r?(d=r.dailyTotalHours,r.dailyTotalHours>0&&(n===0||n===6||s)?(c=`上班`,l=n===0||n===6?`weekendWork`:`holidayWork`,u=n===0||n===6?`週末上班`:`假日上班`):(c=r.status||`上班`,l=Me(c),u=r.status||(r.dailyTotalHours>0?`上班`:`已記錄`))):a?(c=a.leaveType===`特休`?`特休`:`請假`,l=a.leaveType===`特休`?`leave`:`absence`,u=a.leaveType,d=a.hours):i?(c=`預排班`,l=`planned`,u=`預排班`,d=i.dailyTotalHours):s?(c=s.type===`makeupHoliday`?`補假`:`國定假日`,l=s.type===`makeupHoliday`?`makeupHoliday`:s.type===`customHoliday`?`customHoliday`:`nationalHoliday`,u=s.name):n===6?(c=t.appConfig.saturdayDefaultStatus,l=Me(c),u=c):n===0&&(c=t.appConfig.sundayDefaultStatus,l=Me(c),u=c),{date:e,weekday:ae(e),weekdayIndex:n,status:c,statusKey:l,label:u,hours:d,record:r,holiday:s,holidays:o,leave:a}}function Me(e){return{上班:`working`,預排班:`planned`,特休:`leave`,請假:`absence`,休息日:`rest`,例假日:`regularHoliday`,國定假日:`nationalHoliday`,補假:`makeupHoliday`,颱風假:`typhoon`,其他:`other`,未記錄:`unrecorded`}[e]||`other`}function Ne(e){return{actual:`上班`,planned:`預排班`,leave:`特休`,sick:`請假`,rest:`休息日`,regularHoliday:`國定假日`,makeupHoliday:`補假`,typhoon:`颱風假`,other:`其他`}[e]}function Pe(e){return{nationalHoliday:`國定假日`,makeupHoliday:`補假`,holidayPeriod:`連假期間`,customHoliday:`自訂假日`}[e]}var Fe=2,Ie=3,Le=4,Re=6,ze=7,Be=8,Ve=9,He=11,N=12,Ue=13,We=14,Ge=15,Ke=16,qe=17,Je=18,Ye=19,Xe=20,Ze=21;function Qe(e){return String(e??``).replaceAll(`&`,`&amp;`).replaceAll(`<`,`&lt;`).replaceAll(`>`,`&gt;`).replaceAll(`"`,`&quot;`).replaceAll(`'`,`&apos;`)}function $e(e){let t=e,n=``;for(;t>0;){let e=(t-1)%26;n=String.fromCharCode(65+e)+n,t=Math.floor((t-1)/26)}return n}function et(e,t){return`${$e(t)}${e}`}function tt(e){return Math.round((b(e).getTime()-Date.UTC(1899,11,30))/864e5)}function nt(e,t,n){e.cells.set(t,n)}function P(e,t,n,r,i=Ue,a){nt(e,et(t,n),{value:r,style:i,type:a})}function rt(e,t,n,r,i,a=He){nt(e,et(t,n),{formula:r,cache:i,style:a})}function it(e,t){e.merges.push(t)}function at(e){return{name:e,cells:new Map,merges:[],widths:[],rowHeights:new Map,orientation:`landscape`}}function ot(e){let t=/^([A-Z]{1,3})([1-9]\d*)$/.exec(e);return t?{column:t[1].split(``).reduce((e,t)=>e*26+t.charCodeAt(0)-64,0),row:Number(t[2])}:null}function st(e){let[t,n=t]=e.split(`:`),r=ot(t),i=ot(n);return!r||!i||i.row<r.row||i.column<r.column?null:{start:r,end:i}}function ct(e,t){let n=e.map(e=>e.name),r=t.kind===`month`?[`預排計畫時數`,`實際上班`,`每日紀錄`,`特休`,`留言板時數異動`,`課表`]:[`預排計畫時數`,`實際上班`,`每日紀錄`,`特休`,`留言板時數異動`];if(n.length!==r.length||r.some((e,t)=>n[t]!==e))throw Error(`Excel 工作表順序不正確：${n.join(`、`)}`);if(t.kind===`year`&&n.includes(`課表`))throw Error(`年度 Excel 不得建立課表工作表。`);let i=new Map;for(let t of e){let e=new Set;for(let n of t.merges){let r=st(n);if(!r)throw Error(`${t.name} 有無效合併範圍：${n}`);for(let i=r.start.row;i<=r.end.row;i+=1)for(let a=r.start.column;a<=r.end.column;a+=1){let r=`${i}:${a}`;if(e.has(r))throw Error(`${t.name} 有重疊合併範圍：${n}`);e.add(r)}}if(t.autoFilter&&!st(t.autoFilter))throw Error(`${t.name} 有無效篩選範圍：${t.autoFilter}`);for(let[e,r]of t.cells){if(!ot(e))throw Error(`${t.name} 有無效儲存格位置：${e}`);if(typeof r.value==`number`&&!Number.isFinite(r.value))throw Error(`${t.name} 的 ${e} 不能輸出 NaN 或 Infinity。`);if(r.formula){if(/^=/.test(r.formula)||/#(?:REF!|VALUE!|DIV\/0!|NAME\?)/.test(r.formula))throw Error(`${t.name} 的 ${e} 有不合法公式：${r.formula}`);for(let[,i]of r.formula.matchAll(/'([^']+)'!/g))if(!n.includes(i))throw Error(`${t.name} 的 ${e} 指向不存在的工作表：${i}`);let a=`${t.name}!${e}`,o=[];for(let i of r.formula.matchAll(/(?:(?:'([^']+)'|([A-Za-z0-9_]+))!)?(\$?[A-Z]{1,3}\$?[1-9]\d*)/g)){let r=i[1]||i[2]||t.name,s=i[3].replaceAll(`$`,``);if(!n.includes(r))throw Error(`${t.name} 的 ${e} 指向不存在的工作表：${r}`);let c=`${r}!${s}`;if(c===a)throw Error(`${t.name} 的 ${e} 形成自我循環公式。`);o.push(c)}i.set(a,o)}}}let a=new Set,o=new Set,s=e=>{if(!o.has(e)){if(a.has(e))throw Error(`Excel 公式形成循環參照：${e}`);a.add(e);for(let t of i.get(e)||[])i.has(t)&&s(t);a.delete(e),o.add(e)}};for(let e of i.keys())s(e)}function lt(e){return e.holiday}function ut(e){return!!e.holiday||[`rest`,`regularHoliday`,`nationalHoliday`,`makeupHoliday`,`leave`,`absence`,`typhoon`].includes(e.statusKey)}function dt(e){return e===Le?Je:e===Re?Ye:qe}function ft(e,t,n){let r=je(t,e),i=n?e.workRecords.find(e=>e.date===t&&e.recordType===`planned`)??null:r.record;if(i){let e=!!r.holiday&&i.dailyTotalHours>0,t=ut(r);return{text:e?`假日上班\n${pe(i)||i.status}`:pe(i)||i.status,hours:i.dailyTotalHours,style:t?Xe:i.dailyTotalHours>0?We:Re,record:i}}if(n){let n=e.workRecords.find(e=>e.date===t&&e.plannedHours!==null)??null;if(n?.plannedHours!==null&&n?.plannedHours!==void 0)return{text:`預排時數`,hours:n.plannedHours,style:Ie,record:n}}let a=lt(r);return a?{text:a.name,hours:0,style:Xe,record:null}:r.weekdayIndex===6?{text:e.appConfig.saturdayDefaultStatus,hours:0,style:Xe,record:null}:r.weekdayIndex===0?{text:e.appConfig.sundayDefaultStatus,hours:0,style:Xe,record:null}:{text:`未記錄`,hours:0,style:Re,record:null}}function pt(e,t,n,r,i){let a=b(`${t.appConfig.year}-${String(n).padStart(2,`0`)}-01`).getUTCDay(),o=a===0?-6:1-a,s=new Date(Date.UTC(t.appConfig.year,n-1,1+o)),c=Math.ceil((w(n)+(a===0?6:a-1))/7),l=[],u=[],d=r+c*2+1,f=d-1;P(e,r,1,`${n}月`,Ie,`string`),it(e,`A${r}:A${f}`);let p=[`一`,`二`,`三`,`四`,`五`,`六`];for(let t=0;t<6;t+=1){let n=2+t*2;P(e,r,n,p[t],We,`string`),it(e,`${$e(n)}${r}:${$e(n+1)}${r}`)}P(e,r,14,`時數小計`,We,`string`);let m=0;for(let a=0;a<c;a+=1){let o=r+1+a*2,c=o+1;l.push(o),u.push(c),e.rowHeights.set(c,31.5);let d=[];for(let r=0;r<6;r+=1){let l=2+r*2,u=new Date(s.getTime()+(a*7+r)*864e5),f=`${u.getUTCFullYear()}-${String(u.getUTCMonth()+1).padStart(2,`0`)}-${String(u.getUTCDate()).padStart(2,`0`)}`,p=u.getUTCMonth()+1===n;if(it(e,`${$e(l)}${o}:${$e(l+1)}${o}`),!p){P(e,o,l,null,Ie),P(e,c,l,null,We),P(e,c,l+1,null,We),d.push(`${$e(l+1)}${c}`);continue}let h=je(f,t),g=ft(t,f,i),_=h.holiday?Le:h.weekdayIndex===0||h.weekdayIndex===6?Re:Ie;P(e,o,l,tt(f),dt(_),`date`),P(e,c,l,g.text,g.style,`string`),P(e,c,l+1,g.hours,He,`number`),d.push(`${$e(l+1)}${c}`),m+=g.hours??0,t.auditNotes.some(e=>e.date===f)&&P(e,c,l+1,g.hours,He,`number`)}rt(e,c,14,`SUM(${d.join(`,`)})`,d.reduce((t,n)=>t+(Number(e.cells.get(n)?.value)||0),0),He)}return it(e,`A${d}:C${d}`),P(e,d,1,`總時數(月)`,Ge,`string`),rt(e,d,4,`SUM(${l.map((e,t)=>`N${u[t]}`).join(`,`)})`,O(m),Ge),P(e,d,5,`時薪`,Ke,`string`),t.appConfig.hourlyWage!==null&&Number.isFinite(t.appConfig.hourlyWage)?(P(e,d,6,t.appConfig.hourlyWage,He,`number`),P(e,d,7,`薪資`,Ke,`string`),rt(e,d,8,`D${d}*F${d}`,ue(m*t.appConfig.hourlyWage),Ke)):(P(e,d,6,`未設定`,Ke,`string`),P(e,d,7,`薪資`,Ke,`string`),P(e,d,8,`未設定`,Ke,`string`)),rt(e,d,14,`SUM(${l.map((e,t)=>`N${u[t]}`).join(`,`)})`,O(m),Ge),P(e,d,9,`${n}月預算時數`,Ie,`string`),t.appConfig.annualBudgetHours===null?P(e,d,10,`未設定`,Ie,`string`):P(e,d,10,O(t.appConfig.annualBudgetHours/12),He,`number`),{endRow:d,summaryRow:d,summaryHours:O(m)}}function mt(e,t,n){let r=at(n?`預排計畫時數`:`實際上班`);r.orientation=`landscape`,r.widths=[{min:1,max:1,width:6},{min:2,max:2,width:17.5},{min:3,max:3,width:4.5},{min:4,max:4,width:18.25},{min:5,max:5,width:5},{min:6,max:6,width:17.625},{min:7,max:7,width:4.5},{min:8,max:8,width:18.5},{min:9,max:9,width:5},{min:10,max:10,width:17.75},{min:11,max:11,width:4.5},{min:12,max:12,width:17.625},{min:13,max:13,width:4.5},{min:14,max:14,width:9.75},{min:15,max:16,width:9},{min:17,max:17,width:12.625},{min:18,max:18,width:9}];let i=t.kind===`month`?[t.month]:Array.from({length:12},(e,t)=>t+1),a=1,o=[];for(let t of i){let i=pt(r,e,t,a,n);o.push({row:i.summaryRow,hours:i.summaryHours}),a=i.endRow+2}if(t.kind===`year`){let t=a;if(it(r,`A${t}:C${t}`),P(r,t,1,n?`系統總時數`:`實際總時數`,Re,`string`),rt(r,t,4,`SUM(${o.map(e=>`D${e.row}`).join(`,`)})`,O(o.reduce((e,t)=>e+t.hours,0)),Re),P(r,t,5,`時薪`,Re,`string`),e.appConfig.hourlyWage!==null){P(r,t,6,e.appConfig.hourlyWage,He,`number`),P(r,t,7,`年度薪資`,Re,`string`);let n=ue(o.reduce((t,n)=>t+n.hours*(e.appConfig.hourlyWage||0),0));rt(r,t,8,`D${t}*F${t}`,n,Re)}else P(r,t,6,`未設定`,Re,`string`),P(r,t,7,`年度薪資`,Re,`string`),P(r,t,8,`未設定`,Re,`string`);let i=t+1;if(it(r,`A${i}:C${i}`),P(r,i,1,`總預算`,Re,`string`),e.appConfig.annualBudgetAmount===null?P(r,i,4,`未設定`,Re,`string`):P(r,i,4,e.appConfig.annualBudgetAmount,He,`number`),P(r,i,5,`已用薪資`,Re,`string`),e.appConfig.annualBudgetAmount!==null&&e.appConfig.hourlyWage!==null){let n=ue(o.reduce((t,n)=>t+n.hours*(e.appConfig.hourlyWage||0),0));rt(r,i,6,`H${t}`,n,Re),P(r,i,7,`剩餘預算`,Re,`string`),rt(r,i,8,`D${i}-F${i}`,ue(e.appConfig.annualBudgetAmount-n),Re)}else P(r,i,6,`未設定`,Re,`string`),P(r,i,7,`剩餘預算`,Re,`string`),P(r,i,8,`未設定`,Re,`string`);let s=i+3;P(r,s,2,`系統總時數`,We,`string`),P(r,s,3,`-`,We,`string`),P(r,s,4,`實際總時數`,We,`string`),P(r,s,5,`=`,We,`string`);let c=n?`實際上班`:`預排計畫時數`,l=t,u=t,d=O(n?o.reduce((e,t)=>e+t.hours,0)-ht(e,!1):o.reduce((e,t)=>e+t.hours,0)-ht(e,!0));rt(r,s,6,`D${l}-'${c}'!D${u}`,d,We),r.rowHeights.set(s,18)}return r}function ht(e,t){return O(e.workRecords.filter(e=>t?e.recordType===`planned`:e.recordType!==`planned`).reduce((e,t)=>e+t.dailyTotalHours,0))}function gt(e,t){let n=at(`每日紀錄`);return n.orientation=`landscape`,n.freeze=`A2`,n.autoFilter=`A1:K1`,n.widths=[{min:1,max:1,width:13},{min:2,max:2,width:8},{min:3,max:3,width:16},{min:4,max:4,width:32},{min:5,max:7,width:12},{min:8,max:8,width:28},{min:9,max:9,width:12},{min:10,max:10,width:22},{min:11,max:11,width:22}],[`日期`,`星期`,`狀態`,`工作時段`,`實際工時`,`預排工時`,`差額（預排－實際）`,`備註`,`留言／異動`,`最後更新時間`,`紀錄編號`].forEach((e,t)=>P(n,1,t+1,e,Be,`string`)),(t.kind===`month`?se(t.month):T()).forEach((t,r)=>{let i=r+2,a=je(t,e),o=e.workRecords.find(e=>e.date===t&&e.recordType===`planned`)?.dailyTotalHours??e.workRecords.find(e=>e.date===t)?.plannedHours??null,s=a.record?.dailyTotalHours??0,c=e.auditNotes.filter(e=>e.date===t),l=ut(a),u=l?Ze:a.record?We:Re,d=a.record?Ue:l?Xe:Re;P(n,i,1,tt(t),N,`date`),P(n,i,2,ae(t),We,`string`),P(n,i,3,a.label,u,`string`),P(n,i,4,a.record?me(a.record):a.label,d,`string`),P(n,i,5,s,He,`number`),P(n,i,6,o,He,`number`),o===null?P(n,i,7,null,He):rt(n,i,7,`F${i}-E${i}`,O(o-s),He),P(n,i,8,a.record?.note||``,Ue,`string`),P(n,i,9,c.length?`留言 ${c.length} 筆`:``,We,`string`),P(n,i,10,a.record?.updatedAt||``,Ue,`string`),P(n,i,11,a.record?.id||``,Ue,`string`),n.rowHeights.set(i,28)}),n}function _t(e,t){let n=at(`特休`);n.orientation=`landscape`,n.freeze=`A5`,n.autoFilter=`J4:N4`,n.widths=[{min:1,max:1,width:13.5},{min:2,max:2,width:12},{min:3,max:3,width:21},{min:4,max:4,width:13},{min:5,max:8,width:13},{min:10,max:10,width:13},{min:11,max:12,width:10}];let r=[`特休總時數`,`本檔已休`,`剩餘時數`,`說明`,`特休日期`,`時數`,`已休`,`類型`,`備註`];P(n,1,1,r[0],Be,`string`),P(n,1,2,r[1],Be,`string`),P(n,1,3,r[2],Be,`string`),P(n,1,4,r[3],Be,`string`),P(n,1,10,`特休日明細`,Ie,`string`),it(n,`J1:L1`),P(n,2,1,e.appConfig.leaveTotalHours,He,`number`);let i=e.leaveRecords.filter(n=>t.kind===`year`||n.date.slice(0,7)===`${e.appConfig.year}-${String(t.month).padStart(2,`0`)}`),a=O(i.reduce((e,t)=>e+t.hours,0));rt(n,2,2,`SUM(K5:K100)`,a,He),e.appConfig.leaveTotalHours===null?P(n,2,3,`未設定`,We,`string`):rt(n,2,3,`A2-B2`,O(e.appConfig.leaveTotalHours-a),He),P(n,2,4,`未設定總時數時，請先到設定頁輸入。`,Ue,`string`),it(n,`D2:H2`),[`特休日期`,`時數`,`已休`,`類型`,`備註`].forEach((e,t)=>P(n,4,t+10,e,Be,`string`)),i.forEach((e,t)=>{let r=5+t;P(n,r,10,tt(e.date),N,`date`),P(n,r,11,e.hours,He,`number`),P(n,r,12,e.hours,He,`number`),P(n,r,13,e.leaveType,Ze,`string`),P(n,r,14,e.note,Ue,`string`)});let o=5+i.length;return i.length?(rt(n,o,11,`SUM(K5:K${4+i.length})`,a,He),rt(n,o,12,`SUM(L5:L${4+i.length})`,a,He)):(P(n,o,11,0,He,`number`),P(n,o,12,0,He,`number`)),P(n,4,1,`請依年資或單位規定設定特休總時數。`,Ue,`string`),it(n,`A4:D4`),n}function vt(e,t){let n=at(`留言板時數異動`);n.orientation=`landscape`,n.freeze=`A2`,n.widths=[{min:1,max:1,width:16},{min:2,max:2,width:13},{min:3,max:3,width:8},{min:4,max:4,width:14},{min:5,max:5,width:20},{min:6,max:6,width:42},{min:7,max:7,width:18},{min:8,max:9,width:28},{min:10,max:12,width:13},{min:13,max:13,width:18},{min:14,max:14,width:12},{min:15,max:16,width:22}],[`留言編號`,`日期`,`星期`,`類別`,`標題`,`留言內容`,`關聯工時紀錄`,`異動前時段摘要`,`異動後時段摘要`,`原始工時`,`修正後工時`,`時數差異`,`標籤`,`是否已核對`,`建立時間`,`最後修改時間`].forEach((e,t)=>P(n,1,t+1,e,Be,`string`));let r=e.auditNotes.filter(n=>t.kind===`year`||n.date.slice(0,7)===`${e.appConfig.year}-${String(t.month).padStart(2,`0`)}`).sort((e,t)=>`${e.date}${e.createdAt}`.localeCompare(`${t.date}${t.createdAt}`));return n.autoFilter=`A1:P${Math.max(1,r.length+1)}`,r.length||(P(n,2,1,`目前沒有留言／時數異動紀錄。`,Ve,`string`),it(n,`A2:P2`)),r.forEach((e,t)=>{let r=t+2,i=e.tags.join(`、`);P(n,r,1,e.id,Ve,`string`),P(n,r,2,tt(e.date),N,`date`),P(n,r,3,ae(e.date),Ve,`string`),P(n,r,4,e.category,Ve,`string`),P(n,r,5,e.title,Ve,`string`),P(n,r,6,e.content,Ve,`string`),P(n,r,7,e.relatedRecordId||``,Ve,`string`),P(n,r,8,e.originalShiftSummary,Ve,`string`),P(n,r,9,e.adjustedShiftSummary,Ve,`string`),P(n,r,10,e.originalHours,He,`number`),P(n,r,11,e.adjustedHours,He,`number`),P(n,r,12,e.hoursDifference,e.hoursDifference===0?He:e.hoursDifference>0?Fe:ze,`number`),P(n,r,13,i,Ve,`string`),P(n,r,14,e.isResolved?`已核對`:`待確認`,e.isResolved?Fe:Le,`string`),P(n,r,15,e.createdAt,Ve,`string`),P(n,r,16,e.updatedAt,Ve,`string`),n.rowHeights.set(r,56)}),n}function yt(e,t){let n=at(`課表`);return n.orientation=`landscape`,n.freeze=`A4`,n.widths=[{min:1,max:1,width:20},{min:2,max:8,width:25}],P(n,1,1,`${t}月份課表`,Be,`string`),it(n,`A1:H1`),P(n,3,1,`節次／時間`,Be,`string`),ge.forEach((e,t)=>P(n,3,t+2,`星期${e.label}`,Be,`string`)),e.appConfig.timetablePresets.forEach((t,r)=>{let i=r+4;P(n,i,1,`${t.label}\n${t.start}–${t.end}`,We,`string`),ge.forEach((r,a)=>{let o=_e(r.value,t.id);P(n,i,a+2,ve(e.appConfig.timetableCells[o]),Ue,`string`)}),n.rowHeights.set(i,42)}),n.autoFilter=`A3:H${3+e.appConfig.timetablePresets.length}`,n}function bt(){return`<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
@@ -289,4 +289,1662 @@ React keys must be passed directly to JSX without using spread:
 `),teacherNames:e.teacherNames.join(`
 `),rooms:e.rooms.join(`
 `),workStudyOptions:e.workStudyOptions.join(`
-`)}),Ut=e=>{if(e.mode===`course`){let t=e.course.trim(),n=e.teacher.trim(),r=e.room.trim();return t||n||r?{mode:`course`,course:t,teacher:n,room:r}:null}if(e.mode===`work-study`){let t=e.workStudy.trim();return t?{mode:`work-study`,value:t}:null}let t=e.custom.trim();return t?{mode:`custom`,value:t}:null},Wt=(e,t)=>({date:e,relatedRecordId:t.workRecords.find(t=>t.date===e)?.id||``,category:`時數異動`,title:``,content:``,originalHours:``,adjustedHours:``,originalShiftSummary:``,adjustedShiftSummary:``,tags:`待確認`,isResolved:!1});function Gt(e){return{dateInput:e,recordType:`actual`,status:`上班`,morningStart:``,morningEnd:``,morningBreak:`0`,afternoonStart:``,afternoonEnd:``,afternoonBreak:`0`,customSegments:[],manualHours:``,plannedHours:``,note:``,tags:[],createAudit:!1,auditTitle:``,auditContent:``,auditTags:`待確認`}}function Kt(e){let t=e.segments.find(e=>e.shift===`morning`),n=e.segments.find(e=>e.shift===`afternoon`),r=e.segments.filter(e=>e.shift===`custom`).map(e=>({id:e.id,start:e.start,end:e.end,breakMinutes:String(e.breakMinutes||0)}));return{...Gt(e.date),recordType:e.recordType,status:e.status,morningStart:t?.start||``,morningEnd:t?.end||``,morningBreak:String(t?.breakMinutes||0),afternoonStart:n?.start||``,afternoonEnd:n?.end||``,afternoonBreak:String(n?.breakMinutes||0),customSegments:r,manualHours:e.manualHours===null?``:String(e.manualHours),plannedHours:e.plannedHours===null?``:String(e.plannedHours),note:e.note,tags:e.tags}}function qt(e){if(!e.trim())return null;let t=Number(e);return Number.isFinite(t)?t:null}function Jt(e){let t=[],n=[],r=[],i=[],a=e=>e===`morning`?`早上班`:e===`afternoon`?`下午班`:`其他區段`,o=(e,r,o,s)=>{let c=!!r.trim(),l=!!o.trim();if(!c&&!l)return;if(!c||!l){n.push(`${e===`morning`?`早上班`:e===`afternoon`?`下午班`:`其他區段`}需要同時填寫開始與結束時間。`);return}let u=ce(r),d=ce(o);if(u===null||d===null){n.push(`${e===`morning`?`早上班`:e===`afternoon`?`下午班`:`其他區段`}的時間格式不正確。`);return}if(d<=u){n.push(`${a(e)}的結束時間必須晚於開始時間。`);return}let f=e===`morning`?{min:480,max:750}:e===`afternoon`?{min:780,max:1080}:null;if(f&&(u<f.min||d>f.max)){n.push(`${a(e)}時間必須落在 ${e===`morning`?`08:00–12:30`:`13:00–18:00`} 範圍內。`);return}let p=Math.max(0,Number(s)||0),m=le(r,o,p);if(i.some(e=>u<e.end&&d>e.start)){n.push(`${a(e)}與其他時段重疊或重複，請分開輸入。`);return}i.push({shift:e,start:u,end:d}),t.push({id:_(`segment`),shift:e,sequence:t.length+1,start:r,end:o,breakMinutes:p,calculatedMinutes:m,roundedMinutes:E(m)})},s=qt(e.manualHours);e.manualHours.trim()?((s===null||s<0)&&n.push(`直接輸入總時數必須是 0 或以上的數字。`),(e.morningStart||e.morningEnd||e.afternoonStart||e.afternoonEnd||e.customSegments.some(e=>e.start||e.end))&&r.push(`已填寫直接總時數，因此不會再把時間區段重複加總。若要使用區段計算，請清除直接輸入總時數。`)):(o(`morning`,e.morningStart,e.morningEnd,e.morningBreak),o(`afternoon`,e.afternoonStart,e.afternoonEnd,e.afternoonBreak),e.customSegments.forEach(e=>o(`custom`,e.start,e.end,e.breakMinutes))),e.afternoonStart&&e.morningEnd&&(ce(e.afternoonStart)??0)<(ce(e.morningEnd)??0)&&r.push(`下午上班時間早於早上下班時間，請確認是否為跨段或輸入錯誤；系統不會把午休整段誤算成工時。`);let c=de(t,s),l=qt(e.plannedHours),u=l===null?null:O(l);return e.plannedHours.trim()&&(l===null||l<0)&&n.push(`預排時數必須是 0 或以上的數字。`),!t.length&&s===null&&[`actual`,`planned`].includes(e.recordType)&&n.push(`實際上班或預排班請輸入至少一個時間區段，或直接輸入總時數。`),{segments:t,manualHours:s,plannedHours:u,totals:c,errors:n,warnings:r}}function Yt(){try{let e=`${It}-probe`,t=window.localStorage.getItem(e);return window.localStorage.setItem(e,`ok`),t===null?window.localStorage.removeItem(e):window.localStorage.setItem(e,t),!0}catch{return!1}}function Xt(e){try{return window.localStorage.setItem(It,JSON.stringify(e)),!0}catch{return!1}}function Zt(){try{let e=window.localStorage.getItem(It);return{data:e?Oe(JSON.parse(e)):xe(),warning:``}}catch{return{data:xe(),warning:`無法讀取既有本機資料（JSON 格式可能已損毀），原始資料沒有被覆寫。請先匯出或修復備份後再使用。`}}}function Qt(e){let t=[...e.workRecords.map(e=>e.date),...e.auditNotes.map(e=>e.date),...e.leaveRecords.map(e=>e.date)].sort();return t.length?`${S(t[0])} ～ ${S(t[t.length-1])}`:`尚無日期資料`}function $t(e,t){let n=URL.createObjectURL(e),r=document.createElement(`a`);r.href=n,r.download=t,document.body.appendChild(r),r.click(),r.remove(),window.setTimeout(()=>URL.revokeObjectURL(n),1e3)}function en(e){return`status-chip status-${e}`}function tn(e,t,n){return e.workRecords.find(e=>e.date===t&&(!n||e.recordType===n))??null}function nn(){let[e,t]=(0,p.useState)(xe),[n,r]=(0,p.useState)(!1),[i,a]=(0,p.useState)(`quick`),o=ee(),[s,c]=(0,p.useState)(Number(o.slice(5,7))||1),[l,u]=(0,p.useState)(`month`),[d,f]=(0,p.useState)(()=>Gt(o)),[m,g]=(0,p.useState)(null),[x,ce]=(0,p.useState)(``),[le,E]=(0,p.useState)(``),[D,de]=(0,p.useState)(`all`),[fe,pe]=(0,p.useState)(`all`),[he,ye]=(0,p.useState)(``),[A,j]=(0,p.useState)(()=>Wt(o,xe())),[be,Ce]=(0,p.useState)(null),[M,we]=(0,p.useState)(`all`),[Te,Ee]=(0,p.useState)(`all`),[De,ke]=(0,p.useState)(``),[Ae,Me]=(0,p.useState)({date:o,name:``,type:`customHoliday`,note:``}),[Fe,Ie]=(0,p.useState)({date:o,hours:``,note:``}),[Le,Re]=(0,p.useState)(xe().appConfig),[ze,Be]=(0,p.useState)(()=>Ht(xe().appConfig.timetableOptions)),[Ve,He]=(0,p.useState)(``),[N,Ue]=(0,p.useState)(null),[We,Ge]=(0,p.useState)(null),[Ke,qe]=(0,p.useState)(!1),[Je,Ye]=(0,p.useState)(``),Xe=(0,p.useRef)(null);(0,p.useEffect)(()=>{let e=Zt();t(e.data),Re(e.data.appConfig),Be(Ht(e.data.appConfig.timetableOptions)),f(Gt(o)),j(Wt(o,e.data)),Yt()?e.warning&&Ye(e.warning):Ye(`目前瀏覽器未允許本機儲存；資料可能無法在重新整理後保留。請改用一般瀏覽模式，或啟動本機伺服器後再使用。仍可先下載 JSON 備份。 `),r(!0)},[o]),(0,p.useEffect)(()=>{if(!le)return;let e=window.setTimeout(()=>E(``),3200);return()=>window.clearTimeout(e)},[le]);let Ze=(0,p.useMemo)(()=>Jt(d),[d]),Qe=te(d.dateInput).iso,$e=Qe?je(Qe,e):null,et=Qe?tn(e,Qe,d.recordType):null,tt=Qe?e.auditNotes.filter(e=>e.date===Qe):[],nt=(0,p.useMemo)(()=>T().map(t=>je(t,e)),[e]),P=(0,p.useMemo)(()=>{let e=he.trim().toLowerCase();return nt.filter(t=>{let n=D===`all`||Number(D)===Number(t.date.slice(5,7)),r=fe===`all`||t.statusKey===fe||t.status===fe,i=!e||`${t.date} ${t.label} ${t.record?.note||``} ${t.record?.tags.join(` `)||``}`.toLowerCase().includes(e);return n&&r&&i})},[D,he,fe,nt]),rt=(0,p.useMemo)(()=>{let t=De.trim().toLowerCase();return e.auditNotes.filter(e=>{let n=M===`all`||e.category===M,r=Te===`all`||e.tags.includes(Te),i=!t||`${e.date} ${e.title} ${e.content} ${e.category} ${e.tags.join(` `)}`.toLowerCase().includes(t);return n&&r&&i}).sort((e,t)=>`${t.date}${t.updatedAt}`.localeCompare(`${e.date}${e.updatedAt}`))},[M,De,Te,e.auditNotes]),it=(0,p.useMemo)(()=>{let t=se(s),n=t.map(t=>je(t,e)),r=n.filter(e=>e.record&&e.record.dailyTotalHours>0),i=O(r.reduce((e,t)=>e+(t.record?.dailyTotalHours||0),0));return{dates:t,resolved:n,hours:i,workdays:r.length,holidayWork:r.filter(e=>e.holiday).length,weekendWork:r.filter(e=>e.weekdayIndex===0||e.weekdayIndex===6).length,unrecorded:n.filter(e=>e.statusKey===`unrecorded`).length,holidayCount:n.filter(e=>e.holiday).length,wage:e.appConfig.hourlyWage===null?null:ue(i*e.appConfig.hourlyWage)}},[e,s]),at=(0,p.useMemo)(()=>O(e.workRecords.filter(e=>e.recordType!==`planned`).reduce((e,t)=>e+t.dailyTotalHours,0)),[e.workRecords]),ot=(0,p.useMemo)(()=>Array.from({length:12},(t,n)=>{let r=n+1;return{month:r,hours:O(e.workRecords.filter(e=>e.recordType!==`planned`&&Number(e.date.slice(5,7))===r).reduce((e,t)=>e+t.dailyTotalHours,0))}}),[e.workRecords]),st=(e,n,r)=>{t(e),Re(e.appConfig),r?.keepTimetableOptionDrafts||Be(Ht(e.appConfig.timetableOptions)),Xt(e)?Ye(``):Ye(`資料已更新在目前畫面，但瀏覽器拒絕寫入本機儲存；重新整理後可能遺失。請改用一般瀏覽模式或本機伺服器，並先下載 JSON 備份。 `),n&&E(n)},ct=(t,n=`actual`)=>{let r=tn(e,t,n);c(Number(t.slice(5,7))),a(`quick`),g(r?.id||null),f(r?Kt(r):{...Gt(t),recordType:n,status:Ne(n)}),ce(``),qe(!1)},lt=t=>{a(t),qe(!1),t===`settings`&&(Re(e.appConfig),Be(Ht(e.appConfig.timetableOptions)))},ut=e=>{f(t=>({...t,dateInput:e})),ce(``)},dt=e=>{f(t=>({...t,recordType:e,status:Ne(e)}))},ft=(t,n=!1)=>{t?.preventDefault();let r=te(d.dateInput);if(r.error||!r.iso){ce(r.error||`請輸入有效日期。`);return}if(Ze.errors.length){ce(Ze.errors.join(` `));return}let i=e.workRecords.find(e=>e.id===m)??null,a=tn(e,r.iso,d.recordType);if(!m&&a){ce(`這一天已有紀錄，請先按「編輯這筆」，不要默默覆蓋原紀錄。`);return}let o=v(),s=i||null,l=s?.segments.filter(e=>e.shift===`custom`)||[],u=Ze.manualHours!==null&&l.length?[...Ze.segments,...l].map((e,t)=>({...e,sequence:t+1})):Ze.segments,p=Ze.manualHours,x=Ze.totals,ee={id:i?.id||_(`record`),date:r.iso,recordType:d.recordType,status:d.status,segments:u,manualHours:p,calculatedHours:x.dailyTotalHours,plannedHours:Ze.plannedHours,morningHours:x.morningHours,afternoonHours:x.afternoonHours,customHours:x.customHours,dailyTotalHours:x.dailyTotalHours,note:d.note.trim(),tags:d.tags,createdAt:i?.createdAt||o,updatedAt:o},S=[...e.auditNotes];if(i&&d.createAudit){let e=i.dailyTotalHours,t=ee.dailyTotalHours;S.push({id:_(`audit`),date:r.iso,relatedRecordId:ee.id,category:`時數異動`,title:d.auditTitle.trim()||`工時紀錄更新`,content:d.auditContent.trim()||`保留編輯前後工時快照，供日後核對。`,originalHours:e,adjustedHours:t,hoursDifference:O(t-e),originalShiftSummary:me(i),adjustedShiftSummary:me(ee),tags:d.auditTags.split(`,`).map(e=>e.trim()).filter(Boolean),createdAt:o,updatedAt:o,isResolved:!1})}let ne=e.workRecords.filter(e=>e.id!==ee.id),re=[...e.leaveRecords];if(ee.recordType===`leave`){let e=re.find(e=>e.relatedRecordId===ee.id||e.date===ee.date&&e.relatedRecordId===s?.id),t={id:e?.id||_(`leave`),date:ee.date,leaveType:`特休`,hours:ee.dailyTotalHours,note:ee.note,relatedRecordId:ee.id};re=[...re.filter(t=>t.id!==e?.id),t]}else s?.recordType===`leave`&&(re=re.filter(e=>e.relatedRecordId!==s.id));if(st(Oe({...e,workRecords:[...ne,ee].sort((e,t)=>e.date.localeCompare(t.date)),auditNotes:S,leaveRecords:re}),i?`紀錄已更新`:`紀錄已儲存`),ce(Ze.warnings.length?Ze.warnings.join(` `):``),g(null),n){let e=b(r.iso);e.setUTCDate(e.getUTCDate()+1);let t=e.getUTCFullYear()===2026?y(h,e.getUTCMonth()+1,e.getUTCDate()):r.iso;f(Gt(t)),c(Number(t.slice(5,7)))}else f({...Gt(r.iso),recordType:d.recordType,status:d.status})},pt=()=>{let t=te(d.dateInput),n=m?e.workRecords.find(e=>e.id===m):t.iso?tn(e,t.iso,d.recordType):null;if(!n){ce(`目前沒有可刪除的紀錄。`);return}window.confirm(`確定要刪除 ${S(n.date)} 的紀錄嗎？此動作會恢復該日的預設狀態。`)&&(st(Oe({...e,workRecords:e.workRecords.filter(e=>e.id!==n.id),leaveRecords:e.leaveRecords.filter(e=>e.relatedRecordId!==n.id)}),`紀錄已刪除`),g(null),f(Gt(n.date)))},mt=()=>{let t=te(d.dateInput);if(!t.iso)return;let n=tn(e,t.iso,d.recordType);n&&(f(Kt(n)),g(n.id),ce(``))},ht=t=>{let n=tn(e,t);j({...Wt(t,e),originalHours:n?String(n.dailyTotalHours):``,adjustedHours:n?String(n.dailyTotalHours):``,originalShiftSummary:n?me(n):``,adjustedShiftSummary:n?me(n):``}),Ce(null),a(`messages`)},gt=t=>{t.preventDefault();let n=te(A.date);if(!n.iso){E(`留言日期格式不正確`);return}if(!A.title.trim()||!A.content.trim()){E(`請填寫留言標題與內容`);return}let r=qt(A.originalHours),i=qt(A.adjustedHours),a=r===null?null:O(r),o=i===null?null:O(i),s=v(),c={id:be||_(`audit`),date:n.iso,relatedRecordId:A.relatedRecordId||null,category:A.category,title:A.title.trim(),content:A.content.trim(),originalHours:a,adjustedHours:o,hoursDifference:a!==null&&o!==null?O(o-a):0,originalShiftSummary:A.originalShiftSummary,adjustedShiftSummary:A.adjustedShiftSummary,tags:A.tags.split(`,`).map(e=>e.trim()).filter(Boolean),createdAt:be&&e.auditNotes.find(e=>e.id===be)?.createdAt||s,updatedAt:s,isResolved:A.isResolved},l=be?e.auditNotes.map(e=>e.id===c.id?c:e):[...e.auditNotes,c];st(Oe({...e,auditNotes:l}),be?`留言已更新`:`留言已新增`),j(Wt(n.iso,{...e,auditNotes:l})),Ce(null)},_t=e=>{j({date:e.date,relatedRecordId:e.relatedRecordId||``,category:e.category,title:e.title,content:e.content,originalHours:e.originalHours===null?``:String(e.originalHours),adjustedHours:e.adjustedHours===null?``:String(e.adjustedHours),originalShiftSummary:e.originalShiftSummary,adjustedShiftSummary:e.adjustedShiftSummary,tags:e.tags.join(`, `),isResolved:e.isResolved}),Ce(e.id),a(`messages`)},vt=t=>{window.confirm(`確定要刪除「${t.title}」這筆留言嗎？`)&&(st(Oe({...e,auditNotes:e.auditNotes.filter(e=>e.id!==t.id)}),`留言已刪除`),be===t.id&&(Ce(null),j(Wt(o,e))))},yt=t=>{t.preventDefault();let n=te(Ae.date);if(!n.iso||!Ae.name.trim()){E(`請輸入有效日期與假日名稱`);return}let r={id:_(`holiday`),date:n.iso,name:Ae.name.trim(),type:Ae.type,isDayOff:!0,source:`custom`,note:Ae.note.trim(),enabled:!0};st(Oe({...e,holidays:[...e.holidays,r]}),`自訂假日已新增`),Me({date:n.iso,name:``,type:`customHoliday`,note:``})},bt=t=>{st(Oe({...e,holidays:e.holidays.map(e=>e.id===t.id?{...e,enabled:!e.enabled}:e)}),t.enabled?`假日已停用`:`假日已啟用`)},xt=t=>{t.preventDefault();let n=te(Fe.date),r=qt(Fe.hours);if(!n.iso||r===null||r<=0){E(`請輸入有效特休日期與大於 0 的時數`);return}let i=O(r);if(i<=0){E(`特休時數至少要有 0.5 小時，未滿半小時會被捨去`);return}let a={id:_(`leave`),date:n.iso,leaveType:`特休`,hours:i,note:Fe.note.trim()};st(Oe({...e,leaveRecords:[...e.leaveRecords,a]}),`特休明細已新增`),Ie({date:n.iso,hours:``,note:``})},St=t=>{window.confirm(`確定刪除 ${S(t.date)} 的特休明細嗎？`)&&st(Oe({...e,leaveRecords:e.leaveRecords.filter(e=>e.id!==t.id)}),`特休明細已刪除`)},Ct=t=>{st(Oe({...e,appConfig:{...t,year:h,rocYear:115,annualBudgetHours:t.annualBudgetHours===null?null:O(t.annualBudgetHours),leaveTotalHours:t.leaveTotalHours===null?null:O(t.leaveTotalHours)}}),void 0,{keepTimetableOptionDrafts:!0})},wt=e=>{Ct({...Le,...e}),He(``)},Tt=e=>{if(!e.trim()){wt({hourlyWage:null}),He(``);return}let t=Number(e);if(!Number.isFinite(t)||t<0){He(`時薪只能輸入大於或等於 0 的數字；清空代表未設定。`);return}wt({hourlyWage:t}),He(``)},Et=e=>{Ct(e)},Dt=(e,t)=>{let n=Se(t);Be(n=>({...n,[e]:t})),Et({...Le,timetableOptions:{...Le.timetableOptions,[e]:n}})},Ot=(e,t)=>{let n=Le.timetableCells[_e(e,t.id)];Ue({day:e,preset:t,mode:n?.mode||`course`,course:n?.mode===`course`?n.course:``,teacher:n?.mode===`course`?n.teacher:``,room:n?.mode===`course`?n.room:``,workStudy:n?.mode===`work-study`?n.value:Le.timetableOptions.workStudyOptions[0]||`秘書室工讀`,custom:n?.mode===`custom`?n.value:``})},kt=e=>{let t=Ut(e),n=_e(e.day,e.preset.id),r={...Le.timetableCells};t?r[n]=t:delete r[n],Ue(e),Et({...Le,timetableCells:r})},At=t=>{let n=Nt(e,t);$t(n.blob,n.filename),E(`已產生 ${n.filename}`)},jt=()=>{$t(new Blob([JSON.stringify(e,null,2)],{type:`application/json;charset=utf-8`}),`工時紀錄備份-${h}.json`),E(`完整 JSON 備份已下載`)},Mt=async e=>{let t=e.target.files?.[0];if(t){try{let e=Oe(JSON.parse(await t.text()));Ge({data:e,summary:`資料筆數：工時 ${e.workRecords.length} 筆、留言 ${e.auditNotes.length} 筆、特休 ${e.leaveRecords.length} 筆；日期範圍：${Qt(e)}。`})}catch{E(`JSON 備份格式錯誤，原本資料沒有被更動`)}e.target.value=``}},Pt=(t,n)=>{if(n)st(t,`備份已覆蓋還原`);else{let n=[...e.workRecords];t.workRecords.forEach(e=>{let t=n.findIndex(t=>t.id===e.id||t.date===e.date&&t.recordType===e.recordType);t>=0?n[t]=e:n.push(e)});let r=(e,t)=>[...e,...t.filter(t=>!e.some(e=>e.id===t.id))];st(Oe({...e,appConfig:t.appConfig,workRecords:n,holidays:r(e.holidays,t.holidays),leaveRecords:r(e.leaveRecords,t.leaveRecords),auditNotes:r(e.auditNotes,t.auditNotes)}),`備份已合併`)}Ge(null)},Ft=()=>{if(!window.confirm(`確定要清除全部資料嗎？`)||!window.confirm(`這是不可逆的清除動作，請再次確認；建議先下載 JSON 備份。`))return;let e=xe();st(e,`全部資料已清除`),f(Gt(o)),j(Wt(o,e))},It=(e,t,n=`日期`)=>{let r=te(e).iso||``;return(0,F.jsxs)(`div`,{className:`date-input-wrap`,children:[(0,F.jsx)(`input`,{"aria-label":`${n}文字輸入`,value:e,onChange:e=>t(e.target.value),placeholder:`0815／8/15／2026-08-15`}),(0,F.jsx)(`input`,{"aria-label":`${n}選擇器`,type:`date`,value:r,min:`2026-01-01`,max:`2026-12-31`,onChange:e=>t(e.target.value)})]})},nn=()=>{let e=Rt.find(e=>e.key===i)?.label||`工時追蹤`;return(0,F.jsxs)(`header`,{className:`topbar`,children:[(0,F.jsxs)(`div`,{className:`topbar-title`,children:[(0,F.jsx)(`button`,{className:`mobile-menu-button`,"aria-label":`開啟導覽`,onClick:()=>qe(e=>!e),children:`☰`}),(0,F.jsx)(`div`,{children:(0,F.jsx)(`h1`,{children:e})})]}),(0,F.jsx)(`div`,{className:`topbar-actions`,children:(0,F.jsx)(`span`,{className:`year-pill`,children:`民國 115 年`})})]})},rn=()=>(0,F.jsxs)(`aside`,{className:`sidebar ${Ke?`is-open`:``}`,children:[(0,F.jsxs)(`div`,{className:`brand-lockup`,children:[(0,F.jsx)(`div`,{className:`brand-mark`,children:`工`}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:`工時簿`}),(0,F.jsx)(`span`,{children:`2026／民國 115 年`})]})]}),(0,F.jsx)(`div`,{className:`sidebar-scroll`,children:[`工作紀錄`,`分析與管理`,`工具`].map(t=>(0,F.jsxs)(`div`,{className:`nav-group`,children:[(0,F.jsx)(`p`,{className:`nav-group-label`,children:t}),Rt.filter(e=>e.group===t).map(t=>(0,F.jsxs)(`button`,{className:`nav-item ${i===t.key?`is-active`:``}`,onClick:()=>lt(t.key),children:[(0,F.jsx)(`span`,{className:`nav-icon`,children:t.icon}),(0,F.jsx)(`span`,{children:t.label}),t.key===`messages`&&e.auditNotes.filter(e=>!e.isResolved).length>0?(0,F.jsx)(`b`,{className:`nav-badge`,children:e.auditNotes.filter(e=>!e.isResolved).length}):null]},t.key))]},t))}),(0,F.jsxs)(`div`,{className:`sidebar-footer`,children:[(0,F.jsx)(`span`,{className:`local-dot`}),`資料只儲存在這台瀏覽器`,(0,F.jsx)(`br`,{}),(0,F.jsxs)(`small`,{children:[e.workRecords.length,` 筆工時 · `,e.auditNotes.length,` 筆留言`]})]})]}),an=()=>le?(0,F.jsxs)(`div`,{className:`toast`,role:`status`,children:[(0,F.jsx)(`span`,{className:`toast-icon`,children:`✓`}),le,(0,F.jsx)(`button`,{"aria-label":`關閉通知`,onClick:()=>E(``),children:`×`})]}):null,on=()=>Je?(0,F.jsxs)(`div`,{className:`storage-warning`,role:`alert`,children:[(0,F.jsx)(`strong`,{children:`本機儲存提醒`}),(0,F.jsx)(`span`,{children:Je})]}):null,sn=()=>(0,F.jsx)(`div`,{className:`status-legend`,"aria-label":`狀態圖例`,children:[`working`,`unrecorded`,`rest`,`regularHoliday`,`nationalHoliday`,`makeupHoliday`,`leave`,`absence`,`typhoon`].map(e=>(0,F.jsxs)(`span`,{className:`legend-item`,children:[(0,F.jsx)(`i`,{className:`legend-dot ${e}`}),{working:`上班`,unrecorded:`未記錄`,rest:`休息日`,regularHoliday:`例假日`,nationalHoliday:`國定假日`,makeupHoliday:`補假`,leave:`特休`,absence:`請假`,typhoon:`颱風假`}[e]]},e))});return n?(0,F.jsxs)(`div`,{className:`app-shell`,children:[rn(),(0,F.jsxs)(`main`,{className:`main-content`,children:[nn(),on(),an(),(0,F.jsx)(`div`,{className:`content-scroll`,children:i===`quick`?(()=>{let t=$e,n=et;return(0,F.jsxs)(`section`,{className:`page-section quick-page`,children:[(0,F.jsx)(`div`,{className:`page-intro compact-page-intro quick-page-heading`,children:(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`今日／快速記錄`})})}),(0,F.jsxs)(`div`,{className:`quick-layout`,children:[(0,F.jsxs)(`form`,{className:`card form-card`,onSubmit:e=>ft(e),children:[(0,F.jsx)(`div`,{className:`form-divider`,children:(0,F.jsx)(`span`,{children:`01 · 日期與狀態`})}),(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:m?`編輯這筆紀錄`:`新增一天紀錄`})}),n?(0,F.jsx)(`span`,{className:`soft-badge`,children:`已有紀錄`}):null]}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`日期`}),It(d.dateInput,ut)]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`紀錄類型`}),(0,F.jsx)(`select`,{value:d.recordType,onChange:e=>dt(e.target.value),children:Bt.map(e=>(0,F.jsx)(`option`,{value:e.value,children:e.label},e.value))})]})]}),t?(0,F.jsxs)(`div`,{className:`day-context`,children:[(0,F.jsx)(`div`,{className:en(t.statusKey),children:t.label}),(0,F.jsxs)(`div`,{children:[(0,F.jsxs)(`strong`,{children:[S(t.date),` · 星期`,t.weekday]}),t.holiday||t.weekdayIndex===0||t.weekdayIndex===6?(0,F.jsx)(`span`,{children:t.holiday?`${t.holiday.name} · ${Pe(t.holiday.type)}`:`週末預設狀態可被實際上班覆蓋`}):null]}),t.holidays.length>1?(0,F.jsxs)(`em`,{children:[`+`,t.holidays.length-1,` 個標籤`]}):null]}):null,(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`狀態`}),(0,F.jsx)(`select`,{value:d.status,onChange:e=>f(t=>({...t,status:e.target.value})),children:zt.map(e=>(0,F.jsx)(`option`,{value:e.value,children:e.label},e.value))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`預排工時（可留白）`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:d.plannedHours,onChange:e=>f(t=>({...t,plannedHours:e.target.value})),placeholder:`例如 6`})]})]}),(0,F.jsx)(`div`,{className:`form-divider`,children:(0,F.jsx)(`span`,{children:`02 · 工作時間`})}),(0,F.jsxs)(`div`,{className:`shift-block morning-shift`,children:[(0,F.jsxs)(`div`,{className:`shift-heading`,children:[(0,F.jsx)(`span`,{className:`shift-number`,children:`A`}),(0,F.jsx)(`div`,{children:(0,F.jsxs)(`strong`,{children:[`早上班 `,(0,F.jsx)(`small`,{className:`range-label`,children:`08:00–12:30`})]})}),(0,F.jsxs)(`b`,{children:[k(Ze.totals.morningHours),` 小時`]})]}),(0,F.jsxs)(`div`,{className:`form-grid three-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`早上上班`}),(0,F.jsx)(`input`,{type:`time`,min:`08:00`,max:`12:30`,value:d.morningStart,onChange:e=>f(t=>({...t,morningStart:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`早上下班`}),(0,F.jsx)(`input`,{type:`time`,min:`08:00`,max:`12:30`,value:d.morningEnd,onChange:e=>f(t=>({...t,morningEnd:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`休息分鐘`}),(0,F.jsx)(`input`,{inputMode:`numeric`,value:d.morningBreak,onChange:e=>f(t=>({...t,morningBreak:e.target.value}))})]})]})]}),(0,F.jsxs)(`div`,{className:`shift-block afternoon-shift`,children:[(0,F.jsxs)(`div`,{className:`shift-heading`,children:[(0,F.jsx)(`span`,{className:`shift-number`,children:`B`}),(0,F.jsx)(`div`,{children:(0,F.jsxs)(`strong`,{children:[`下午班 `,(0,F.jsx)(`small`,{className:`range-label`,children:`13:00–18:00`})]})}),(0,F.jsxs)(`b`,{children:[k(Ze.totals.afternoonHours),` 小時`]})]}),(0,F.jsxs)(`div`,{className:`form-grid three-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`下午上班`}),(0,F.jsx)(`input`,{type:`time`,min:`13:00`,max:`18:00`,value:d.afternoonStart,onChange:e=>f(t=>({...t,afternoonStart:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`下午下班`}),(0,F.jsx)(`input`,{type:`time`,min:`13:00`,max:`18:00`,value:d.afternoonEnd,onChange:e=>f(t=>({...t,afternoonEnd:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`休息分鐘`}),(0,F.jsx)(`input`,{inputMode:`numeric`,value:d.afternoonBreak,onChange:e=>f(t=>({...t,afternoonBreak:e.target.value}))})]})]})]}),d.customSegments.length?(0,F.jsx)(`div`,{className:`legacy-segment-note`,role:`status`,children:`此筆紀錄包含既有自訂區段，儲存時會保留；目前不提供新增。`}):null,(0,F.jsxs)(`div`,{className:`manual-entry`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`strong`,{children:`直接輸入總時數`})}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:d.manualHours,onChange:e=>f(t=>({...t,manualHours:e.target.value})),placeholder:`例如 6.5`})]}),(0,F.jsxs)(`div`,{className:`calculation-strip`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`早上班小計`}),(0,F.jsxs)(`strong`,{children:[k(Ze.totals.morningHours),(0,F.jsx)(`small`,{children:` 小時`})]})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`下午班小計`}),(0,F.jsxs)(`strong`,{children:[k(Ze.totals.afternoonHours),(0,F.jsx)(`small`,{children:` 小時`})]})]}),d.customSegments.length?(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`既有自訂區段小計`}),(0,F.jsxs)(`strong`,{children:[k(Ze.totals.customHours),(0,F.jsx)(`small`,{children:` 小時`})]})]}):null,(0,F.jsxs)(`div`,{className:`total-cell`,children:[(0,F.jsx)(`span`,{children:`當日總時數`}),(0,F.jsxs)(`strong`,{children:[k(Ze.totals.dailyTotalHours),(0,F.jsx)(`small`,{children:` 小時`})]})]})]}),(0,F.jsxs)(`div`,{className:`form-divider`,children:[(0,F.jsx)(`span`,{children:`03 · 備註與標籤`}),(0,F.jsx)(`small`,{children:`補登、活動支援或特殊差異可在這裡留下摘要。`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`備註`}),(0,F.jsx)(`textarea`,{rows:3,value:d.note,onChange:e=>f(t=>({...t,note:e.target.value})),placeholder:`例如：活動支援、臨時調班、打卡差異……`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`標籤`}),(0,F.jsx)(`div`,{className:`tag-toggle-group`,role:`group`,"aria-label":`工作標籤`,children:Vt.map(e=>{let t=d.tags.includes(e);return(0,F.jsx)(`button`,{type:`button`,"aria-pressed":t,className:`tag-toggle`+(t?` is-selected`:``),onClick:()=>f(t=>({...t,tags:t.tags.includes(e)?t.tags.filter(t=>t!==e):[...t.tags,e]})),children:e},e)})})]}),m&&e.appConfig.auditPromptOnEdit?(0,F.jsxs)(`div`,{className:`audit-prompt`,children:[(0,F.jsxs)(`label`,{className:`checkbox-label`,children:[(0,F.jsx)(`input`,{type:`checkbox`,checked:d.createAudit,onChange:e=>f(t=>({...t,createAudit:e.target.checked}))}),(0,F.jsx)(`span`,{children:`這次編輯要新增「時數異動」說明`})]}),d.createAudit?(0,F.jsxs)(`div`,{className:`form-grid two-columns audit-extra`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`異動標題`}),(0,F.jsx)(`input`,{value:d.auditTitle,onChange:e=>f(t=>({...t,auditTitle:e.target.value})),placeholder:`例如：下午班延後下班`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`異動標籤`}),(0,F.jsx)(`input`,{value:d.auditTags,onChange:e=>f(t=>({...t,auditTags:e.target.value}))})]}),(0,F.jsxs)(`label`,{className:`full-span`,children:[(0,F.jsx)(`span`,{children:`異動說明`}),(0,F.jsx)(`textarea`,{rows:2,value:d.auditContent,onChange:e=>f(t=>({...t,auditContent:e.target.value})),placeholder:`保留編輯前後的原因與核對資訊……`})]})]}):null]}):null,x?(0,F.jsx)(`div`,{className:`inline-message ${Ze.errors.length?`is-error`:`is-warning`}`,role:`alert`,children:x}):null,Ze.warnings.length&&!x?(0,F.jsx)(`div`,{className:`inline-message is-warning`,children:Ze.warnings.join(` `)}):null,(0,F.jsxs)(`div`,{className:`form-actions`,children:[(0,F.jsx)(`button`,{className:`button button-primary`,type:`submit`,children:`儲存紀錄`}),(0,F.jsx)(`button`,{className:`button button-secondary`,type:`button`,onClick:()=>ft(void 0,!0),children:`儲存並新增下一天`}),(0,F.jsx)(`button`,{className:`button button-ghost`,type:`button`,onClick:()=>{f(Gt(o)),g(null),ce(``)},children:`清除表單`})]})]}),(0,F.jsxs)(`aside`,{className:`quick-side`,children:[(0,F.jsxs)(`div`,{className:`card side-card today-summary`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:Qe?ne(Qe):`—`})}),(0,F.jsx)(`span`,{className:`date-month`,children:Qe?re(Qe).replace(`民國 `,``):``})]}),t?(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(`div`,{className:en(t.statusKey),children:t.label}),(0,F.jsxs)(`div`,{className:`big-hours`,children:[k(t.hours),(0,F.jsx)(`small`,{children:` 小時`})]}),t.holiday?(0,F.jsx)(`p`,{children:t.holiday.name}):null]}):(0,F.jsx)(`p`,{children:`輸入有效日期後會顯示當日狀態。`}),(0,F.jsxs)(`div`,{className:`side-actions`,children:[(0,F.jsx)(`button`,{className:`button button-outline button-small`,type:`button`,onClick:mt,disabled:!n,children:`編輯這筆`}),(0,F.jsx)(`button`,{className:`button button-outline button-small`,type:`button`,onClick:pt,disabled:!n,children:`刪除今天紀錄`})]})]}),(0,F.jsxs)(`div`,{className:`card side-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`留言與追蹤`})}),(0,F.jsx)(`span`,{className:`count-pill`,children:tt.length})]}),tt.length?(0,F.jsx)(`div`,{className:`mini-note-list`,children:tt.map(e=>(0,F.jsxs)(`button`,{className:`mini-note`,onClick:()=>_t(e),children:[(0,F.jsx)(`span`,{className:e.isResolved?`note-resolved`:`note-pending`,children:e.isResolved?`已核對`:`待確認`}),(0,F.jsx)(`strong`,{children:e.title}),(0,F.jsxs)(`small`,{children:[e.category,` · 差異 `,k(e.hoursDifference),` 小時`]})]},e.id))}):(0,F.jsxs)(`div`,{className:`empty-mini`,children:[(0,F.jsx)(`span`,{children:`✦`}),(0,F.jsx)(`p`,{children:`這天還沒有留言或異動說明。`})]}),(0,F.jsx)(`button`,{className:`button button-secondary full-button`,type:`button`,onClick:()=>Qe&&ht(Qe),children:`＋為這一天新增留言`})]})]})]})]})})():i===`calendar`?(()=>{let t=C(y(h,s,1)),n=[...Array(t).fill(null),...se(s)],r=Qe||y(2026,s,Math.min(1,w(s))),i=C(r)===0?-6:1-C(r),a=b(r);a.setUTCDate(a.getUTCDate()+i);let d=Array.from({length:7},(e,t)=>{let n=new Date(a.getTime());return n.setUTCDate(a.getUTCDate()+t),n.getUTCFullYear()===2026?y(h,n.getUTCMonth()+1,n.getUTCDate()):null});return(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`月曆`})}),(0,F.jsxs)(`div`,{className:`month-switcher`,children:[(0,F.jsx)(`button`,{className:`icon-button`,"aria-label":`上一個月`,onClick:()=>c(e=>e===1?12:e-1),children:`‹`}),(0,F.jsxs)(`strong`,{children:[h,` · `,oe(s)]}),(0,F.jsx)(`button`,{className:`icon-button`,"aria-label":`下一個月`,onClick:()=>c(e=>e===12?1:e+1),children:`›`})]})]}),(0,F.jsxs)(`div`,{className:`card calendar-card`,children:[(0,F.jsxs)(`div`,{className:`calendar-toolbar`,children:[(0,F.jsxs)(`div`,{className:`calendar-metrics`,children:[(0,F.jsxs)(`span`,{children:[(0,F.jsx)(`strong`,{children:k(it.hours)}),`本月總時數`]}),(0,F.jsxs)(`span`,{children:[(0,F.jsx)(`strong`,{children:it.workdays}),`實際上班日`]}),(0,F.jsxs)(`span`,{children:[(0,F.jsx)(`strong`,{children:it.holidayCount}),`假日`]}),(0,F.jsxs)(`span`,{children:[(0,F.jsx)(`strong`,{children:it.unrecorded}),`未記錄平日`]})]}),(0,F.jsx)(`div`,{className:`view-toggle`,children:[`month`,`list`,`week`].map(e=>(0,F.jsx)(`button`,{className:l===e?`is-active`:``,onClick:()=>u(e),children:e===`month`?`月視圖`:e===`list`?`清單視圖`:`週視圖`},e))})]}),l===`month`?(0,F.jsxs)(`div`,{className:`calendar-grid`,children:[(0,F.jsx)(`div`,{className:`calendar-weekdays`,children:Lt.map(e=>(0,F.jsx)(`span`,{children:e},e))}),(0,F.jsx)(`div`,{className:`calendar-days`,children:n.map((t,n)=>t?(0,F.jsxs)(`button`,{className:`calendar-day ${t===o?`is-today`:``} ${t===Qe?`is-selected`:``}`,onClick:()=>ct(t),children:[(0,F.jsx)(`span`,{className:`day-number`,children:Number(t.slice(8,10))}),(0,F.jsx)(`span`,{className:en(je(t,e).statusKey),children:je(t,e).label}),(0,F.jsxs)(`strong`,{children:[k(je(t,e).hours),(0,F.jsx)(`small`,{children:`h`})]}),e.auditNotes.some(e=>e.date===t)?(0,F.jsx)(`i`,{className:`comment-dot`,title:`有留言`}):null]},t):(0,F.jsx)(`span`,{className:`calendar-day blank`},`blank-${n}`))})]}):l===`list`?(0,F.jsx)(`div`,{className:`calendar-list`,children:it.resolved.map(t=>(0,F.jsxs)(`button`,{className:`calendar-list-row`,onClick:()=>ct(t.date),children:[(0,F.jsxs)(`span`,{className:`list-date`,children:[(0,F.jsx)(`strong`,{children:t.date.slice(8,10)}),(0,F.jsxs)(`small`,{children:[`星期`,t.weekday]})]}),(0,F.jsx)(`span`,{className:en(t.statusKey),children:t.label}),(0,F.jsxs)(`span`,{className:`list-hours`,children:[k(t.hours),` 小時`]}),(0,F.jsx)(`span`,{className:`list-note`,children:e.auditNotes.filter(e=>e.date===t.date).length?`留言 ${e.auditNotes.filter(e=>e.date===t.date).length} 筆`:t.record?.note||``})]},t.date))}):(0,F.jsxs)(`div`,{className:`week-view`,children:[(0,F.jsxs)(`p`,{className:`week-caption`,children:[`本週：`,d.filter(Boolean).map(e=>e?ne(e):``).join(` · `)]}),(0,F.jsx)(`div`,{className:`week-grid`,children:d.map((t,n)=>t?(0,F.jsxs)(`button`,{className:`week-card`,onClick:()=>ct(t),children:[(0,F.jsxs)(`span`,{children:[`星期`,Lt[n]]}),(0,F.jsx)(`strong`,{children:ne(t)}),(0,F.jsx)(`span`,{className:en(je(t,e).statusKey),children:je(t,e).label}),(0,F.jsxs)(`b`,{children:[k(je(t,e).hours),` h`]})]},t):(0,F.jsx)(`span`,{className:`week-card empty`,children:`非 2026 日期`},`week-empty-${n}`))})]})]}),sn()]})})():i===`records`?(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`每日紀錄`})}),(0,F.jsxs)(`div`,{className:`intro-stat`,children:[(0,F.jsx)(`strong`,{children:P.length}),(0,F.jsx)(`span`,{children:`目前顯示日期`})]})]}),(0,F.jsxs)(`div`,{className:`card table-card`,children:[(0,F.jsxs)(`div`,{className:`filter-bar`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`月份`}),(0,F.jsxs)(`select`,{value:D,onChange:e=>de(e.target.value),children:[(0,F.jsx)(`option`,{value:`all`,children:`全年`}),Array.from({length:12},(e,t)=>(0,F.jsxs)(`option`,{value:String(t+1),children:[t+1,` 月`]},t))]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`狀態`}),(0,F.jsxs)(`select`,{value:fe,onChange:e=>pe(e.target.value),children:[(0,F.jsx)(`option`,{value:`all`,children:`全部狀態`}),(0,F.jsx)(`option`,{value:`working`,children:`上班`}),(0,F.jsx)(`option`,{value:`weekendWork`,children:`週末上班`}),(0,F.jsx)(`option`,{value:`holidayWork`,children:`假日上班`}),(0,F.jsx)(`option`,{value:`unrecorded`,children:`未記錄`}),(0,F.jsx)(`option`,{value:`nationalHoliday`,children:`國定假日`}),(0,F.jsx)(`option`,{value:`makeupHoliday`,children:`補假`}),(0,F.jsx)(`option`,{value:`leave`,children:`特休`}),(0,F.jsx)(`option`,{value:`absence`,children:`請假`}),(0,F.jsx)(`option`,{value:`rest`,children:`休息日`}),(0,F.jsx)(`option`,{value:`regularHoliday`,children:`例假日`})]})]}),(0,F.jsxs)(`label`,{className:`search-field`,children:[(0,F.jsx)(`span`,{children:`搜尋`}),(0,F.jsx)(`input`,{value:he,onChange:e=>ye(e.target.value),placeholder:`日期、備註、標籤……`})]}),(0,F.jsx)(`button`,{className:`button button-outline button-small`,onClick:()=>{de(`all`),pe(`all`),ye(``)},children:`清除篩選`})]}),(0,F.jsx)(`div`,{className:`table-scroll`,children:(0,F.jsxs)(`table`,{className:`data-table`,children:[(0,F.jsx)(`thead`,{children:(0,F.jsxs)(`tr`,{children:[(0,F.jsx)(`th`,{children:`日期`}),(0,F.jsx)(`th`,{children:`星期`}),(0,F.jsx)(`th`,{children:`狀態`}),(0,F.jsx)(`th`,{children:`工作時段`}),(0,F.jsx)(`th`,{children:`實際工時`}),(0,F.jsx)(`th`,{children:`預排工時`}),(0,F.jsx)(`th`,{children:`差額`}),(0,F.jsx)(`th`,{children:`備註`}),(0,F.jsx)(`th`,{children:`留言`}),(0,F.jsx)(`th`,{children:`最後更新`}),(0,F.jsx)(`th`,{})]})}),(0,F.jsx)(`tbody`,{children:P.map(t=>(0,F.jsxs)(`tr`,{onClick:()=>ct(t.date),children:[(0,F.jsx)(`td`,{className:`date-cell`,children:S(t.date)}),(0,F.jsxs)(`td`,{children:[`星期`,t.weekday]}),(0,F.jsx)(`td`,{children:(0,F.jsx)(`span`,{className:en(t.statusKey),children:t.label})}),(0,F.jsx)(`td`,{className:`time-cell`,children:t.record?me(t.record):`—`}),(0,F.jsx)(`td`,{className:`number-cell`,children:k(t.record?.dailyTotalHours||0)}),(0,F.jsx)(`td`,{className:`number-cell`,children:k(t.record?.plannedHours)}),(0,F.jsx)(`td`,{className:`number-cell ${t.record?.plannedHours!==null&&t.record?.plannedHours!==void 0&&t.record.plannedHours-t.record.dailyTotalHours!==0?`has-variance`:``}`,children:t.record?.plannedHours===null||t.record?.plannedHours===void 0?`—`:k(O(t.record.plannedHours-t.record.dailyTotalHours))}),(0,F.jsx)(`td`,{className:`note-cell`,children:t.record?.note||``}),(0,F.jsx)(`td`,{children:e.auditNotes.filter(e=>e.date===t.date).length?(0,F.jsxs)(`span`,{className:`comment-count`,children:[`✦ `,e.auditNotes.filter(e=>e.date===t.date).length]}):``}),(0,F.jsx)(`td`,{className:`muted-text`,children:t.record?.updatedAt?ie(t.record.updatedAt):`—`}),(0,F.jsx)(`td`,{children:(0,F.jsx)(`button`,{className:`row-action`,"aria-label":`${t.date} 新增留言`,onClick:e=>{e.stopPropagation(),ht(t.date)},children:`＋`})})]},t.date))})]})})]})]}):i===`stats`?(()=>{let t=O(e.leaveRecords.reduce((e,t)=>e+t.hours,0)),n=e.appConfig.leaveTotalHours===null?null:O(e.appConfig.leaveTotalHours-t),r=e.auditNotes.filter(e=>!e.isResolved).length,i=e.appConfig.hourlyWage===null?null:ue(at*e.appConfig.hourlyWage),a=i,l=Math.max(...ot.map(e=>e.hours),0),u=[{label:`本月總工時`,value:k(it.hours),unit:`小時`,tone:`green`},{label:`本年度總工時`,value:k(at),unit:`小時`,tone:`blue`},{label:`今日工時`,value:k(je(o,e).hours),unit:`小時`,tone:`orange`},{label:`已記錄天數`,value:String(e.workRecords.filter(e=>e.recordType!==`planned`).length),unit:`天`,tone:`purple`},{label:`實際上班天數`,value:String(it.workdays),unit:`天（本月）`,tone:`green`},{label:`週末上班天數`,value:String(it.weekendWork),unit:`天（本月）`,tone:`orange`},{label:`國定假日上班`,value:String(it.holidayWork),unit:`天（本月）`,tone:`red`},{label:`未記錄平日`,value:String(it.unrecorded),unit:`天（本月）`,tone:`gray`}];return(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`統計儀表板`})}),(0,F.jsxs)(`div`,{className:`month-switcher`,children:[(0,F.jsx)(`button`,{className:`icon-button`,"aria-label":`上一個月`,onClick:()=>c(e=>e===1?12:e-1),children:`‹`}),(0,F.jsxs)(`strong`,{children:[`統計月份：`,s,` 月`]}),(0,F.jsx)(`button`,{className:`icon-button`,"aria-label":`下一個月`,onClick:()=>c(e=>e===12?1:e+1),children:`›`})]})]}),(0,F.jsx)(`div`,{className:`kpi-grid`,children:u.map(e=>(0,F.jsxs)(`div`,{className:`kpi-card tone-${e.tone}`,children:[(0,F.jsx)(`span`,{children:e.label}),(0,F.jsxs)(`strong`,{children:[e.value,(0,F.jsx)(`small`,{children:e.unit})]})]},e.label))}),(0,F.jsxs)(`div`,{className:`dashboard-grid`,children:[(0,F.jsxs)(`div`,{className:`card trend-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`每月工時趨勢`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`2026`})]}),at?(0,F.jsx)(`div`,{className:`trend-chart`,role:`img`,"aria-label":`2026 每月工時趨勢圖`,children:ot.map(e=>(0,F.jsxs)(`div`,{className:`trend-column`,children:[(0,F.jsx)(`div`,{className:`bar-wrap`,children:(0,F.jsx)(`div`,{className:`trend-bar`,style:{height:`${l?Math.max(4,e.hours/l*100):4}%`},children:(0,F.jsx)(`span`,{children:k(e.hours)})})}),(0,F.jsxs)(`small`,{children:[e.month,`月`]})]},e.month))}):(0,F.jsxs)(`div`,{className:`empty-state compact`,children:[(0,F.jsx)(`span`,{className:`empty-icon`,children:`◒`}),(0,F.jsx)(`h3`,{children:`還沒有工時資料`}),(0,F.jsx)(`p`,{children:`先到「今日／快速記錄」新增第一筆，趨勢圖會跟著長出來。`}),(0,F.jsx)(`button`,{className:`button button-primary button-small`,onClick:()=>lt(`quick`),children:`新增第一筆`})]})]}),(0,F.jsxs)(`div`,{className:`card finance-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`薪資與預算`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`可選設定`})]}),(0,F.jsxs)(`div`,{className:`finance-list`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`本月薪資`}),(0,F.jsx)(`strong`,{children:it.wage===null?`未設定`:`NT$ ${it.wage.toLocaleString()}`})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`年度薪資`}),(0,F.jsx)(`strong`,{children:i===null?`未設定`:`NT$ ${i.toLocaleString()}`})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`年度預算金額`}),(0,F.jsx)(`strong`,{children:e.appConfig.annualBudgetAmount===null?`未設定`:`NT$ ${e.appConfig.annualBudgetAmount.toLocaleString()}`})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`已使用／剩餘預算`}),(0,F.jsx)(`strong`,{children:e.appConfig.annualBudgetAmount===null||a===null?`未設定`:`NT$ ${a.toLocaleString()} ／ ${(e.appConfig.annualBudgetAmount-a).toLocaleString()}`})]})]})]}),(0,F.jsxs)(`div`,{className:`card leave-summary-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`特休餘額`})}),(0,F.jsx)(`button`,{className:`text-button`,onClick:()=>lt(`holidays`),children:`管理 →`})]}),(0,F.jsxs)(`div`,{className:`leave-meter`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:k(t)}),(0,F.jsx)(`span`,{children:`已休`})]}),(0,F.jsx)(`div`,{className:`meter-track`,children:(0,F.jsx)(`span`,{style:{width:`${e.appConfig.leaveTotalHours?Math.min(100,Math.max(0,t/e.appConfig.leaveTotalHours*100)):0}%`}})}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:n===null?`—`:k(n)}),(0,F.jsx)(`span`,{children:`剩餘`})]})]}),(0,F.jsx)(`p`,{children:e.appConfig.leaveTotalHours===null?`尚未設定應休時數。`:`應休 ${k(e.appConfig.leaveTotalHours)} 小時`})]}),(0,F.jsxs)(`div`,{className:`card audit-summary-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`留言與異動`})}),(0,F.jsx)(`button`,{className:`text-button`,onClick:()=>lt(`messages`),children:`查看全部 →`})]}),(0,F.jsxs)(`div`,{className:`audit-summary-numbers`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:e.auditNotes.length}),(0,F.jsx)(`span`,{children:`本月留言／異動`})]}),(0,F.jsxs)(`div`,{className:`audit-alert`,children:[(0,F.jsx)(`strong`,{children:r}),(0,F.jsx)(`span`,{children:`尚未核對`})]})]}),(0,F.jsx)(`div`,{className:`mini-progress`,children:(0,F.jsx)(`span`,{style:{width:`${e.auditNotes.length?(e.auditNotes.length-r)/e.auditNotes.length*100:0}%`}})})]})]})]})})():i===`holidays`?(()=>{let t=e.holidays.filter(e=>e.source===`official`).sort((e,t)=>e.date.localeCompare(t.date)),n=e.holidays.filter(e=>e.source===`custom`).sort((e,t)=>e.date.localeCompare(t.date)),r=O(e.leaveRecords.reduce((e,t)=>e+t.hours,0));return(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`假日與特休`})}),(0,F.jsxs)(`div`,{className:`source-links`,children:[(0,F.jsx)(`span`,{children:`官方來源`}),(0,F.jsx)(`a`,{href:`https://www.dgpa.gov.tw/information?pid=12573&uid=41`,target:`_blank`,rel:`noreferrer`,children:`人事行政總處 115 年日曆 ↗`}),(0,F.jsx)(`a`,{href:`https://www.dgpa.gov.tw/information?pid=12574&uid=82`,target:`_blank`,rel:`noreferrer`,children:`2026 公告 ↗`}),(0,F.jsx)(`a`,{href:`https://www.dgpa.gov.tw/FileConversion?filename=dgpa%2Ffiles%2F202506%2F105f965b-c3e3-49e8-9e67-dadedccb2052.pdf&name=%E9%99%84%E8%A1%A83.pdf&nfix=`,target:`_blank`,rel:`noreferrer`,children:`連續假期官方附表 ↗`})]})]}),(0,F.jsxs)(`div`,{className:`management-grid`,children:[(0,F.jsxs)(`div`,{className:`card list-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`2026 預設假日清單`})}),(0,F.jsx)(`span`,{className:`count-pill`,children:t.length})]}),(0,F.jsx)(`div`,{className:`holiday-list`,children:t.map(e=>(0,F.jsxs)(`div`,{className:`holiday-row ${e.enabled?``:`is-disabled`}`,children:[(0,F.jsxs)(`span`,{className:`holiday-date`,children:[ne(e.date),(0,F.jsxs)(`small`,{children:[`星期`,ae(e.date)]})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:e.name}),(0,F.jsx)(`span`,{children:Pe(e.type)})]}),(0,F.jsx)(`button`,{className:`toggle-button`,onClick:()=>bt(e),children:e.enabled?`已啟用`:`已停用`})]},e.id))})]}),(0,F.jsxs)(`div`,{className:`stack-column`,children:[(0,F.jsxs)(`div`,{className:`card form-card compact-form`,children:[(0,F.jsx)(`div`,{className:`card-heading`,children:(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`新增自訂假日`})})}),(0,F.jsxs)(`form`,{onSubmit:yt,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`日期`}),It(Ae.date,e=>Me(t=>({...t,date:e})))]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`名稱`}),(0,F.jsx)(`input`,{value:Ae.name,onChange:e=>Me(t=>({...t,name:e.target.value})),placeholder:`例如：學校校慶`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`類型`}),(0,F.jsxs)(`select`,{value:Ae.type,onChange:e=>Me(t=>({...t,type:e.target.value})),children:[(0,F.jsx)(`option`,{value:`customHoliday`,children:`自訂假日`}),(0,F.jsx)(`option`,{value:`holidayPeriod`,children:`連假期間`}),(0,F.jsx)(`option`,{value:`nationalHoliday`,children:`國定假日`}),(0,F.jsx)(`option`,{value:`makeupHoliday`,children:`補假`})]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`說明`}),(0,F.jsx)(`textarea`,{rows:2,value:Ae.note,onChange:e=>Me(t=>({...t,note:e.target.value}))})]}),(0,F.jsx)(`button`,{className:`button button-primary full-button`,type:`submit`,children:`新增假日`})]})]}),(0,F.jsxs)(`div`,{className:`card list-card custom-list`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`自訂假日`})}),(0,F.jsx)(`span`,{className:`count-pill`,children:n.length})]}),n.length?n.map(e=>(0,F.jsxs)(`div`,{className:`holiday-row`,children:[(0,F.jsxs)(`span`,{className:`holiday-date`,children:[ne(e.date),(0,F.jsx)(`small`,{children:e.enabled?`啟用中`:`已停用`})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:e.name}),(0,F.jsx)(`span`,{children:e.note||`沒有補充說明`})]}),(0,F.jsx)(`button`,{className:`toggle-button`,onClick:()=>bt(e),children:e.enabled?`停用`:`啟用`})]},e.id)):(0,F.jsx)(`div`,{className:`empty-mini`,children:(0,F.jsx)(`p`,{children:`還沒有自訂假日。`})})]})]})]}),(0,F.jsxs)(`div`,{className:`management-grid leave-grid`,children:[(0,F.jsxs)(`div`,{className:`card form-card compact-form`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`特休設定與新增`})}),(0,F.jsxs)(`div`,{className:`balance-bubble`,children:[(0,F.jsx)(`strong`,{children:k(r)}),(0,F.jsx)(`small`,{children:`已休`})]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`年度應休總時數`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:e.appConfig.leaveTotalHours===null?``:String(e.appConfig.leaveTotalHours),onChange:t=>{let n=qt(t.target.value);st(Oe({...e,appConfig:{...e.appConfig,leaveTotalHours:n}}))},placeholder:`可留白，依單位規定`})]}),(0,F.jsxs)(`div`,{className:`leave-balance-line`,children:[(0,F.jsx)(`span`,{children:`剩餘時數`}),(0,F.jsxs)(`strong`,{children:[e.appConfig.leaveTotalHours===null?`未設定`:k(e.appConfig.leaveTotalHours-r),` 小時`]})]}),(0,F.jsxs)(`form`,{onSubmit:xt,className:`leave-form`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`特休日期`}),It(Fe.date,e=>Ie(t=>({...t,date:e})))]}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`使用時數`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:Fe.hours,onChange:e=>Ie(t=>({...t,hours:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`備註`}),(0,F.jsx)(`input`,{value:Fe.note,onChange:e=>Ie(t=>({...t,note:e.target.value}))})]})]}),(0,F.jsx)(`button`,{className:`button button-secondary full-button`,type:`submit`,children:`＋新增特休明細`})]})]}),(0,F.jsxs)(`div`,{className:`card list-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:`section-kicker`,children:`LEAVE LOG`}),(0,F.jsx)(`h3`,{children:`特休已休明細`})]}),(0,F.jsx)(`span`,{className:`count-pill`,children:e.leaveRecords.length})]}),e.leaveRecords.length?(0,F.jsxs)(`div`,{className:`leave-table`,children:[(0,F.jsxs)(`div`,{className:`leave-table-header`,children:[(0,F.jsx)(`span`,{children:`日期`}),(0,F.jsx)(`span`,{children:`類型`}),(0,F.jsx)(`span`,{children:`時數`}),(0,F.jsx)(`span`,{children:`備註`}),(0,F.jsx)(`span`,{})]}),[...e.leaveRecords].sort((e,t)=>e.date.localeCompare(t.date)).map(e=>(0,F.jsxs)(`div`,{className:`leave-table-row`,children:[(0,F.jsx)(`span`,{children:S(e.date)}),(0,F.jsx)(`span`,{children:e.leaveType}),(0,F.jsxs)(`strong`,{children:[k(e.hours),` h`]}),(0,F.jsx)(`span`,{children:e.note||`—`}),(0,F.jsx)(`button`,{className:`row-action danger-text`,onClick:()=>St(e),"aria-label":`刪除特休明細`,children:`×`})]},e.id))]}):(0,F.jsxs)(`div`,{className:`empty-state compact`,children:[(0,F.jsx)(`span`,{className:`empty-icon`,children:`◇`}),(0,F.jsx)(`p`,{children:`尚未新增特休日期。`})]})]})]})]})})():i===`messages`?(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`留言板`})}),(0,F.jsxs)(`div`,{className:`intro-stat`,children:[(0,F.jsx)(`strong`,{children:e.auditNotes.length}),(0,F.jsx)(`span`,{children:`留言／異動總筆數`})]})]}),(0,F.jsxs)(`div`,{className:`messages-layout`,children:[(0,F.jsxs)(`div`,{className:`card form-card message-form-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:be?`編輯留言`:`新增留言／時數異動`})}),be?(0,F.jsx)(`button`,{className:`text-button`,onClick:()=>{Ce(null),j(Wt(o,e))},children:`取消編輯`}):null]}),(0,F.jsxs)(`form`,{onSubmit:gt,children:[(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`關聯日期`}),It(A.date,e=>j(t=>({...t,date:e}))),` `]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`關聯工時紀錄`}),(0,F.jsxs)(`select`,{value:A.relatedRecordId,onChange:e=>j(t=>({...t,relatedRecordId:e.target.value})),children:[(0,F.jsx)(`option`,{value:``,children:`不指定`}),e.workRecords.filter(e=>e.date===A.date).map(e=>(0,F.jsxs)(`option`,{value:e.id,children:[e.date,` · `,k(e.dailyTotalHours),` 小時`]},e.id))]})]})]}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`類別`}),(0,F.jsx)(`select`,{value:A.category,onChange:e=>j(t=>({...t,category:e.target.value})),children:e.appConfig.messageBoardCategories.map(e=>(0,F.jsx)(`option`,{children:e},e))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`標籤`}),(0,F.jsx)(`input`,{value:A.tags,onChange:e=>j(t=>({...t,tags:e.target.value})),placeholder:`待確認、需補件`})]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`標題`}),(0,F.jsx)(`input`,{value:A.title,onChange:e=>j(t=>({...t,title:e.target.value})),placeholder:`例如：活動支援延長下午班`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`詳細內容`}),(0,F.jsx)(`textarea`,{rows:5,value:A.content,onChange:e=>j(t=>({...t,content:e.target.value})),placeholder:`留下日期、原因、打卡或紙本時數表的核對內容……`})]}),(0,F.jsx)(`div`,{className:`form-divider`,children:(0,F.jsx)(`span`,{children:`異動前後快照（可留白）`})}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`原始工時`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:A.originalHours,onChange:e=>j(t=>({...t,originalHours:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`修正後工時`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:A.adjustedHours,onChange:e=>j(t=>({...t,adjustedHours:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`異動前時段摘要`}),(0,F.jsx)(`textarea`,{rows:3,value:A.originalShiftSummary,onChange:e=>j(t=>({...t,originalShiftSummary:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`異動後時段摘要`}),(0,F.jsx)(`textarea`,{rows:3,value:A.adjustedShiftSummary,onChange:e=>j(t=>({...t,adjustedShiftSummary:e.target.value}))})]})]}),(0,F.jsxs)(`div`,{className:`difference-preview`,children:[`時數差異 `,(0,F.jsxs)(`strong`,{children:[k((qt(A.adjustedHours)??0)-(qt(A.originalHours)??0)),` 小時`]})]}),(0,F.jsxs)(`label`,{className:`checkbox-label`,children:[(0,F.jsx)(`input`,{type:`checkbox`,checked:A.isResolved,onChange:e=>j(t=>({...t,isResolved:e.target.checked}))}),(0,F.jsx)(`span`,{children:`這筆留言已核對`})]}),(0,F.jsx)(`button`,{className:`button button-primary full-button`,type:`submit`,children:be?`儲存留言修改`:`新增留言`})]})]}),(0,F.jsxs)(`div`,{className:`card list-card message-list-card`,children:[(0,F.jsxs)(`div`,{className:`filter-bar message-filter`,children:[(0,F.jsxs)(`label`,{className:`search-field`,children:[(0,F.jsx)(`span`,{children:`搜尋`}),(0,F.jsx)(`input`,{value:De,onChange:e=>ke(e.target.value),placeholder:`關鍵字、內容、日期……`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`類別`}),(0,F.jsxs)(`select`,{value:M,onChange:e=>we(e.target.value),children:[(0,F.jsx)(`option`,{value:`all`,children:`全部類別`}),e.appConfig.messageBoardCategories.map(e=>(0,F.jsx)(`option`,{children:e},e))]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`標籤`}),(0,F.jsxs)(`select`,{value:Te,onChange:e=>Ee(e.target.value),children:[(0,F.jsx)(`option`,{value:`all`,children:`全部標籤`}),Array.from(new Set(e.auditNotes.flatMap(e=>e.tags))).map(e=>(0,F.jsx)(`option`,{children:e},e))]})]})]}),rt.length?(0,F.jsx)(`div`,{className:`audit-list`,children:rt.map(e=>(0,F.jsxs)(`article`,{className:`audit-item ${e.isResolved?`is-resolved`:``}`,children:[(0,F.jsxs)(`div`,{className:`audit-item-top`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:e.isResolved?`note-resolved`:`note-pending`,children:e.isResolved?`已核對`:`待確認`}),(0,F.jsx)(`span`,{className:`audit-category`,children:e.category}),(0,F.jsxs)(`span`,{className:`audit-date`,children:[S(e.date),` · 星期`,ae(e.date)]})]}),(0,F.jsxs)(`div`,{className:`item-actions`,children:[(0,F.jsx)(`button`,{className:`text-button`,onClick:()=>_t(e),children:`編輯`}),(0,F.jsx)(`button`,{className:`text-button danger-text`,onClick:()=>vt(e),children:`刪除`})]})]}),(0,F.jsx)(`h4`,{children:e.title}),(0,F.jsx)(`p`,{className:`audit-content`,children:e.content}),(0,F.jsxs)(`div`,{className:`audit-snapshot`,children:[(0,F.jsxs)(`span`,{children:[`前：`,k(e.originalHours),` h`]}),(0,F.jsxs)(`span`,{children:[`後：`,k(e.adjustedHours),` h`]}),(0,F.jsxs)(`strong`,{className:e.hoursDifference===0?``:e.hoursDifference>0?`positive`:`negative`,children:[`差異 `,e.hoursDifference>0?`+`:``,k(e.hoursDifference),` h`]})]}),(0,F.jsxs)(`div`,{className:`audit-meta`,children:[(0,F.jsx)(`span`,{children:e.tags.join(` · `)||`無標籤`}),(0,F.jsxs)(`span`,{children:[`建立 `,ie(e.createdAt)]})]})]},e.id))}):(0,F.jsxs)(`div`,{className:`empty-state`,children:[(0,F.jsx)(`span`,{className:`empty-icon`,children:`✦`}),(0,F.jsx)(`h3`,{children:`還沒有符合條件的留言`}),(0,F.jsx)(`p`,{children:`可以從左側新增，或清除篩選查看全部紀錄。`}),(0,F.jsx)(`button`,{className:`button button-outline button-small`,onClick:()=>{ke(``),we(`all`),Ee(`all`)},children:`清除篩選`})]})]})]})]}):i===`export`?(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`匯出中心`})}),(0,F.jsxs)(`div`,{className:`export-summary`,children:[(0,F.jsx)(`strong`,{children:e.workRecords.length}),(0,F.jsx)(`span`,{children:`目前工時紀錄`}),(0,F.jsx)(`strong`,{children:e.auditNotes.length}),(0,F.jsx)(`span`,{children:`目前留言`})]})]}),(0,F.jsxs)(`div`,{className:`card export-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`月份時數表`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`12 個檔案按需產生`})]}),(0,F.jsx)(`p`,{className:`form-note`,children:`每月檔案固定包含預排計畫時數、實際上班、每日紀錄、特休、留言板時數異動與課表六個工作表。`}),(0,F.jsx)(`div`,{className:`export-grid`,children:Array.from({length:12},(t,n)=>{let r=n+1,i=O(e.workRecords.filter(e=>e.recordType!==`planned`&&Number(e.date.slice(5,7))===r).reduce((e,t)=>e+t.dailyTotalHours,0));return(0,F.jsxs)(`button`,{className:`export-item`,onClick:()=>At({kind:`month`,month:r}),children:[(0,F.jsx)(`span`,{className:`export-month`,children:String(r).padStart(2,`0`)}),(0,F.jsxs)(`div`,{children:[(0,F.jsxs)(`strong`,{children:[r,` 月時數表`]}),(0,F.jsxs)(`small`,{children:[k(i),` 小時 · 含每日紀錄、留言、特休與課表`]})]}),(0,F.jsx)(`span`,{className:`export-arrow`,children:`⇩`})]},r)})})]}),(0,F.jsxs)(`div`,{className:`card annual-export-card`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`h3`,{children:`全年度總時數表`}),(0,F.jsx)(`p`,{children:`包含 1～12 月、年度總結、預排／實際差額、全年每日紀錄、留言與特休；年度檔不含課表工作表。`})]}),(0,F.jsxs)(`button`,{className:`button button-primary`,onClick:()=>At({kind:`year`}),children:[`一鍵匯出年度 Excel `,(0,F.jsx)(`span`,{children:`⇩`})]})]}),(0,F.jsxs)(`div`,{className:`export-note`,children:[(0,F.jsx)(`span`,{children:`檔名規格`}),(0,F.jsx)(`code`,{children:`民國115年1月份時數表.xlsx`}),(0,F.jsx)(`code`,{children:`民國115年總時數表.xlsx`})]})]}):(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`設定與備份`})}),(0,F.jsxs)(`div`,{className:`settings-state`,children:[(0,F.jsx)(`span`,{className:`local-dot`}),`本機資料模式`]})]}),(0,F.jsxs)(`div`,{className:`settings-grid`,children:[(0,F.jsxs)(`div`,{className:`card form-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`基本設定`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`變更即時自動儲存`})]}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`年度`}),(0,F.jsx)(`input`,{value:`2026／民國 115 年`,disabled:!0})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`時區`}),(0,F.jsx)(`input`,{value:`Asia/Taipei`,disabled:!0})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`姓名／匯出表頭名稱`}),(0,F.jsx)(`input`,{value:Le.displayName,onChange:e=>wt({displayName:e.target.value}),placeholder:`可留白`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`工作單位`}),(0,F.jsx)(`input`,{value:Le.workplace,onChange:e=>wt({workplace:e.target.value}),placeholder:`可留白`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`時薪（元／小時）`}),(0,F.jsx)(`input`,{"aria-describedby":`hourly-wage-help`,inputMode:`decimal`,value:Le.hourlyWage===null?``:String(Le.hourlyWage),onChange:e=>Tt(e.target.value),placeholder:`預設 196，可修改或清空`}),(0,F.jsx)(`small`,{id:`hourly-wage-help`,className:`field-help`,children:`新資料預設為 196 元；清空後代表未設定，匯出表會顯示「未設定」。`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`年度預算時數`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:Le.annualBudgetHours===null?``:String(Le.annualBudgetHours),onChange:e=>wt({annualBudgetHours:qt(e.target.value)}),placeholder:`可留白`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`年度預算金額（元）`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:Le.annualBudgetAmount===null?``:String(Le.annualBudgetAmount),onChange:e=>wt({annualBudgetAmount:qt(e.target.value)}),placeholder:`可留白`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`編輯時數異動提示`}),(0,F.jsxs)(`select`,{value:Le.auditPromptOnEdit?`on`:`off`,onChange:e=>wt({auditPromptOnEdit:e.target.value===`on`}),children:[(0,F.jsx)(`option`,{value:`on`,children:`預設開啟提示`}),(0,F.jsx)(`option`,{value:`off`,children:`關閉提示`})]})]})]}),Ve?(0,F.jsx)(`p`,{className:`settings-error`,role:`alert`,children:Ve}):null,(0,F.jsx)(`div`,{className:`form-divider`,children:(0,F.jsx)(`span`,{children:`週末預設狀態`})}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`週六`}),(0,F.jsxs)(`select`,{value:Le.saturdayDefaultStatus,onChange:e=>wt({saturdayDefaultStatus:e.target.value}),children:[(0,F.jsx)(`option`,{children:`休息日`}),(0,F.jsx)(`option`,{children:`例假日`}),(0,F.jsx)(`option`,{children:`未記錄`})]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`週日`}),(0,F.jsxs)(`select`,{value:Le.sundayDefaultStatus,onChange:e=>wt({sundayDefaultStatus:e.target.value}),children:[(0,F.jsx)(`option`,{children:`休息日`}),(0,F.jsx)(`option`,{children:`例假日`}),(0,F.jsx)(`option`,{children:`未記錄`})]})]})]})]}),(0,F.jsxs)(`div`,{className:`card form-card timetable-settings-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`每週課表`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`點格子即可編輯 · 即時自動儲存`})]}),(0,F.jsxs)(`div`,{className:`timetable-grid`,role:`grid`,"aria-label":`每週課表`,children:[(0,F.jsx)(`div`,{className:`timetable-grid-head`,children:`節次／時間`}),ge.map(e=>(0,F.jsxs)(`div`,{className:`timetable-grid-head`,children:[`星期`,e.label]},e.value)),Le.timetablePresets.map(e=>(0,F.jsxs)(`div`,{className:`timetable-grid-row`,children:[(0,F.jsxs)(`div`,{className:`timetable-period`,children:[(0,F.jsx)(`strong`,{children:e.label}),(0,F.jsxs)(`small`,{children:[e.start,`–`,e.end]})]}),ge.map(t=>{let n=ve(Le.timetableCells[_e(t.value,e.id)]);return(0,F.jsx)(`button`,{type:`button`,className:`timetable-cell`+(n?` has-content`:``),onClick:()=>Ot(t.value,e),"aria-label":`星期`+t.label+` `+e.label+` 課表`,title:n||`點擊填寫課表`,children:n?(0,F.jsx)(`span`,{children:n}):`＋`},t.value)})]},e.id))]}),(0,F.jsxs)(`div`,{className:`timetable-options`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`課程名稱選項（逗號或換行分隔）`}),(0,F.jsx)(`textarea`,{rows:2,value:ze.courseNames,onChange:e=>Dt(`courseNames`,e.target.value),placeholder:`例如：英文、會計學`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`老師名字選項（逗號或換行分隔）`}),(0,F.jsx)(`textarea`,{rows:2,value:ze.teacherNames,onChange:e=>Dt(`teacherNames`,e.target.value),placeholder:`例如：王老師、陳老師`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`教室選項（逗號或換行分隔）`}),(0,F.jsx)(`textarea`,{rows:2,value:ze.rooms,onChange:e=>Dt(`rooms`,e.target.value),placeholder:`例如：A201、圖書館`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`工讀項目選項（逗號或換行分隔）`}),(0,F.jsx)(`textarea`,{rows:2,value:ze.workStudyOptions,onChange:e=>Dt(`workStudyOptions`,e.target.value),placeholder:`例如：秘書室工讀`})]})]})]}),(0,F.jsxs)(`div`,{className:`card form-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`留言板分類與標籤`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`變更即時自動儲存`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`留言分類（逗號分隔）`}),(0,F.jsx)(`textarea`,{rows:3,value:Le.messageBoardCategories.join(`, `),onChange:e=>wt({messageBoardCategories:e.target.value.split(`,`).map(e=>e.trim()).filter(Boolean)})})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`預設異動標籤（逗號分隔）`}),(0,F.jsx)(`input`,{value:Le.defaultAuditTags.join(`, `),onChange:e=>wt({defaultAuditTags:e.target.value.split(`,`).map(e=>e.trim()).filter(Boolean)})})]})]}),(0,F.jsxs)(`div`,{className:`card backup-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`備份與還原`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`不會上傳雲端`})]}),(0,F.jsx)(`p`,{children:`匯出完整 JSON 備份，包含設定、工時、假日、特休、留言與課表。匯入前會先顯示資料筆數與日期範圍，再選擇合併或覆蓋。`}),(0,F.jsxs)(`div`,{className:`backup-actions`,children:[(0,F.jsx)(`button`,{type:`button`,className:`button button-secondary`,onClick:jt,children:`下載 JSON 備份`}),(0,F.jsx)(`button`,{type:`button`,className:`button button-outline`,onClick:()=>Xe.current?.click(),children:`匯入 JSON 備份`}),(0,F.jsx)(`input`,{ref:Xe,type:`file`,accept:`application/json,.json`,hidden:!0,onChange:Mt})]}),(0,F.jsxs)(`div`,{className:`danger-zone`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:`清除全部資料`}),(0,F.jsx)(`small`,{children:`不可逆；建議先下載 JSON 備份。`})]}),(0,F.jsx)(`button`,{type:`button`,className:`button button-danger`,onClick:Ft,children:`清除全部`})]})]})]}),N?(0,F.jsx)(`div`,{className:`modal-backdrop`,role:`dialog`,"aria-modal":`true`,"aria-label":`編輯課表內容`,onMouseDown:e=>{e.target===e.currentTarget&&Ue(null)},children:(0,F.jsxs)(`div`,{className:`modal-card timetable-editor-modal`,onMouseDown:e=>e.stopPropagation(),children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:`section-kicker`,children:`課表`}),(0,F.jsxs)(`h3`,{children:[`星期`,ge.find(e=>e.value===N.day)?.label,`／`,N.preset.label]}),(0,F.jsxs)(`small`,{children:[N.preset.start,`–`,N.preset.end]})]}),(0,F.jsx)(`button`,{type:`button`,className:`icon-button`,onClick:()=>Ue(null),"aria-label":`關閉課表編輯`,children:`×`})]}),(0,F.jsxs)(`div`,{className:`choice-tabs`,children:[(0,F.jsx)(`button`,{type:`button`,className:N.mode===`course`?`is-active`:``,onClick:()=>Ue({...N,mode:`course`}),children:`課程`}),(0,F.jsx)(`button`,{type:`button`,className:N.mode===`work-study`?`is-active`:``,onClick:()=>Ue({...N,mode:`work-study`}),children:`工讀`}),(0,F.jsx)(`button`,{type:`button`,className:N.mode===`custom`?`is-active`:``,onClick:()=>Ue({...N,mode:`custom`}),children:`自訂`})]}),N.mode===`course`?(0,F.jsxs)(`div`,{className:`form-grid`,children:[(0,F.jsxs)(`div`,{className:`timetable-choice-field`,children:[(0,F.jsx)(`span`,{children:`課程名稱`}),(0,F.jsx)(`div`,{className:`timetable-option-buttons`,role:`group`,"aria-label":`課程名稱選項`,children:Le.timetableOptions.courseNames.map(e=>(0,F.jsx)(`button`,{type:`button`,className:N.course===e?`is-selected`:``,"aria-pressed":N.course===e,onClick:()=>kt({...N,course:e}),children:e},e))}),(0,F.jsx)(`input`,{"aria-label":`自行輸入課程名稱`,value:N.course,onChange:e=>kt({...N,course:e.target.value}),placeholder:`自行輸入單一課程名稱`})]}),(0,F.jsxs)(`div`,{className:`timetable-choice-field`,children:[(0,F.jsx)(`span`,{children:`老師名字`}),(0,F.jsx)(`div`,{className:`timetable-option-buttons`,role:`group`,"aria-label":`老師名字選項`,children:Le.timetableOptions.teacherNames.map(e=>(0,F.jsx)(`button`,{type:`button`,className:N.teacher===e?`is-selected`:``,"aria-pressed":N.teacher===e,onClick:()=>kt({...N,teacher:e}),children:e},e))}),(0,F.jsx)(`input`,{"aria-label":`自行輸入老師名字`,value:N.teacher,onChange:e=>kt({...N,teacher:e.target.value}),placeholder:`自行輸入單一老師名字`})]}),(0,F.jsxs)(`div`,{className:`timetable-choice-field`,children:[(0,F.jsx)(`span`,{children:`教室`}),(0,F.jsx)(`div`,{className:`timetable-option-buttons`,role:`group`,"aria-label":`教室選項`,children:Le.timetableOptions.rooms.map(e=>(0,F.jsx)(`button`,{type:`button`,className:N.room===e?`is-selected`:``,"aria-pressed":N.room===e,onClick:()=>kt({...N,room:e}),children:e},e))}),(0,F.jsx)(`input`,{"aria-label":`自行輸入教室`,value:N.room,onChange:e=>kt({...N,room:e.target.value}),placeholder:`自行輸入單一教室`})]})]}):N.mode===`work-study`?(0,F.jsx)(`div`,{className:`form-grid`,children:(0,F.jsxs)(`div`,{className:`timetable-choice-field`,children:[(0,F.jsx)(`span`,{children:`工讀項目`}),(0,F.jsx)(`div`,{className:`timetable-option-buttons`,role:`group`,"aria-label":`工讀項目選項`,children:Le.timetableOptions.workStudyOptions.map(e=>(0,F.jsx)(`button`,{type:`button`,className:N.workStudy===e?`is-selected`:``,"aria-pressed":N.workStudy===e,onClick:()=>kt({...N,workStudy:e}),children:e},e))}),(0,F.jsx)(`input`,{"aria-label":`自行輸入工讀項目`,value:N.workStudy,onChange:e=>kt({...N,workStudy:e.target.value}),placeholder:`自行輸入單一工讀項目`})]})}):(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`自訂內容`}),(0,F.jsx)(`textarea`,{rows:4,value:N.custom,onChange:e=>kt({...N,custom:e.target.value}),placeholder:`例如：社團活動支援`})]}),(0,F.jsx)(`p`,{className:`field-help`,role:`status`,children:`課表變更會立即自動儲存。`})]})}):null,We?(0,F.jsx)(`div`,{className:`modal-backdrop`,role:`dialog`,"aria-modal":`true`,children:(0,F.jsxs)(`div`,{className:`modal-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:`section-kicker`,children:`匯入預覽`}),(0,F.jsx)(`h3`,{children:`確認匯入備份`})]}),(0,F.jsx)(`button`,{type:`button`,className:`icon-button`,onClick:()=>Ge(null),"aria-label":`取消匯入`,children:`×`})]}),(0,F.jsx)(`p`,{children:We.summary}),(0,F.jsxs)(`div`,{className:`modal-actions`,children:[(0,F.jsx)(`button`,{type:`button`,className:`button button-secondary`,onClick:()=>Pt(We.data,!1),children:`合併資料`}),(0,F.jsx)(`button`,{type:`button`,className:`button button-danger`,onClick:()=>Pt(We.data,!0),children:`覆蓋目前資料`}),(0,F.jsx)(`button`,{type:`button`,className:`button button-ghost`,onClick:()=>Ge(null),children:`取消`})]})]})}):null]})})]}),(0,F.jsx)(`nav`,{className:`mobile-bottom-nav`,children:Rt.slice(0,5).map(e=>(0,F.jsxs)(`button`,{className:i===e.key?`is-active`:``,onClick:()=>lt(e.key),children:[(0,F.jsx)(`span`,{children:e.icon}),(0,F.jsx)(`small`,{children:e.key===`quick`?`新增`:e.label.replace(`統計儀表板`,`統計`).replace(`今日／快速記錄`,`今日`)})]},e.key))})]}):(0,F.jsxs)(`div`,{className:`loading-shell`,children:[(0,F.jsx)(`div`,{className:`loading-mark`,children:`工`}),(0,F.jsx)(`h1`,{children:`正在載入你的 2026 工時簿`}),(0,F.jsx)(`p`,{children:`讀取本機資料中……`})]})}var rn=document.getElementById(`root`);if(!rn)throw Error(`Static site root element #root was not found.`);(0,m.createRoot)(rn).render((0,F.jsx)(nn,{}))})();
+`)}),Ut=e=>{if(e.mode===`course`){let t=e.course.trim(),n=e.teacher.trim(),r=e.room.trim();return t||n||r?{mode:`course`,course:t,teacher:n,room:r}:null}if(e.mode===`work-study`){let t=e.workStudy.trim();return t?{mode:`work-study`,value:t}:null}let t=e.custom.trim();return t?{mode:`custom`,value:t}:null},Wt=(e,t)=>({date:e,relatedRecordId:t.workRecords.find(t=>t.date===e)?.id||``,category:`時數異動`,title:``,content:``,originalHours:``,adjustedHours:``,originalShiftSummary:``,adjustedShiftSummary:``,tags:`待確認`,isResolved:!1});function Gt(e){return{dateInput:e,recordType:`actual`,status:`上班`,morningStart:``,morningEnd:``,morningBreak:`0`,afternoonStart:``,afternoonEnd:``,afternoonBreak:`0`,customSegments:[],manualHours:``,plannedHours:``,note:``,tags:[],createAudit:!1,auditTitle:``,auditContent:``,auditTags:`待確認`}}function Kt(e){let t=e.segments.find(e=>e.shift===`morning`),n=e.segments.find(e=>e.shift===`afternoon`),r=e.segments.filter(e=>e.shift===`custom`).map(e=>({id:e.id,start:e.start,end:e.end,breakMinutes:String(e.breakMinutes||0)}));return{...Gt(e.date),recordType:e.recordType,status:e.status,morningStart:t?.start||``,morningEnd:t?.end||``,morningBreak:String(t?.breakMinutes||0),afternoonStart:n?.start||``,afternoonEnd:n?.end||``,afternoonBreak:String(n?.breakMinutes||0),customSegments:r,manualHours:e.manualHours===null?``:String(e.manualHours),plannedHours:e.plannedHours===null?``:String(e.plannedHours),note:e.note,tags:e.tags}}function qt(e){if(!e.trim())return null;let t=Number(e);return Number.isFinite(t)?t:null}function Jt(e){let t=[],n=[],r=[],i=[],a=e=>e===`morning`?`早上班`:e===`afternoon`?`下午班`:`其他區段`,o=(e,r,o,s)=>{let c=!!r.trim(),l=!!o.trim();if(!c&&!l)return;if(!c||!l){n.push(`${e===`morning`?`早上班`:e===`afternoon`?`下午班`:`其他區段`}需要同時填寫開始與結束時間。`);return}let u=ce(r),d=ce(o);if(u===null||d===null){n.push(`${e===`morning`?`早上班`:e===`afternoon`?`下午班`:`其他區段`}的時間格式不正確。`);return}if(d<=u){n.push(`${a(e)}的結束時間必須晚於開始時間。`);return}let f=e===`morning`?{min:480,max:750}:e===`afternoon`?{min:780,max:1080}:null;if(f&&(u<f.min||d>f.max)){n.push(`${a(e)}時間必須落在 ${e===`morning`?`08:00–12:30`:`13:00–18:00`} 範圍內。`);return}let p=Math.max(0,Number(s)||0),m=le(r,o,p);if(i.some(e=>u<e.end&&d>e.start)){n.push(`${a(e)}與其他時段重疊或重複，請分開輸入。`);return}i.push({shift:e,start:u,end:d}),t.push({id:_(`segment`),shift:e,sequence:t.length+1,start:r,end:o,breakMinutes:p,calculatedMinutes:m,roundedMinutes:E(m)})},s=qt(e.manualHours);e.manualHours.trim()?((s===null||s<0)&&n.push(`直接輸入總時數必須是 0 或以上的數字。`),(e.morningStart||e.morningEnd||e.afternoonStart||e.afternoonEnd||e.customSegments.some(e=>e.start||e.end))&&r.push(`已填寫直接總時數，因此不會再把時間區段重複加總。若要使用區段計算，請清除直接輸入總時數。`)):(o(`morning`,e.morningStart,e.morningEnd,e.morningBreak),o(`afternoon`,e.afternoonStart,e.afternoonEnd,e.afternoonBreak),e.customSegments.forEach(e=>o(`custom`,e.start,e.end,e.breakMinutes))),e.afternoonStart&&e.morningEnd&&(ce(e.afternoonStart)??0)<(ce(e.morningEnd)??0)&&r.push(`下午上班時間早於早上下班時間，請確認是否為跨段或輸入錯誤；系統不會把午休整段誤算成工時。`);let c=de(t,s),l=qt(e.plannedHours),u=l===null?null:O(l);return e.plannedHours.trim()&&(l===null||l<0)&&n.push(`預排時數必須是 0 或以上的數字。`),!t.length&&s===null&&[`actual`,`planned`].includes(e.recordType)&&n.push(`實際上班或預排班請輸入至少一個時間區段，或直接輸入總時數。`),{segments:t,manualHours:s,plannedHours:u,totals:c,errors:n,warnings:r}}function Yt(){try{let e=`${It}-probe`,t=window.localStorage.getItem(e);return window.localStorage.setItem(e,`ok`),t===null?window.localStorage.removeItem(e):window.localStorage.setItem(e,t),!0}catch{return!1}}function Xt(e){try{return window.localStorage.setItem(It,JSON.stringify(e)),!0}catch{return!1}}function Zt(){try{let e=window.localStorage.getItem(It);return{data:e?Oe(JSON.parse(e)):xe(),warning:``}}catch{return{data:xe(),warning:`無法讀取既有本機資料（JSON 格式可能已損毀），原始資料沒有被覆寫。請先匯出或修復備份後再使用。`}}}function Qt(e){let t=[...e.workRecords.map(e=>e.date),...e.auditNotes.map(e=>e.date),...e.leaveRecords.map(e=>e.date)].sort();return t.length?`${S(t[0])} ～ ${S(t[t.length-1])}`:`尚無日期資料`}function $t(e,t){let n=URL.createObjectURL(e),r=document.createElement(`a`);r.href=n,r.download=t,document.body.appendChild(r),r.click(),r.remove(),window.setTimeout(()=>URL.revokeObjectURL(n),1e3)}function en(e){return`status-chip status-${e}`}function tn(e,t,n){return e.workRecords.find(e=>e.date===t&&(!n||e.recordType===n))??null}function nn(){let[e,t]=(0,p.useState)(xe),[n,r]=(0,p.useState)(!1),[i,a]=(0,p.useState)(`quick`),o=ee(),[s,c]=(0,p.useState)(Number(o.slice(5,7))||1),[l,u]=(0,p.useState)(`month`),[d,f]=(0,p.useState)(()=>Gt(o)),[m,g]=(0,p.useState)(null),[x,ce]=(0,p.useState)(``),[le,E]=(0,p.useState)(``),[D,de]=(0,p.useState)(`all`),[fe,pe]=(0,p.useState)(`all`),[he,ye]=(0,p.useState)(``),[A,j]=(0,p.useState)(()=>Wt(o,xe())),[be,Ce]=(0,p.useState)(null),[M,we]=(0,p.useState)(`all`),[Te,Ee]=(0,p.useState)(`all`),[De,ke]=(0,p.useState)(``),[Ae,Me]=(0,p.useState)({date:o,name:``,type:`customHoliday`,note:``}),[Fe,Ie]=(0,p.useState)({date:o,hours:``,note:``}),[Le,Re]=(0,p.useState)(xe().appConfig),[ze,Be]=(0,p.useState)(()=>Ht(xe().appConfig.timetableOptions)),[Ve,He]=(0,p.useState)(``),[N,Ue]=(0,p.useState)(null),[We,Ge]=(0,p.useState)(null),[Ke,qe]=(0,p.useState)(!1),[Je,Ye]=(0,p.useState)(``),Xe=(0,p.useRef)(null);(0,p.useEffect)(()=>{let e=Zt();t(e.data),Re(e.data.appConfig),Be(Ht(e.data.appConfig.timetableOptions)),f(Gt(o)),j(Wt(o,e.data)),Yt()?e.warning&&Ye(e.warning):Ye(`目前瀏覽器未允許本機儲存；資料可能無法在重新整理後保留。請改用一般瀏覽模式，或啟動本機伺服器後再使用。仍可先下載 JSON 備份。 `),r(!0)},[o]),(0,p.useEffect)(()=>{if(!le)return;let e=window.setTimeout(()=>E(``),3200);return()=>window.clearTimeout(e)},[le]);let Ze=(0,p.useMemo)(()=>Jt(d),[d]),Qe=te(d.dateInput).iso,$e=Qe?je(Qe,e):null,et=Qe?tn(e,Qe,d.recordType):null,tt=Qe?e.auditNotes.filter(e=>e.date===Qe):[],nt=(0,p.useMemo)(()=>T().map(t=>je(t,e)),[e]),P=(0,p.useMemo)(()=>{let e=he.trim().toLowerCase();return nt.filter(t=>{let n=D===`all`||Number(D)===Number(t.date.slice(5,7)),r=fe===`all`||t.statusKey===fe||t.status===fe,i=!e||`${t.date} ${t.label} ${t.record?.note||``} ${t.record?.tags.join(` `)||``}`.toLowerCase().includes(e);return n&&r&&i})},[D,he,fe,nt]),rt=(0,p.useMemo)(()=>{let t=De.trim().toLowerCase();return e.auditNotes.filter(e=>{let n=M===`all`||e.category===M,r=Te===`all`||e.tags.includes(Te),i=!t||`${e.date} ${e.title} ${e.content} ${e.category} ${e.tags.join(` `)}`.toLowerCase().includes(t);return n&&r&&i}).sort((e,t)=>`${t.date}${t.updatedAt}`.localeCompare(`${e.date}${e.updatedAt}`))},[M,De,Te,e.auditNotes]),it=(0,p.useMemo)(()=>{let t=se(s),n=t.map(t=>je(t,e)),r=n.filter(e=>e.record&&e.record.dailyTotalHours>0),i=O(r.reduce((e,t)=>e+(t.record?.dailyTotalHours||0),0));return{dates:t,resolved:n,hours:i,workdays:r.length,holidayWork:r.filter(e=>e.holiday).length,weekendWork:r.filter(e=>e.weekdayIndex===0||e.weekdayIndex===6).length,unrecorded:n.filter(e=>e.statusKey===`unrecorded`).length,holidayCount:n.filter(e=>e.holiday).length,wage:e.appConfig.hourlyWage===null?null:ue(i*e.appConfig.hourlyWage)}},[e,s]),at=(0,p.useMemo)(()=>O(e.workRecords.filter(e=>e.recordType!==`planned`).reduce((e,t)=>e+t.dailyTotalHours,0)),[e.workRecords]),ot=(0,p.useMemo)(()=>Array.from({length:12},(t,n)=>{let r=n+1;return{month:r,hours:O(e.workRecords.filter(e=>e.recordType!==`planned`&&Number(e.date.slice(5,7))===r).reduce((e,t)=>e+t.dailyTotalHours,0))}}),[e.workRecords]),st=(e,n,r)=>{t(e),Re(e.appConfig),r?.keepTimetableOptionDrafts||Be(Ht(e.appConfig.timetableOptions)),Xt(e)?Ye(``):Ye(`資料已更新在目前畫面，但瀏覽器拒絕寫入本機儲存；重新整理後可能遺失。請改用一般瀏覽模式或本機伺服器，並先下載 JSON 備份。 `),n&&E(n)},ct=(t,n=`actual`)=>{let r=tn(e,t,n);c(Number(t.slice(5,7))),a(`quick`),g(r?.id||null),f(r?Kt(r):{...Gt(t),recordType:n,status:Ne(n)}),ce(``),qe(!1)},lt=t=>{a(t),qe(!1),t===`settings`&&(Re(e.appConfig),Be(Ht(e.appConfig.timetableOptions)))},ut=e=>{f(t=>({...t,dateInput:e})),ce(``)},dt=e=>{f(t=>({...t,recordType:e,status:Ne(e)}))},ft=(t,n=!1)=>{t?.preventDefault();let r=te(d.dateInput);if(r.error||!r.iso){ce(r.error||`請輸入有效日期。`);return}if(Ze.errors.length){ce(Ze.errors.join(` `));return}let i=e.workRecords.find(e=>e.id===m)??null,a=tn(e,r.iso,d.recordType);if(!m&&a){ce(`這一天已有紀錄，請先按「編輯這筆」，不要默默覆蓋原紀錄。`);return}let o=v(),s=i||null,l=s?.segments.filter(e=>e.shift===`custom`)||[],u=Ze.manualHours!==null&&l.length?[...Ze.segments,...l].map((e,t)=>({...e,sequence:t+1})):Ze.segments,p=Ze.manualHours,x=Ze.totals,ee={id:i?.id||_(`record`),date:r.iso,recordType:d.recordType,status:d.status,segments:u,manualHours:p,calculatedHours:x.dailyTotalHours,plannedHours:Ze.plannedHours,morningHours:x.morningHours,afternoonHours:x.afternoonHours,customHours:x.customHours,dailyTotalHours:x.dailyTotalHours,note:d.note.trim(),tags:d.tags,createdAt:i?.createdAt||o,updatedAt:o},S=[...e.auditNotes];if(i&&d.createAudit){let e=i.dailyTotalHours,t=ee.dailyTotalHours;S.push({id:_(`audit`),date:r.iso,relatedRecordId:ee.id,category:`時數異動`,title:d.auditTitle.trim()||`工時紀錄更新`,content:d.auditContent.trim()||`保留編輯前後工時快照，供日後核對。`,originalHours:e,adjustedHours:t,hoursDifference:O(t-e),originalShiftSummary:me(i),adjustedShiftSummary:me(ee),tags:d.auditTags.split(`,`).map(e=>e.trim()).filter(Boolean),createdAt:o,updatedAt:o,isResolved:!1})}let ne=e.workRecords.filter(e=>e.id!==ee.id),re=[...e.leaveRecords];if(ee.recordType===`leave`){let e=re.find(e=>e.relatedRecordId===ee.id||e.date===ee.date&&e.relatedRecordId===s?.id),t={id:e?.id||_(`leave`),date:ee.date,leaveType:`特休`,hours:ee.dailyTotalHours,note:ee.note,relatedRecordId:ee.id};re=[...re.filter(t=>t.id!==e?.id),t]}else s?.recordType===`leave`&&(re=re.filter(e=>e.relatedRecordId!==s.id));if(st(Oe({...e,workRecords:[...ne,ee].sort((e,t)=>e.date.localeCompare(t.date)),auditNotes:S,leaveRecords:re}),i?`紀錄已更新`:`紀錄已儲存`),ce(Ze.warnings.length?Ze.warnings.join(` `):``),g(null),n){let e=b(r.iso);e.setUTCDate(e.getUTCDate()+1);let t=e.getUTCFullYear()===2026?y(h,e.getUTCMonth()+1,e.getUTCDate()):r.iso;f(Gt(t)),c(Number(t.slice(5,7)))}else f({...Gt(r.iso),recordType:d.recordType,status:d.status})},pt=()=>{let t=te(d.dateInput),n=m?e.workRecords.find(e=>e.id===m):t.iso?tn(e,t.iso,d.recordType):null;if(!n){ce(`目前沒有可刪除的紀錄。`);return}window.confirm(`確定要刪除 ${S(n.date)} 的紀錄嗎？此動作會恢復該日的預設狀態。`)&&(st(Oe({...e,workRecords:e.workRecords.filter(e=>e.id!==n.id),leaveRecords:e.leaveRecords.filter(e=>e.relatedRecordId!==n.id)}),`紀錄已刪除`),g(null),f(Gt(n.date)))},mt=()=>{let t=te(d.dateInput);if(!t.iso)return;let n=tn(e,t.iso,d.recordType);n&&(f(Kt(n)),g(n.id),ce(``))},ht=t=>{let n=tn(e,t);j({...Wt(t,e),originalHours:n?String(n.dailyTotalHours):``,adjustedHours:n?String(n.dailyTotalHours):``,originalShiftSummary:n?me(n):``,adjustedShiftSummary:n?me(n):``}),Ce(null),a(`messages`)},gt=t=>{t.preventDefault();let n=te(A.date);if(!n.iso){E(`留言日期格式不正確`);return}if(!A.title.trim()||!A.content.trim()){E(`請填寫留言標題與內容`);return}let r=qt(A.originalHours),i=qt(A.adjustedHours),a=r===null?null:O(r),o=i===null?null:O(i),s=v(),c={id:be||_(`audit`),date:n.iso,relatedRecordId:A.relatedRecordId||null,category:A.category,title:A.title.trim(),content:A.content.trim(),originalHours:a,adjustedHours:o,hoursDifference:a!==null&&o!==null?O(o-a):0,originalShiftSummary:A.originalShiftSummary,adjustedShiftSummary:A.adjustedShiftSummary,tags:A.tags.split(`,`).map(e=>e.trim()).filter(Boolean),createdAt:be&&e.auditNotes.find(e=>e.id===be)?.createdAt||s,updatedAt:s,isResolved:A.isResolved},l=be?e.auditNotes.map(e=>e.id===c.id?c:e):[...e.auditNotes,c];st(Oe({...e,auditNotes:l}),be?`留言已更新`:`留言已新增`),j(Wt(n.iso,{...e,auditNotes:l})),Ce(null)},_t=e=>{j({date:e.date,relatedRecordId:e.relatedRecordId||``,category:e.category,title:e.title,content:e.content,originalHours:e.originalHours===null?``:String(e.originalHours),adjustedHours:e.adjustedHours===null?``:String(e.adjustedHours),originalShiftSummary:e.originalShiftSummary,adjustedShiftSummary:e.adjustedShiftSummary,tags:e.tags.join(`, `),isResolved:e.isResolved}),Ce(e.id),a(`messages`)},vt=t=>{window.confirm(`確定要刪除「${t.title}」這筆留言嗎？`)&&(st(Oe({...e,auditNotes:e.auditNotes.filter(e=>e.id!==t.id)}),`留言已刪除`),be===t.id&&(Ce(null),j(Wt(o,e))))},yt=t=>{t.preventDefault();let n=te(Ae.date);if(!n.iso||!Ae.name.trim()){E(`請輸入有效日期與假日名稱`);return}let r={id:_(`holiday`),date:n.iso,name:Ae.name.trim(),type:Ae.type,isDayOff:!0,source:`custom`,note:Ae.note.trim(),enabled:!0};st(Oe({...e,holidays:[...e.holidays,r]}),`自訂假日已新增`),Me({date:n.iso,name:``,type:`customHoliday`,note:``})},bt=t=>{st(Oe({...e,holidays:e.holidays.map(e=>e.id===t.id?{...e,enabled:!e.enabled}:e)}),t.enabled?`假日已停用`:`假日已啟用`)},xt=t=>{t.preventDefault();let n=te(Fe.date),r=qt(Fe.hours);if(!n.iso||r===null||r<=0){E(`請輸入有效特休日期與大於 0 的時數`);return}let i=O(r);if(i<=0){E(`特休時數至少要有 0.5 小時，未滿半小時會被捨去`);return}let a={id:_(`leave`),date:n.iso,leaveType:`特休`,hours:i,note:Fe.note.trim()};st(Oe({...e,leaveRecords:[...e.leaveRecords,a]}),`特休明細已新增`),Ie({date:n.iso,hours:``,note:``})},St=t=>{window.confirm(`確定刪除 ${S(t.date)} 的特休明細嗎？`)&&st(Oe({...e,leaveRecords:e.leaveRecords.filter(e=>e.id!==t.id)}),`特休明細已刪除`)},Ct=t=>{st(Oe({...e,appConfig:{...t,year:h,rocYear:115,annualBudgetHours:t.annualBudgetHours===null?null:O(t.annualBudgetHours),leaveTotalHours:t.leaveTotalHours===null?null:O(t.leaveTotalHours)}}),void 0,{keepTimetableOptionDrafts:!0})},wt=e=>{Ct({...Le,...e}),He(``)},Tt=e=>{if(!e.trim()){wt({hourlyWage:null}),He(``);return}let t=Number(e);if(!Number.isFinite(t)||t<0){He(`時薪只能輸入大於或等於 0 的數字；清空代表未設定。`);return}wt({hourlyWage:t}),He(``)},Et=e=>{Ct(e)},Dt=(e,t)=>{let n=Se(t);Be(n=>({...n,[e]:t})),Et({...Le,timetableOptions:{...Le.timetableOptions,[e]:n}})},Ot=(e,t)=>{let n=Le.timetableCells[_e(e,t.id)];Ue({day:e,preset:t,mode:n?.mode||`course`,course:n?.mode===`course`?n.course:``,teacher:n?.mode===`course`?n.teacher:``,room:n?.mode===`course`?n.room:``,workStudy:n?.mode===`work-study`?n.value:Le.timetableOptions.workStudyOptions[0]||`秘書室工讀`,custom:n?.mode===`custom`?n.value:``})},kt=e=>{let t=Ut(e),n=_e(e.day,e.preset.id),r={...Le.timetableCells};t?r[n]=t:delete r[n],Ue(e),Et({...Le,timetableCells:r})},At=t=>{let n=Nt(e,t);$t(n.blob,n.filename),E(`已產生 ${n.filename}`)},jt=()=>{$t(new Blob([JSON.stringify(e,null,2)],{type:`application/json;charset=utf-8`}),`工時紀錄備份-${h}.json`),E(`完整 JSON 備份已下載`)},Mt=async e=>{let t=e.target.files?.[0];if(t){try{let e=Oe(JSON.parse(await t.text()));Ge({data:e,summary:`資料筆數：工時 ${e.workRecords.length} 筆、留言 ${e.auditNotes.length} 筆、特休 ${e.leaveRecords.length} 筆；日期範圍：${Qt(e)}。`})}catch{E(`JSON 備份格式錯誤，原本資料沒有被更動`)}e.target.value=``}},Pt=(t,n)=>{if(n)st(t,`備份已覆蓋還原`);else{let n=[...e.workRecords];t.workRecords.forEach(e=>{let t=n.findIndex(t=>t.id===e.id||t.date===e.date&&t.recordType===e.recordType);t>=0?n[t]=e:n.push(e)});let r=(e,t)=>[...e,...t.filter(t=>!e.some(e=>e.id===t.id))];st(Oe({...e,appConfig:t.appConfig,workRecords:n,holidays:r(e.holidays,t.holidays),leaveRecords:r(e.leaveRecords,t.leaveRecords),auditNotes:r(e.auditNotes,t.auditNotes)}),`備份已合併`)}Ge(null)},Ft=()=>{if(!window.confirm(`確定要清除全部資料嗎？`)||!window.confirm(`這是不可逆的清除動作，請再次確認；建議先下載 JSON 備份。`))return;let e=xe();st(e,`全部資料已清除`),f(Gt(o)),j(Wt(o,e))},It=(e,t,n=`日期`)=>{let r=te(e).iso||``;return(0,F.jsxs)(`div`,{className:`date-input-wrap`,children:[(0,F.jsx)(`input`,{"aria-label":`${n}文字輸入`,value:e,onChange:e=>t(e.target.value),placeholder:`0815／8/15／2026-08-15`}),(0,F.jsx)(`input`,{"aria-label":`${n}選擇器`,type:`date`,value:r,min:`2026-01-01`,max:`2026-12-31`,onChange:e=>t(e.target.value)})]})},nn=()=>{let e=Rt.find(e=>e.key===i)?.label||`工時追蹤`;return(0,F.jsxs)(`header`,{className:`topbar`,children:[(0,F.jsxs)(`div`,{className:`topbar-title`,children:[(0,F.jsx)(`button`,{className:`mobile-menu-button`,"aria-label":`開啟導覽`,onClick:()=>qe(e=>!e),children:`☰`}),(0,F.jsx)(`div`,{children:(0,F.jsx)(`h1`,{children:e})})]}),(0,F.jsx)(`div`,{className:`topbar-actions`,children:(0,F.jsx)(`span`,{className:`year-pill`,children:`民國 115 年`})})]})},rn=()=>(0,F.jsxs)(`aside`,{className:`sidebar ${Ke?`is-open`:``}`,children:[(0,F.jsxs)(`div`,{className:`brand-lockup`,children:[(0,F.jsx)(`div`,{className:`brand-mark`,children:`工`}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:`工時簿`}),(0,F.jsx)(`span`,{children:`2026／民國 115 年`})]})]}),(0,F.jsx)(`div`,{className:`sidebar-scroll`,children:[`工作紀錄`,`分析與管理`,`工具`].map(t=>(0,F.jsxs)(`div`,{className:`nav-group`,children:[(0,F.jsx)(`p`,{className:`nav-group-label`,children:t}),Rt.filter(e=>e.group===t).map(t=>(0,F.jsxs)(`button`,{className:`nav-item ${i===t.key?`is-active`:``}`,onClick:()=>lt(t.key),children:[(0,F.jsx)(`span`,{className:`nav-icon`,children:t.icon}),(0,F.jsx)(`span`,{children:t.label}),t.key===`messages`&&e.auditNotes.filter(e=>!e.isResolved).length>0?(0,F.jsx)(`b`,{className:`nav-badge`,children:e.auditNotes.filter(e=>!e.isResolved).length}):null]},t.key))]},t))}),(0,F.jsxs)(`div`,{className:`sidebar-footer`,children:[(0,F.jsx)(`span`,{className:`local-dot`}),`資料只儲存在這台瀏覽器`,(0,F.jsx)(`br`,{}),(0,F.jsxs)(`small`,{children:[e.workRecords.length,` 筆工時 · `,e.auditNotes.length,` 筆留言`]})]})]}),an=()=>le?(0,F.jsxs)(`div`,{className:`toast`,role:`status`,children:[(0,F.jsx)(`span`,{className:`toast-icon`,children:`✓`}),le,(0,F.jsx)(`button`,{"aria-label":`關閉通知`,onClick:()=>E(``),children:`×`})]}):null,on=()=>Je?(0,F.jsxs)(`div`,{className:`storage-warning`,role:`alert`,children:[(0,F.jsx)(`strong`,{children:`本機儲存提醒`}),(0,F.jsx)(`span`,{children:Je})]}):null,sn=()=>(0,F.jsx)(`div`,{className:`status-legend`,"aria-label":`狀態圖例`,children:[`working`,`unrecorded`,`rest`,`regularHoliday`,`nationalHoliday`,`makeupHoliday`,`leave`,`absence`,`typhoon`].map(e=>(0,F.jsxs)(`span`,{className:`legend-item`,children:[(0,F.jsx)(`i`,{className:`legend-dot ${e}`}),{working:`上班`,unrecorded:`未記錄`,rest:`休息日`,regularHoliday:`例假日`,nationalHoliday:`國定假日`,makeupHoliday:`補假`,leave:`特休`,absence:`請假`,typhoon:`颱風假`}[e]]},e))});return n?(0,F.jsxs)(`div`,{className:`app-shell`,children:[rn(),(0,F.jsxs)(`main`,{className:`main-content`,children:[nn(),on(),an(),(0,F.jsx)(`div`,{className:`content-scroll`,children:i===`quick`?(()=>{let t=$e,n=et;return(0,F.jsxs)(`section`,{className:`page-section quick-page`,children:[(0,F.jsx)(`div`,{className:`page-intro compact-page-intro quick-page-heading`,children:(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`今日／快速記錄`})})}),(0,F.jsxs)(`div`,{className:`quick-layout`,children:[(0,F.jsxs)(`form`,{className:`card form-card`,onSubmit:e=>ft(e),children:[(0,F.jsx)(`div`,{className:`form-divider`,children:(0,F.jsx)(`span`,{children:`01 · 日期與狀態`})}),(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:m?`編輯這筆紀錄`:`新增一天紀錄`})}),n?(0,F.jsx)(`span`,{className:`soft-badge`,children:`已有紀錄`}):null]}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`日期`}),It(d.dateInput,ut)]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`紀錄類型`}),(0,F.jsx)(`select`,{value:d.recordType,onChange:e=>dt(e.target.value),children:Bt.map(e=>(0,F.jsx)(`option`,{value:e.value,children:e.label},e.value))})]})]}),t?(0,F.jsxs)(`div`,{className:`day-context`,children:[(0,F.jsx)(`div`,{className:en(t.statusKey),children:t.label}),(0,F.jsxs)(`div`,{children:[(0,F.jsxs)(`strong`,{children:[S(t.date),` · 星期`,t.weekday]}),t.holiday||t.weekdayIndex===0||t.weekdayIndex===6?(0,F.jsx)(`span`,{children:t.holiday?`${t.holiday.name} · ${Pe(t.holiday.type)}`:`週末預設狀態可被實際上班覆蓋`}):null]}),t.holidays.length>1?(0,F.jsxs)(`em`,{children:[`+`,t.holidays.length-1,` 個標籤`]}):null]}):null,(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`狀態`}),(0,F.jsx)(`select`,{value:d.status,onChange:e=>f(t=>({...t,status:e.target.value})),children:zt.map(e=>(0,F.jsx)(`option`,{value:e.value,children:e.label},e.value))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`預排工時（可留白）`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:d.plannedHours,onChange:e=>f(t=>({...t,plannedHours:e.target.value})),placeholder:`例如 6`})]})]}),(0,F.jsx)(`div`,{className:`form-divider`,children:(0,F.jsx)(`span`,{children:`02 · 工作時間`})}),(0,F.jsxs)(`div`,{className:`shift-block morning-shift`,children:[(0,F.jsxs)(`div`,{className:`shift-heading`,children:[(0,F.jsx)(`span`,{className:`shift-number`,children:`A`}),(0,F.jsx)(`div`,{children:(0,F.jsxs)(`strong`,{children:[`早上班 `,(0,F.jsx)(`small`,{className:`range-label`,children:`08:00–12:30`})]})}),(0,F.jsxs)(`b`,{children:[k(Ze.totals.morningHours),` 小時`]})]}),(0,F.jsxs)(`div`,{className:`form-grid three-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`早上上班`}),(0,F.jsx)(`input`,{type:`time`,min:`08:00`,max:`12:30`,value:d.morningStart,onChange:e=>f(t=>({...t,morningStart:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`早上下班`}),(0,F.jsx)(`input`,{type:`time`,min:`08:00`,max:`12:30`,value:d.morningEnd,onChange:e=>f(t=>({...t,morningEnd:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`休息分鐘`}),(0,F.jsx)(`input`,{inputMode:`numeric`,value:d.morningBreak,onChange:e=>f(t=>({...t,morningBreak:e.target.value}))})]})]})]}),(0,F.jsxs)(`div`,{className:`shift-block afternoon-shift`,children:[(0,F.jsxs)(`div`,{className:`shift-heading`,children:[(0,F.jsx)(`span`,{className:`shift-number`,children:`B`}),(0,F.jsx)(`div`,{children:(0,F.jsxs)(`strong`,{children:[`下午班 `,(0,F.jsx)(`small`,{className:`range-label`,children:`13:00–18:00`})]})}),(0,F.jsxs)(`b`,{children:[k(Ze.totals.afternoonHours),` 小時`]})]}),(0,F.jsxs)(`div`,{className:`form-grid three-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`下午上班`}),(0,F.jsx)(`input`,{type:`time`,min:`13:00`,max:`18:00`,value:d.afternoonStart,onChange:e=>f(t=>({...t,afternoonStart:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`下午下班`}),(0,F.jsx)(`input`,{type:`time`,min:`13:00`,max:`18:00`,value:d.afternoonEnd,onChange:e=>f(t=>({...t,afternoonEnd:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`休息分鐘`}),(0,F.jsx)(`input`,{inputMode:`numeric`,value:d.afternoonBreak,onChange:e=>f(t=>({...t,afternoonBreak:e.target.value}))})]})]})]}),d.customSegments.length?(0,F.jsx)(`div`,{className:`legacy-segment-note`,role:`status`,children:`此筆紀錄包含既有自訂區段，儲存時會保留；目前不提供新增。`}):null,(0,F.jsxs)(`div`,{className:`manual-entry`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`strong`,{children:`直接輸入總時數`})}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:d.manualHours,onChange:e=>f(t=>({...t,manualHours:e.target.value})),placeholder:`例如 6.5`})]}),(0,F.jsxs)(`div`,{className:`calculation-strip`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`早上班小計`}),(0,F.jsxs)(`strong`,{children:[k(Ze.totals.morningHours),(0,F.jsx)(`small`,{children:` 小時`})]})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`下午班小計`}),(0,F.jsxs)(`strong`,{children:[k(Ze.totals.afternoonHours),(0,F.jsx)(`small`,{children:` 小時`})]})]}),d.customSegments.length?(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`既有自訂區段小計`}),(0,F.jsxs)(`strong`,{children:[k(Ze.totals.customHours),(0,F.jsx)(`small`,{children:` 小時`})]})]}):null,(0,F.jsxs)(`div`,{className:`total-cell`,children:[(0,F.jsx)(`span`,{children:`當日總時數`}),(0,F.jsxs)(`strong`,{children:[k(Ze.totals.dailyTotalHours),(0,F.jsx)(`small`,{children:` 小時`})]})]})]}),(0,F.jsxs)(`div`,{className:`form-divider`,children:[(0,F.jsx)(`span`,{children:`03 · 備註與標籤`}),(0,F.jsx)(`small`,{children:`補登、活動支援或特殊差異可在這裡留下摘要。`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`備註`}),(0,F.jsx)(`textarea`,{rows:3,value:d.note,onChange:e=>f(t=>({...t,note:e.target.value})),placeholder:`例如：活動支援、臨時調班、打卡差異……`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`標籤`}),(0,F.jsx)(`div`,{className:`tag-toggle-group`,role:`group`,"aria-label":`工作標籤`,children:Vt.map(e=>{let t=d.tags.includes(e);return(0,F.jsx)(`button`,{type:`button`,"aria-pressed":t,className:`tag-toggle`+(t?` is-selected`:``),onClick:()=>f(t=>({...t,tags:t.tags.includes(e)?t.tags.filter(t=>t!==e):[...t.tags,e]})),children:e},e)})})]}),m&&e.appConfig.auditPromptOnEdit?(0,F.jsxs)(`div`,{className:`audit-prompt`,children:[(0,F.jsxs)(`label`,{className:`checkbox-label`,children:[(0,F.jsx)(`input`,{type:`checkbox`,checked:d.createAudit,onChange:e=>f(t=>({...t,createAudit:e.target.checked}))}),(0,F.jsx)(`span`,{children:`這次編輯要新增「時數異動」說明`})]}),d.createAudit?(0,F.jsxs)(`div`,{className:`form-grid two-columns audit-extra`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`異動標題`}),(0,F.jsx)(`input`,{value:d.auditTitle,onChange:e=>f(t=>({...t,auditTitle:e.target.value})),placeholder:`例如：下午班延後下班`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`異動標籤`}),(0,F.jsx)(`input`,{value:d.auditTags,onChange:e=>f(t=>({...t,auditTags:e.target.value}))})]}),(0,F.jsxs)(`label`,{className:`full-span`,children:[(0,F.jsx)(`span`,{children:`異動說明`}),(0,F.jsx)(`textarea`,{rows:2,value:d.auditContent,onChange:e=>f(t=>({...t,auditContent:e.target.value})),placeholder:`保留編輯前後的原因與核對資訊……`})]})]}):null]}):null,x?(0,F.jsx)(`div`,{className:`inline-message ${Ze.errors.length?`is-error`:`is-warning`}`,role:`alert`,children:x}):null,Ze.warnings.length&&!x?(0,F.jsx)(`div`,{className:`inline-message is-warning`,children:Ze.warnings.join(` `)}):null,(0,F.jsxs)(`div`,{className:`form-actions`,children:[(0,F.jsx)(`button`,{className:`button button-primary`,type:`submit`,children:`儲存紀錄`}),(0,F.jsx)(`button`,{className:`button button-secondary`,type:`button`,onClick:()=>ft(void 0,!0),children:`儲存並新增下一天`}),(0,F.jsx)(`button`,{className:`button button-ghost`,type:`button`,onClick:()=>{f(Gt(o)),g(null),ce(``)},children:`清除表單`})]})]}),(0,F.jsxs)(`aside`,{className:`quick-side`,children:[(0,F.jsxs)(`div`,{className:`card side-card today-summary`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:Qe?ne(Qe):`—`})}),(0,F.jsx)(`span`,{className:`date-month`,children:Qe?re(Qe).replace(`民國 `,``):``})]}),t?(0,F.jsxs)(F.Fragment,{children:[(0,F.jsx)(`div`,{className:en(t.statusKey),children:t.label}),(0,F.jsxs)(`div`,{className:`big-hours`,children:[k(t.hours),(0,F.jsx)(`small`,{children:` 小時`})]}),t.holiday?(0,F.jsx)(`p`,{children:t.holiday.name}):null]}):(0,F.jsx)(`p`,{children:`輸入有效日期後會顯示當日狀態。`}),(0,F.jsxs)(`div`,{className:`side-actions`,children:[(0,F.jsx)(`button`,{className:`button button-outline button-small`,type:`button`,onClick:mt,disabled:!n,children:`編輯這筆`}),(0,F.jsx)(`button`,{className:`button button-outline button-small`,type:`button`,onClick:pt,disabled:!n,children:`刪除今天紀錄`})]})]}),(0,F.jsxs)(`div`,{className:`card side-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`留言與追蹤`})}),(0,F.jsx)(`span`,{className:`count-pill`,children:tt.length})]}),tt.length?(0,F.jsx)(`div`,{className:`mini-note-list`,children:tt.map(e=>(0,F.jsxs)(`button`,{className:`mini-note`,onClick:()=>_t(e),children:[(0,F.jsx)(`span`,{className:e.isResolved?`note-resolved`:`note-pending`,children:e.isResolved?`已核對`:`待確認`}),(0,F.jsx)(`strong`,{children:e.title}),(0,F.jsxs)(`small`,{children:[e.category,` · 差異 `,k(e.hoursDifference),` 小時`]})]},e.id))}):(0,F.jsxs)(`div`,{className:`empty-mini`,children:[(0,F.jsx)(`span`,{children:`✦`}),(0,F.jsx)(`p`,{children:`這天還沒有留言或異動說明。`})]}),(0,F.jsx)(`button`,{className:`button button-secondary full-button`,type:`button`,onClick:()=>Qe&&ht(Qe),children:`＋為這一天新增留言`})]})]})]})]})})():i===`calendar`?(()=>{let t=C(y(h,s,1)),n=[...Array(t).fill(null),...se(s)],r=Qe||y(2026,s,Math.min(1,w(s))),i=-C(r),a=b(r);a.setUTCDate(a.getUTCDate()+i);let d=Array.from({length:7},(e,t)=>{let n=new Date(a.getTime());return n.setUTCDate(a.getUTCDate()+t),n.getUTCFullYear()===2026?y(h,n.getUTCMonth()+1,n.getUTCDate()):null});return(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`月曆`})}),(0,F.jsxs)(`div`,{className:`month-switcher`,children:[(0,F.jsx)(`button`,{className:`icon-button`,"aria-label":`上一個月`,onClick:()=>c(e=>e===1?12:e-1),children:`‹`}),(0,F.jsxs)(`strong`,{children:[h,` · `,oe(s)]}),(0,F.jsx)(`button`,{className:`icon-button`,"aria-label":`下一個月`,onClick:()=>c(e=>e===12?1:e+1),children:`›`})]})]}),(0,F.jsxs)(`div`,{className:`card calendar-card`,children:[(0,F.jsxs)(`div`,{className:`calendar-toolbar`,children:[(0,F.jsxs)(`div`,{className:`calendar-metrics`,children:[(0,F.jsxs)(`span`,{children:[(0,F.jsx)(`strong`,{children:k(it.hours)}),`本月總時數`]}),(0,F.jsxs)(`span`,{children:[(0,F.jsx)(`strong`,{children:it.workdays}),`實際上班日`]}),(0,F.jsxs)(`span`,{children:[(0,F.jsx)(`strong`,{children:it.holidayCount}),`假日`]}),(0,F.jsxs)(`span`,{children:[(0,F.jsx)(`strong`,{children:it.unrecorded}),`未記錄平日`]})]}),(0,F.jsx)(`div`,{className:`view-toggle`,children:[`month`,`list`,`week`].map(e=>(0,F.jsx)(`button`,{className:l===e?`is-active`:``,onClick:()=>u(e),children:e===`month`?`月視圖`:e===`list`?`清單視圖`:`週視圖`},e))})]}),l===`month`?(0,F.jsxs)(`div`,{className:`calendar-grid`,children:[(0,F.jsx)(`div`,{className:`calendar-weekdays`,children:Lt.map(e=>(0,F.jsx)(`span`,{children:e},e))}),(0,F.jsx)(`div`,{className:`calendar-days`,children:n.map((t,n)=>t?(0,F.jsxs)(`button`,{className:`calendar-day ${t===o?`is-today`:``} ${t===Qe?`is-selected`:``}`,onClick:()=>ct(t),children:[(0,F.jsx)(`span`,{className:`day-number`,children:Number(t.slice(8,10))}),(0,F.jsx)(`span`,{className:en(je(t,e).statusKey),children:je(t,e).label}),(0,F.jsxs)(`strong`,{children:[k(je(t,e).hours),(0,F.jsx)(`small`,{children:`h`})]}),e.auditNotes.some(e=>e.date===t)?(0,F.jsx)(`i`,{className:`comment-dot`,title:`有留言`}):null]},t):(0,F.jsx)(`span`,{className:`calendar-day blank`},`blank-${n}`))})]}):l===`list`?(0,F.jsx)(`div`,{className:`calendar-list`,children:it.resolved.map(t=>(0,F.jsxs)(`button`,{className:`calendar-list-row`,onClick:()=>ct(t.date),children:[(0,F.jsxs)(`span`,{className:`list-date`,children:[(0,F.jsx)(`strong`,{children:t.date.slice(8,10)}),(0,F.jsxs)(`small`,{children:[`星期`,t.weekday]})]}),(0,F.jsx)(`span`,{className:en(t.statusKey),children:t.label}),(0,F.jsxs)(`span`,{className:`list-hours`,children:[k(t.hours),` 小時`]}),(0,F.jsx)(`span`,{className:`list-note`,children:e.auditNotes.filter(e=>e.date===t.date).length?`留言 ${e.auditNotes.filter(e=>e.date===t.date).length} 筆`:t.record?.note||``})]},t.date))}):(0,F.jsxs)(`div`,{className:`week-view`,children:[(0,F.jsxs)(`p`,{className:`week-caption`,children:[`本週：`,d.filter(Boolean).map(e=>e?ne(e):``).join(` · `)]}),(0,F.jsx)(`div`,{className:`week-grid`,children:d.map((t,n)=>t?(0,F.jsxs)(`button`,{className:`week-card`,onClick:()=>ct(t),children:[(0,F.jsxs)(`span`,{children:[`星期`,Lt[n]]}),(0,F.jsx)(`strong`,{children:ne(t)}),(0,F.jsx)(`span`,{className:en(je(t,e).statusKey),children:je(t,e).label}),(0,F.jsxs)(`b`,{children:[k(je(t,e).hours),` h`]})]},t):(0,F.jsx)(`span`,{className:`week-card empty`,children:`非 2026 日期`},`week-empty-${n}`))})]})]}),sn()]})})():i===`records`?(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`每日紀錄`})}),(0,F.jsxs)(`div`,{className:`intro-stat`,children:[(0,F.jsx)(`strong`,{children:P.length}),(0,F.jsx)(`span`,{children:`目前顯示日期`})]})]}),(0,F.jsxs)(`div`,{className:`card table-card`,children:[(0,F.jsxs)(`div`,{className:`filter-bar`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`月份`}),(0,F.jsxs)(`select`,{value:D,onChange:e=>de(e.target.value),children:[(0,F.jsx)(`option`,{value:`all`,children:`全年`}),Array.from({length:12},(e,t)=>(0,F.jsxs)(`option`,{value:String(t+1),children:[t+1,` 月`]},t))]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`狀態`}),(0,F.jsxs)(`select`,{value:fe,onChange:e=>pe(e.target.value),children:[(0,F.jsx)(`option`,{value:`all`,children:`全部狀態`}),(0,F.jsx)(`option`,{value:`working`,children:`上班`}),(0,F.jsx)(`option`,{value:`weekendWork`,children:`週末上班`}),(0,F.jsx)(`option`,{value:`holidayWork`,children:`假日上班`}),(0,F.jsx)(`option`,{value:`unrecorded`,children:`未記錄`}),(0,F.jsx)(`option`,{value:`nationalHoliday`,children:`國定假日`}),(0,F.jsx)(`option`,{value:`makeupHoliday`,children:`補假`}),(0,F.jsx)(`option`,{value:`leave`,children:`特休`}),(0,F.jsx)(`option`,{value:`absence`,children:`請假`}),(0,F.jsx)(`option`,{value:`rest`,children:`休息日`}),(0,F.jsx)(`option`,{value:`regularHoliday`,children:`例假日`})]})]}),(0,F.jsxs)(`label`,{className:`search-field`,children:[(0,F.jsx)(`span`,{children:`搜尋`}),(0,F.jsx)(`input`,{value:he,onChange:e=>ye(e.target.value),placeholder:`日期、備註、標籤……`})]}),(0,F.jsx)(`button`,{className:`button button-outline button-small`,onClick:()=>{de(`all`),pe(`all`),ye(``)},children:`清除篩選`})]}),(0,F.jsx)(`div`,{className:`table-scroll`,children:(0,F.jsxs)(`table`,{className:`data-table`,children:[(0,F.jsx)(`thead`,{children:(0,F.jsxs)(`tr`,{children:[(0,F.jsx)(`th`,{children:`日期`}),(0,F.jsx)(`th`,{children:`星期`}),(0,F.jsx)(`th`,{children:`狀態`}),(0,F.jsx)(`th`,{children:`工作時段`}),(0,F.jsx)(`th`,{children:`實際工時`}),(0,F.jsx)(`th`,{children:`預排工時`}),(0,F.jsx)(`th`,{children:`差額`}),(0,F.jsx)(`th`,{children:`備註`}),(0,F.jsx)(`th`,{children:`留言`}),(0,F.jsx)(`th`,{children:`最後更新`}),(0,F.jsx)(`th`,{})]})}),(0,F.jsx)(`tbody`,{children:P.map(t=>(0,F.jsxs)(`tr`,{onClick:()=>ct(t.date),children:[(0,F.jsx)(`td`,{className:`date-cell`,children:S(t.date)}),(0,F.jsxs)(`td`,{children:[`星期`,t.weekday]}),(0,F.jsx)(`td`,{children:(0,F.jsx)(`span`,{className:en(t.statusKey),children:t.label})}),(0,F.jsx)(`td`,{className:`time-cell`,children:t.record?me(t.record):`—`}),(0,F.jsx)(`td`,{className:`number-cell`,children:k(t.record?.dailyTotalHours||0)}),(0,F.jsx)(`td`,{className:`number-cell`,children:k(t.record?.plannedHours)}),(0,F.jsx)(`td`,{className:`number-cell ${t.record?.plannedHours!==null&&t.record?.plannedHours!==void 0&&t.record.plannedHours-t.record.dailyTotalHours!==0?`has-variance`:``}`,children:t.record?.plannedHours===null||t.record?.plannedHours===void 0?`—`:k(O(t.record.plannedHours-t.record.dailyTotalHours))}),(0,F.jsx)(`td`,{className:`note-cell`,children:t.record?.note||``}),(0,F.jsx)(`td`,{children:e.auditNotes.filter(e=>e.date===t.date).length?(0,F.jsxs)(`span`,{className:`comment-count`,children:[`✦ `,e.auditNotes.filter(e=>e.date===t.date).length]}):``}),(0,F.jsx)(`td`,{className:`muted-text`,children:t.record?.updatedAt?ie(t.record.updatedAt):`—`}),(0,F.jsx)(`td`,{children:(0,F.jsx)(`button`,{className:`row-action`,"aria-label":`${t.date} 新增留言`,onClick:e=>{e.stopPropagation(),ht(t.date)},children:`＋`})})]},t.date))})]})})]})]}):i===`stats`?(()=>{let t=O(e.leaveRecords.reduce((e,t)=>e+t.hours,0)),n=e.appConfig.leaveTotalHours===null?null:O(e.appConfig.leaveTotalHours-t),r=e.auditNotes.filter(e=>!e.isResolved).length,i=e.appConfig.hourlyWage===null?null:ue(at*e.appConfig.hourlyWage),a=i,l=Math.max(...ot.map(e=>e.hours),0),u=[{label:`本月總工時`,value:k(it.hours),unit:`小時`,tone:`green`},{label:`本年度總工時`,value:k(at),unit:`小時`,tone:`blue`},{label:`今日工時`,value:k(je(o,e).hours),unit:`小時`,tone:`orange`},{label:`已記錄天數`,value:String(e.workRecords.filter(e=>e.recordType!==`planned`).length),unit:`天`,tone:`purple`},{label:`實際上班天數`,value:String(it.workdays),unit:`天（本月）`,tone:`green`},{label:`週末上班天數`,value:String(it.weekendWork),unit:`天（本月）`,tone:`orange`},{label:`國定假日上班`,value:String(it.holidayWork),unit:`天（本月）`,tone:`red`},{label:`未記錄平日`,value:String(it.unrecorded),unit:`天（本月）`,tone:`gray`}];return(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`統計儀表板`})}),(0,F.jsxs)(`div`,{className:`month-switcher`,children:[(0,F.jsx)(`button`,{className:`icon-button`,"aria-label":`上一個月`,onClick:()=>c(e=>e===1?12:e-1),children:`‹`}),(0,F.jsxs)(`strong`,{children:[`統計月份：`,s,` 月`]}),(0,F.jsx)(`button`,{className:`icon-button`,"aria-label":`下一個月`,onClick:()=>c(e=>e===12?1:e+1),children:`›`})]})]}),(0,F.jsx)(`div`,{className:`kpi-grid`,children:u.map(e=>(0,F.jsxs)(`div`,{className:`kpi-card tone-${e.tone}`,children:[(0,F.jsx)(`span`,{children:e.label}),(0,F.jsxs)(`strong`,{children:[e.value,(0,F.jsx)(`small`,{children:e.unit})]})]},e.label))}),(0,F.jsxs)(`div`,{className:`dashboard-grid`,children:[(0,F.jsxs)(`div`,{className:`card trend-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`每月工時趨勢`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`2026`})]}),at?(0,F.jsx)(`div`,{className:`trend-chart`,role:`img`,"aria-label":`2026 每月工時趨勢圖`,children:ot.map(e=>(0,F.jsxs)(`div`,{className:`trend-column`,children:[(0,F.jsx)(`div`,{className:`bar-wrap`,children:(0,F.jsx)(`div`,{className:`trend-bar`,style:{height:`${l?Math.max(4,e.hours/l*100):4}%`},children:(0,F.jsx)(`span`,{children:k(e.hours)})})}),(0,F.jsxs)(`small`,{children:[e.month,`月`]})]},e.month))}):(0,F.jsxs)(`div`,{className:`empty-state compact`,children:[(0,F.jsx)(`span`,{className:`empty-icon`,children:`◒`}),(0,F.jsx)(`h3`,{children:`還沒有工時資料`}),(0,F.jsx)(`p`,{children:`先到「今日／快速記錄」新增第一筆，趨勢圖會跟著長出來。`}),(0,F.jsx)(`button`,{className:`button button-primary button-small`,onClick:()=>lt(`quick`),children:`新增第一筆`})]})]}),(0,F.jsxs)(`div`,{className:`card finance-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`薪資與預算`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`可選設定`})]}),(0,F.jsxs)(`div`,{className:`finance-list`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`本月薪資`}),(0,F.jsx)(`strong`,{children:it.wage===null?`未設定`:`NT$ ${it.wage.toLocaleString()}`})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`年度薪資`}),(0,F.jsx)(`strong`,{children:i===null?`未設定`:`NT$ ${i.toLocaleString()}`})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`年度預算金額`}),(0,F.jsx)(`strong`,{children:e.appConfig.annualBudgetAmount===null?`未設定`:`NT$ ${e.appConfig.annualBudgetAmount.toLocaleString()}`})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{children:`已使用／剩餘預算`}),(0,F.jsx)(`strong`,{children:e.appConfig.annualBudgetAmount===null||a===null?`未設定`:`NT$ ${a.toLocaleString()} ／ ${(e.appConfig.annualBudgetAmount-a).toLocaleString()}`})]})]})]}),(0,F.jsxs)(`div`,{className:`card leave-summary-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`特休餘額`})}),(0,F.jsx)(`button`,{className:`text-button`,onClick:()=>lt(`holidays`),children:`管理 →`})]}),(0,F.jsxs)(`div`,{className:`leave-meter`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:k(t)}),(0,F.jsx)(`span`,{children:`已休`})]}),(0,F.jsx)(`div`,{className:`meter-track`,children:(0,F.jsx)(`span`,{style:{width:`${e.appConfig.leaveTotalHours?Math.min(100,Math.max(0,t/e.appConfig.leaveTotalHours*100)):0}%`}})}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:n===null?`—`:k(n)}),(0,F.jsx)(`span`,{children:`剩餘`})]})]}),(0,F.jsx)(`p`,{children:e.appConfig.leaveTotalHours===null?`尚未設定應休時數。`:`應休 ${k(e.appConfig.leaveTotalHours)} 小時`})]}),(0,F.jsxs)(`div`,{className:`card audit-summary-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`留言與異動`})}),(0,F.jsx)(`button`,{className:`text-button`,onClick:()=>lt(`messages`),children:`查看全部 →`})]}),(0,F.jsxs)(`div`,{className:`audit-summary-numbers`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:e.auditNotes.length}),(0,F.jsx)(`span`,{children:`本月留言／異動`})]}),(0,F.jsxs)(`div`,{className:`audit-alert`,children:[(0,F.jsx)(`strong`,{children:r}),(0,F.jsx)(`span`,{children:`尚未核對`})]})]}),(0,F.jsx)(`div`,{className:`mini-progress`,children:(0,F.jsx)(`span`,{style:{width:`${e.auditNotes.length?(e.auditNotes.length-r)/e.auditNotes.length*100:0}%`}})})]})]})]})})():i===`holidays`?(()=>{let t=e.holidays.filter(e=>e.source===`official`).sort((e,t)=>e.date.localeCompare(t.date)),n=e.holidays.filter(e=>e.source===`custom`).sort((e,t)=>e.date.localeCompare(t.date)),r=O(e.leaveRecords.reduce((e,t)=>e+t.hours,0));return(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`假日與特休`})}),(0,F.jsxs)(`div`,{className:`source-links`,children:[(0,F.jsx)(`span`,{children:`官方來源`}),(0,F.jsx)(`a`,{href:`https://www.dgpa.gov.tw/information?pid=12573&uid=41`,target:`_blank`,rel:`noreferrer`,children:`人事行政總處 115 年日曆 ↗`}),(0,F.jsx)(`a`,{href:`https://www.dgpa.gov.tw/information?pid=12574&uid=82`,target:`_blank`,rel:`noreferrer`,children:`2026 公告 ↗`}),(0,F.jsx)(`a`,{href:`https://www.dgpa.gov.tw/FileConversion?filename=dgpa%2Ffiles%2F202506%2F105f965b-c3e3-49e8-9e67-dadedccb2052.pdf&name=%E9%99%84%E8%A1%A83.pdf&nfix=`,target:`_blank`,rel:`noreferrer`,children:`連續假期官方附表 ↗`})]})]}),(0,F.jsxs)(`div`,{className:`management-grid`,children:[(0,F.jsxs)(`div`,{className:`card list-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`2026 預設假日清單`})}),(0,F.jsx)(`span`,{className:`count-pill`,children:t.length})]}),(0,F.jsx)(`div`,{className:`holiday-list`,children:t.map(e=>(0,F.jsxs)(`div`,{className:`holiday-row ${e.enabled?``:`is-disabled`}`,children:[(0,F.jsxs)(`span`,{className:`holiday-date`,children:[ne(e.date),(0,F.jsxs)(`small`,{children:[`星期`,ae(e.date)]})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:e.name}),(0,F.jsx)(`span`,{children:Pe(e.type)})]}),(0,F.jsx)(`button`,{className:`toggle-button`,onClick:()=>bt(e),children:e.enabled?`已啟用`:`已停用`})]},e.id))})]}),(0,F.jsxs)(`div`,{className:`stack-column`,children:[(0,F.jsxs)(`div`,{className:`card form-card compact-form`,children:[(0,F.jsx)(`div`,{className:`card-heading`,children:(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`新增自訂假日`})})}),(0,F.jsxs)(`form`,{onSubmit:yt,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`日期`}),It(Ae.date,e=>Me(t=>({...t,date:e})))]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`名稱`}),(0,F.jsx)(`input`,{value:Ae.name,onChange:e=>Me(t=>({...t,name:e.target.value})),placeholder:`例如：學校校慶`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`類型`}),(0,F.jsxs)(`select`,{value:Ae.type,onChange:e=>Me(t=>({...t,type:e.target.value})),children:[(0,F.jsx)(`option`,{value:`customHoliday`,children:`自訂假日`}),(0,F.jsx)(`option`,{value:`holidayPeriod`,children:`連假期間`}),(0,F.jsx)(`option`,{value:`nationalHoliday`,children:`國定假日`}),(0,F.jsx)(`option`,{value:`makeupHoliday`,children:`補假`})]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`說明`}),(0,F.jsx)(`textarea`,{rows:2,value:Ae.note,onChange:e=>Me(t=>({...t,note:e.target.value}))})]}),(0,F.jsx)(`button`,{className:`button button-primary full-button`,type:`submit`,children:`新增假日`})]})]}),(0,F.jsxs)(`div`,{className:`card list-card custom-list`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`自訂假日`})}),(0,F.jsx)(`span`,{className:`count-pill`,children:n.length})]}),n.length?n.map(e=>(0,F.jsxs)(`div`,{className:`holiday-row`,children:[(0,F.jsxs)(`span`,{className:`holiday-date`,children:[ne(e.date),(0,F.jsx)(`small`,{children:e.enabled?`啟用中`:`已停用`})]}),(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:e.name}),(0,F.jsx)(`span`,{children:e.note||`沒有補充說明`})]}),(0,F.jsx)(`button`,{className:`toggle-button`,onClick:()=>bt(e),children:e.enabled?`停用`:`啟用`})]},e.id)):(0,F.jsx)(`div`,{className:`empty-mini`,children:(0,F.jsx)(`p`,{children:`還沒有自訂假日。`})})]})]})]}),(0,F.jsxs)(`div`,{className:`management-grid leave-grid`,children:[(0,F.jsxs)(`div`,{className:`card form-card compact-form`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`特休設定與新增`})}),(0,F.jsxs)(`div`,{className:`balance-bubble`,children:[(0,F.jsx)(`strong`,{children:k(r)}),(0,F.jsx)(`small`,{children:`已休`})]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`年度應休總時數`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:e.appConfig.leaveTotalHours===null?``:String(e.appConfig.leaveTotalHours),onChange:t=>{let n=qt(t.target.value);st(Oe({...e,appConfig:{...e.appConfig,leaveTotalHours:n}}))},placeholder:`可留白，依單位規定`})]}),(0,F.jsxs)(`div`,{className:`leave-balance-line`,children:[(0,F.jsx)(`span`,{children:`剩餘時數`}),(0,F.jsxs)(`strong`,{children:[e.appConfig.leaveTotalHours===null?`未設定`:k(e.appConfig.leaveTotalHours-r),` 小時`]})]}),(0,F.jsxs)(`form`,{onSubmit:xt,className:`leave-form`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`特休日期`}),It(Fe.date,e=>Ie(t=>({...t,date:e})))]}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`使用時數`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:Fe.hours,onChange:e=>Ie(t=>({...t,hours:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`備註`}),(0,F.jsx)(`input`,{value:Fe.note,onChange:e=>Ie(t=>({...t,note:e.target.value}))})]})]}),(0,F.jsx)(`button`,{className:`button button-secondary full-button`,type:`submit`,children:`＋新增特休明細`})]})]}),(0,F.jsxs)(`div`,{className:`card list-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:`section-kicker`,children:`LEAVE LOG`}),(0,F.jsx)(`h3`,{children:`特休已休明細`})]}),(0,F.jsx)(`span`,{className:`count-pill`,children:e.leaveRecords.length})]}),e.leaveRecords.length?(0,F.jsxs)(`div`,{className:`leave-table`,children:[(0,F.jsxs)(`div`,{className:`leave-table-header`,children:[(0,F.jsx)(`span`,{children:`日期`}),(0,F.jsx)(`span`,{children:`類型`}),(0,F.jsx)(`span`,{children:`時數`}),(0,F.jsx)(`span`,{children:`備註`}),(0,F.jsx)(`span`,{})]}),[...e.leaveRecords].sort((e,t)=>e.date.localeCompare(t.date)).map(e=>(0,F.jsxs)(`div`,{className:`leave-table-row`,children:[(0,F.jsx)(`span`,{children:S(e.date)}),(0,F.jsx)(`span`,{children:e.leaveType}),(0,F.jsxs)(`strong`,{children:[k(e.hours),` h`]}),(0,F.jsx)(`span`,{children:e.note||`—`}),(0,F.jsx)(`button`,{className:`row-action danger-text`,onClick:()=>St(e),"aria-label":`刪除特休明細`,children:`×`})]},e.id))]}):(0,F.jsxs)(`div`,{className:`empty-state compact`,children:[(0,F.jsx)(`span`,{className:`empty-icon`,children:`◇`}),(0,F.jsx)(`p`,{children:`尚未新增特休日期。`})]})]})]})]})})():i===`messages`?(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`留言板`})}),(0,F.jsxs)(`div`,{className:`intro-stat`,children:[(0,F.jsx)(`strong`,{children:e.auditNotes.length}),(0,F.jsx)(`span`,{children:`留言／異動總筆數`})]})]}),(0,F.jsxs)(`div`,{className:`messages-layout`,children:[(0,F.jsxs)(`div`,{className:`card form-card message-form-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:be?`編輯留言`:`新增留言／時數異動`})}),be?(0,F.jsx)(`button`,{className:`text-button`,onClick:()=>{Ce(null),j(Wt(o,e))},children:`取消編輯`}):null]}),(0,F.jsxs)(`form`,{onSubmit:gt,children:[(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`關聯日期`}),It(A.date,e=>j(t=>({...t,date:e}))),` `]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`關聯工時紀錄`}),(0,F.jsxs)(`select`,{value:A.relatedRecordId,onChange:e=>j(t=>({...t,relatedRecordId:e.target.value})),children:[(0,F.jsx)(`option`,{value:``,children:`不指定`}),e.workRecords.filter(e=>e.date===A.date).map(e=>(0,F.jsxs)(`option`,{value:e.id,children:[e.date,` · `,k(e.dailyTotalHours),` 小時`]},e.id))]})]})]}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`類別`}),(0,F.jsx)(`select`,{value:A.category,onChange:e=>j(t=>({...t,category:e.target.value})),children:e.appConfig.messageBoardCategories.map(e=>(0,F.jsx)(`option`,{children:e},e))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`標籤`}),(0,F.jsx)(`input`,{value:A.tags,onChange:e=>j(t=>({...t,tags:e.target.value})),placeholder:`待確認、需補件`})]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`標題`}),(0,F.jsx)(`input`,{value:A.title,onChange:e=>j(t=>({...t,title:e.target.value})),placeholder:`例如：活動支援延長下午班`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`詳細內容`}),(0,F.jsx)(`textarea`,{rows:5,value:A.content,onChange:e=>j(t=>({...t,content:e.target.value})),placeholder:`留下日期、原因、打卡或紙本時數表的核對內容……`})]}),(0,F.jsx)(`div`,{className:`form-divider`,children:(0,F.jsx)(`span`,{children:`異動前後快照（可留白）`})}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`原始工時`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:A.originalHours,onChange:e=>j(t=>({...t,originalHours:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`修正後工時`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:A.adjustedHours,onChange:e=>j(t=>({...t,adjustedHours:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`異動前時段摘要`}),(0,F.jsx)(`textarea`,{rows:3,value:A.originalShiftSummary,onChange:e=>j(t=>({...t,originalShiftSummary:e.target.value}))})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`異動後時段摘要`}),(0,F.jsx)(`textarea`,{rows:3,value:A.adjustedShiftSummary,onChange:e=>j(t=>({...t,adjustedShiftSummary:e.target.value}))})]})]}),(0,F.jsxs)(`div`,{className:`difference-preview`,children:[`時數差異 `,(0,F.jsxs)(`strong`,{children:[k((qt(A.adjustedHours)??0)-(qt(A.originalHours)??0)),` 小時`]})]}),(0,F.jsxs)(`label`,{className:`checkbox-label`,children:[(0,F.jsx)(`input`,{type:`checkbox`,checked:A.isResolved,onChange:e=>j(t=>({...t,isResolved:e.target.checked}))}),(0,F.jsx)(`span`,{children:`這筆留言已核對`})]}),(0,F.jsx)(`button`,{className:`button button-primary full-button`,type:`submit`,children:be?`儲存留言修改`:`新增留言`})]})]}),(0,F.jsxs)(`div`,{className:`card list-card message-list-card`,children:[(0,F.jsxs)(`div`,{className:`filter-bar message-filter`,children:[(0,F.jsxs)(`label`,{className:`search-field`,children:[(0,F.jsx)(`span`,{children:`搜尋`}),(0,F.jsx)(`input`,{value:De,onChange:e=>ke(e.target.value),placeholder:`關鍵字、內容、日期……`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`類別`}),(0,F.jsxs)(`select`,{value:M,onChange:e=>we(e.target.value),children:[(0,F.jsx)(`option`,{value:`all`,children:`全部類別`}),e.appConfig.messageBoardCategories.map(e=>(0,F.jsx)(`option`,{children:e},e))]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`標籤`}),(0,F.jsxs)(`select`,{value:Te,onChange:e=>Ee(e.target.value),children:[(0,F.jsx)(`option`,{value:`all`,children:`全部標籤`}),Array.from(new Set(e.auditNotes.flatMap(e=>e.tags))).map(e=>(0,F.jsx)(`option`,{children:e},e))]})]})]}),rt.length?(0,F.jsx)(`div`,{className:`audit-list`,children:rt.map(e=>(0,F.jsxs)(`article`,{className:`audit-item ${e.isResolved?`is-resolved`:``}`,children:[(0,F.jsxs)(`div`,{className:`audit-item-top`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:e.isResolved?`note-resolved`:`note-pending`,children:e.isResolved?`已核對`:`待確認`}),(0,F.jsx)(`span`,{className:`audit-category`,children:e.category}),(0,F.jsxs)(`span`,{className:`audit-date`,children:[S(e.date),` · 星期`,ae(e.date)]})]}),(0,F.jsxs)(`div`,{className:`item-actions`,children:[(0,F.jsx)(`button`,{className:`text-button`,onClick:()=>_t(e),children:`編輯`}),(0,F.jsx)(`button`,{className:`text-button danger-text`,onClick:()=>vt(e),children:`刪除`})]})]}),(0,F.jsx)(`h4`,{children:e.title}),(0,F.jsx)(`p`,{className:`audit-content`,children:e.content}),(0,F.jsxs)(`div`,{className:`audit-snapshot`,children:[(0,F.jsxs)(`span`,{children:[`前：`,k(e.originalHours),` h`]}),(0,F.jsxs)(`span`,{children:[`後：`,k(e.adjustedHours),` h`]}),(0,F.jsxs)(`strong`,{className:e.hoursDifference===0?``:e.hoursDifference>0?`positive`:`negative`,children:[`差異 `,e.hoursDifference>0?`+`:``,k(e.hoursDifference),` h`]})]}),(0,F.jsxs)(`div`,{className:`audit-meta`,children:[(0,F.jsx)(`span`,{children:e.tags.join(` · `)||`無標籤`}),(0,F.jsxs)(`span`,{children:[`建立 `,ie(e.createdAt)]})]})]},e.id))}):(0,F.jsxs)(`div`,{className:`empty-state`,children:[(0,F.jsx)(`span`,{className:`empty-icon`,children:`✦`}),(0,F.jsx)(`h3`,{children:`還沒有符合條件的留言`}),(0,F.jsx)(`p`,{children:`可以從左側新增，或清除篩選查看全部紀錄。`}),(0,F.jsx)(`button`,{className:`button button-outline button-small`,onClick:()=>{ke(``),we(`all`),Ee(`all`)},children:`清除篩選`})]})]})]})]}):i===`export`?(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`匯出中心`})}),(0,F.jsxs)(`div`,{className:`export-summary`,children:[(0,F.jsx)(`strong`,{children:e.workRecords.length}),(0,F.jsx)(`span`,{children:`目前工時紀錄`}),(0,F.jsx)(`strong`,{children:e.auditNotes.length}),(0,F.jsx)(`span`,{children:`目前留言`})]})]}),(0,F.jsxs)(`div`,{className:`card export-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`月份時數表`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`12 個檔案按需產生`})]}),(0,F.jsx)(`p`,{className:`form-note`,children:`每月檔案固定包含預排計畫時數、實際上班、每日紀錄、特休、留言板時數異動與課表六個工作表。`}),(0,F.jsx)(`div`,{className:`export-grid`,children:Array.from({length:12},(t,n)=>{let r=n+1,i=O(e.workRecords.filter(e=>e.recordType!==`planned`&&Number(e.date.slice(5,7))===r).reduce((e,t)=>e+t.dailyTotalHours,0));return(0,F.jsxs)(`button`,{className:`export-item`,onClick:()=>At({kind:`month`,month:r}),children:[(0,F.jsx)(`span`,{className:`export-month`,children:String(r).padStart(2,`0`)}),(0,F.jsxs)(`div`,{children:[(0,F.jsxs)(`strong`,{children:[r,` 月時數表`]}),(0,F.jsxs)(`small`,{children:[k(i),` 小時 · 含每日紀錄、留言、特休與課表`]})]}),(0,F.jsx)(`span`,{className:`export-arrow`,children:`⇩`})]},r)})})]}),(0,F.jsxs)(`div`,{className:`card annual-export-card`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`h3`,{children:`全年度總時數表`}),(0,F.jsx)(`p`,{children:`包含 1～12 月、年度總結、預排／實際差額、全年每日紀錄、留言與特休；年度檔不含課表工作表。`})]}),(0,F.jsxs)(`button`,{className:`button button-primary`,onClick:()=>At({kind:`year`}),children:[`一鍵匯出年度 Excel `,(0,F.jsx)(`span`,{children:`⇩`})]})]}),(0,F.jsxs)(`div`,{className:`export-note`,children:[(0,F.jsx)(`span`,{children:`檔名規格`}),(0,F.jsx)(`code`,{children:`民國115年1月份時數表.xlsx`}),(0,F.jsx)(`code`,{children:`民國115年總時數表.xlsx`})]})]}):(0,F.jsxs)(`section`,{className:`page-section`,children:[(0,F.jsxs)(`div`,{className:`page-intro compact-page-intro`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h2`,{children:`設定與備份`})}),(0,F.jsxs)(`div`,{className:`settings-state`,children:[(0,F.jsx)(`span`,{className:`local-dot`}),`本機資料模式`]})]}),(0,F.jsxs)(`div`,{className:`settings-grid`,children:[(0,F.jsxs)(`div`,{className:`card form-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`基本設定`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`變更即時自動儲存`})]}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`年度`}),(0,F.jsx)(`input`,{value:`2026／民國 115 年`,disabled:!0})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`時區`}),(0,F.jsx)(`input`,{value:`Asia/Taipei`,disabled:!0})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`姓名／匯出表頭名稱`}),(0,F.jsx)(`input`,{value:Le.displayName,onChange:e=>wt({displayName:e.target.value}),placeholder:`可留白`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`工作單位`}),(0,F.jsx)(`input`,{value:Le.workplace,onChange:e=>wt({workplace:e.target.value}),placeholder:`可留白`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`時薪（元／小時）`}),(0,F.jsx)(`input`,{"aria-describedby":`hourly-wage-help`,inputMode:`decimal`,value:Le.hourlyWage===null?``:String(Le.hourlyWage),onChange:e=>Tt(e.target.value),placeholder:`預設 196，可修改或清空`}),(0,F.jsx)(`small`,{id:`hourly-wage-help`,className:`field-help`,children:`新資料預設為 196 元；清空後代表未設定，匯出表會顯示「未設定」。`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`年度預算時數`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:Le.annualBudgetHours===null?``:String(Le.annualBudgetHours),onChange:e=>wt({annualBudgetHours:qt(e.target.value)}),placeholder:`可留白`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`年度預算金額（元）`}),(0,F.jsx)(`input`,{inputMode:`decimal`,value:Le.annualBudgetAmount===null?``:String(Le.annualBudgetAmount),onChange:e=>wt({annualBudgetAmount:qt(e.target.value)}),placeholder:`可留白`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`編輯時數異動提示`}),(0,F.jsxs)(`select`,{value:Le.auditPromptOnEdit?`on`:`off`,onChange:e=>wt({auditPromptOnEdit:e.target.value===`on`}),children:[(0,F.jsx)(`option`,{value:`on`,children:`預設開啟提示`}),(0,F.jsx)(`option`,{value:`off`,children:`關閉提示`})]})]})]}),Ve?(0,F.jsx)(`p`,{className:`settings-error`,role:`alert`,children:Ve}):null,(0,F.jsx)(`div`,{className:`form-divider`,children:(0,F.jsx)(`span`,{children:`週末預設狀態`})}),(0,F.jsxs)(`div`,{className:`form-grid two-columns`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`週六`}),(0,F.jsxs)(`select`,{value:Le.saturdayDefaultStatus,onChange:e=>wt({saturdayDefaultStatus:e.target.value}),children:[(0,F.jsx)(`option`,{children:`休息日`}),(0,F.jsx)(`option`,{children:`例假日`}),(0,F.jsx)(`option`,{children:`未記錄`})]})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`週日`}),(0,F.jsxs)(`select`,{value:Le.sundayDefaultStatus,onChange:e=>wt({sundayDefaultStatus:e.target.value}),children:[(0,F.jsx)(`option`,{children:`休息日`}),(0,F.jsx)(`option`,{children:`例假日`}),(0,F.jsx)(`option`,{children:`未記錄`})]})]})]})]}),(0,F.jsxs)(`div`,{className:`card form-card timetable-settings-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`每週課表`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`點格子即可編輯 · 即時自動儲存`})]}),(0,F.jsxs)(`div`,{className:`timetable-grid`,role:`grid`,"aria-label":`每週課表`,children:[(0,F.jsx)(`div`,{className:`timetable-grid-head`,children:`節次／時間`}),ge.map(e=>(0,F.jsxs)(`div`,{className:`timetable-grid-head`,children:[`星期`,e.label]},e.value)),Le.timetablePresets.map(e=>(0,F.jsxs)(`div`,{className:`timetable-grid-row`,children:[(0,F.jsxs)(`div`,{className:`timetable-period`,children:[(0,F.jsx)(`strong`,{children:e.label}),(0,F.jsxs)(`small`,{children:[e.start,`–`,e.end]})]}),ge.map(t=>{let n=ve(Le.timetableCells[_e(t.value,e.id)]);return(0,F.jsx)(`button`,{type:`button`,className:`timetable-cell`+(n?` has-content`:``),onClick:()=>Ot(t.value,e),"aria-label":`星期`+t.label+` `+e.label+` 課表`,title:n||`點擊填寫課表`,children:n?(0,F.jsx)(`span`,{children:n}):`＋`},t.value)})]},e.id))]}),(0,F.jsxs)(`div`,{className:`timetable-options`,children:[(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`課程名稱選項（逗號或換行分隔）`}),(0,F.jsx)(`textarea`,{rows:2,value:ze.courseNames,onChange:e=>Dt(`courseNames`,e.target.value),placeholder:`例如：英文、會計學`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`老師名字選項（逗號或換行分隔）`}),(0,F.jsx)(`textarea`,{rows:2,value:ze.teacherNames,onChange:e=>Dt(`teacherNames`,e.target.value),placeholder:`例如：王老師、陳老師`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`教室選項（逗號或換行分隔）`}),(0,F.jsx)(`textarea`,{rows:2,value:ze.rooms,onChange:e=>Dt(`rooms`,e.target.value),placeholder:`例如：A201、圖書館`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`工讀項目選項（逗號或換行分隔）`}),(0,F.jsx)(`textarea`,{rows:2,value:ze.workStudyOptions,onChange:e=>Dt(`workStudyOptions`,e.target.value),placeholder:`例如：秘書室工讀`})]})]})]}),(0,F.jsxs)(`div`,{className:`card form-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`留言板分類與標籤`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`變更即時自動儲存`})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`留言分類（逗號分隔）`}),(0,F.jsx)(`textarea`,{rows:3,value:Le.messageBoardCategories.join(`, `),onChange:e=>wt({messageBoardCategories:e.target.value.split(`,`).map(e=>e.trim()).filter(Boolean)})})]}),(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`預設異動標籤（逗號分隔）`}),(0,F.jsx)(`input`,{value:Le.defaultAuditTags.join(`, `),onChange:e=>wt({defaultAuditTags:e.target.value.split(`,`).map(e=>e.trim()).filter(Boolean)})})]})]}),(0,F.jsxs)(`div`,{className:`card backup-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsx)(`div`,{children:(0,F.jsx)(`h3`,{children:`備份與還原`})}),(0,F.jsx)(`span`,{className:`soft-badge`,children:`不會上傳雲端`})]}),(0,F.jsx)(`p`,{children:`匯出完整 JSON 備份，包含設定、工時、假日、特休、留言與課表。匯入前會先顯示資料筆數與日期範圍，再選擇合併或覆蓋。`}),(0,F.jsxs)(`div`,{className:`backup-actions`,children:[(0,F.jsx)(`button`,{type:`button`,className:`button button-secondary`,onClick:jt,children:`下載 JSON 備份`}),(0,F.jsx)(`button`,{type:`button`,className:`button button-outline`,onClick:()=>Xe.current?.click(),children:`匯入 JSON 備份`}),(0,F.jsx)(`input`,{ref:Xe,type:`file`,accept:`application/json,.json`,hidden:!0,onChange:Mt})]}),(0,F.jsxs)(`div`,{className:`danger-zone`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`strong`,{children:`清除全部資料`}),(0,F.jsx)(`small`,{children:`不可逆；建議先下載 JSON 備份。`})]}),(0,F.jsx)(`button`,{type:`button`,className:`button button-danger`,onClick:Ft,children:`清除全部`})]})]})]}),N?(0,F.jsx)(`div`,{className:`modal-backdrop`,role:`dialog`,"aria-modal":`true`,"aria-label":`編輯課表內容`,onMouseDown:e=>{e.target===e.currentTarget&&Ue(null)},children:(0,F.jsxs)(`div`,{className:`modal-card timetable-editor-modal`,onMouseDown:e=>e.stopPropagation(),children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:`section-kicker`,children:`課表`}),(0,F.jsxs)(`h3`,{children:[`星期`,ge.find(e=>e.value===N.day)?.label,`／`,N.preset.label]}),(0,F.jsxs)(`small`,{children:[N.preset.start,`–`,N.preset.end]})]}),(0,F.jsx)(`button`,{type:`button`,className:`icon-button`,onClick:()=>Ue(null),"aria-label":`關閉課表編輯`,children:`×`})]}),(0,F.jsxs)(`div`,{className:`choice-tabs`,children:[(0,F.jsx)(`button`,{type:`button`,className:N.mode===`course`?`is-active`:``,onClick:()=>Ue({...N,mode:`course`}),children:`課程`}),(0,F.jsx)(`button`,{type:`button`,className:N.mode===`work-study`?`is-active`:``,onClick:()=>Ue({...N,mode:`work-study`}),children:`工讀`}),(0,F.jsx)(`button`,{type:`button`,className:N.mode===`custom`?`is-active`:``,onClick:()=>Ue({...N,mode:`custom`}),children:`自訂`})]}),N.mode===`course`?(0,F.jsxs)(`div`,{className:`form-grid`,children:[(0,F.jsxs)(`div`,{className:`timetable-choice-field`,children:[(0,F.jsx)(`span`,{children:`課程名稱`}),(0,F.jsx)(`div`,{className:`timetable-option-buttons`,role:`group`,"aria-label":`課程名稱選項`,children:Le.timetableOptions.courseNames.map(e=>(0,F.jsx)(`button`,{type:`button`,className:N.course===e?`is-selected`:``,"aria-pressed":N.course===e,onClick:()=>kt({...N,course:e}),children:e},e))}),(0,F.jsx)(`input`,{"aria-label":`自行輸入課程名稱`,value:N.course,onChange:e=>kt({...N,course:e.target.value}),placeholder:`自行輸入單一課程名稱`})]}),(0,F.jsxs)(`div`,{className:`timetable-choice-field`,children:[(0,F.jsx)(`span`,{children:`老師名字`}),(0,F.jsx)(`div`,{className:`timetable-option-buttons`,role:`group`,"aria-label":`老師名字選項`,children:Le.timetableOptions.teacherNames.map(e=>(0,F.jsx)(`button`,{type:`button`,className:N.teacher===e?`is-selected`:``,"aria-pressed":N.teacher===e,onClick:()=>kt({...N,teacher:e}),children:e},e))}),(0,F.jsx)(`input`,{"aria-label":`自行輸入老師名字`,value:N.teacher,onChange:e=>kt({...N,teacher:e.target.value}),placeholder:`自行輸入單一老師名字`})]}),(0,F.jsxs)(`div`,{className:`timetable-choice-field`,children:[(0,F.jsx)(`span`,{children:`教室`}),(0,F.jsx)(`div`,{className:`timetable-option-buttons`,role:`group`,"aria-label":`教室選項`,children:Le.timetableOptions.rooms.map(e=>(0,F.jsx)(`button`,{type:`button`,className:N.room===e?`is-selected`:``,"aria-pressed":N.room===e,onClick:()=>kt({...N,room:e}),children:e},e))}),(0,F.jsx)(`input`,{"aria-label":`自行輸入教室`,value:N.room,onChange:e=>kt({...N,room:e.target.value}),placeholder:`自行輸入單一教室`})]})]}):N.mode===`work-study`?(0,F.jsx)(`div`,{className:`form-grid`,children:(0,F.jsxs)(`div`,{className:`timetable-choice-field`,children:[(0,F.jsx)(`span`,{children:`工讀項目`}),(0,F.jsx)(`div`,{className:`timetable-option-buttons`,role:`group`,"aria-label":`工讀項目選項`,children:Le.timetableOptions.workStudyOptions.map(e=>(0,F.jsx)(`button`,{type:`button`,className:N.workStudy===e?`is-selected`:``,"aria-pressed":N.workStudy===e,onClick:()=>kt({...N,workStudy:e}),children:e},e))}),(0,F.jsx)(`input`,{"aria-label":`自行輸入工讀項目`,value:N.workStudy,onChange:e=>kt({...N,workStudy:e.target.value}),placeholder:`自行輸入單一工讀項目`})]})}):(0,F.jsxs)(`label`,{children:[(0,F.jsx)(`span`,{children:`自訂內容`}),(0,F.jsx)(`textarea`,{rows:4,value:N.custom,onChange:e=>kt({...N,custom:e.target.value}),placeholder:`例如：社團活動支援`})]}),(0,F.jsx)(`p`,{className:`field-help`,role:`status`,children:`課表變更會立即自動儲存。`})]})}):null,We?(0,F.jsx)(`div`,{className:`modal-backdrop`,role:`dialog`,"aria-modal":`true`,children:(0,F.jsxs)(`div`,{className:`modal-card`,children:[(0,F.jsxs)(`div`,{className:`card-heading`,children:[(0,F.jsxs)(`div`,{children:[(0,F.jsx)(`span`,{className:`section-kicker`,children:`匯入預覽`}),(0,F.jsx)(`h3`,{children:`確認匯入備份`})]}),(0,F.jsx)(`button`,{type:`button`,className:`icon-button`,onClick:()=>Ge(null),"aria-label":`取消匯入`,children:`×`})]}),(0,F.jsx)(`p`,{children:We.summary}),(0,F.jsxs)(`div`,{className:`modal-actions`,children:[(0,F.jsx)(`button`,{type:`button`,className:`button button-secondary`,onClick:()=>Pt(We.data,!1),children:`合併資料`}),(0,F.jsx)(`button`,{type:`button`,className:`button button-danger`,onClick:()=>Pt(We.data,!0),children:`覆蓋目前資料`}),(0,F.jsx)(`button`,{type:`button`,className:`button button-ghost`,onClick:()=>Ge(null),children:`取消`})]})]})}):null]})})]}),(0,F.jsx)(`nav`,{className:`mobile-bottom-nav`,children:Rt.slice(0,5).map(e=>(0,F.jsxs)(`button`,{className:i===e.key?`is-active`:``,onClick:()=>lt(e.key),children:[(0,F.jsx)(`span`,{children:e.icon}),(0,F.jsx)(`small`,{children:e.key===`quick`?`新增`:e.label.replace(`統計儀表板`,`統計`).replace(`今日／快速記錄`,`今日`)})]},e.key))})]}):(0,F.jsxs)(`div`,{className:`loading-shell`,children:[(0,F.jsx)(`div`,{className:`loading-mark`,children:`工`}),(0,F.jsx)(`h1`,{children:`正在載入你的 2026 工時簿`}),(0,F.jsx)(`p`,{children:`讀取本機資料中……`})]})}var rn=document.getElementById(`root`);if(!rn)throw Error(`Static site root element #root was not found.`);(0,m.createRoot)(rn).render((0,F.jsx)(nn,{}))})();
+
+/* === 每月班表靜態整合模組 === */
+(function () {
+  "use strict";
+
+  const STORAGE_KEY = "work-hours-tracker-2026-v1";
+  const MONTHLY_PAGE_ID = "monthly-timetable-page";
+  const MONTHLY_NAV_CLASS = "monthly-timetable-nav";
+  const MONTHLY_VERSION = 6;
+  const PERIODS = [
+    { id: 1, label: "第 1 節", time: "08:10–09:00" },
+    { id: 2, label: "第 2 節", time: "09:10–10:00" },
+    { id: 3, label: "第 3 節", time: "10:10–11:00" },
+    { id: 4, label: "第 4 節", time: "11:10–12:00" },
+    { id: 5, label: "第 5 節", time: "12:50–13:40" },
+    { id: 6, label: "第 6 節", time: "13:50–14:40" },
+    { id: 7, label: "第 7 節", time: "14:50–15:40" },
+    { id: 8, label: "第 8 節", time: "15:50–16:40" },
+    { id: 9, label: "第 9 節", time: "16:50–17:40" }
+  ];
+  const WEEKDAY_SHORT = ["日", "一", "二", "三", "四", "五", "六"];
+  const WEEKDAY_LONG = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+  const MONTH_NAMES = [
+    "1 月", "2 月", "3 月", "4 月", "5 月", "6 月",
+    "7 月", "8 月", "9 月", "10 月", "11 月", "12 月"
+  ];
+
+  const originalStorageSetItem = Storage.prototype.setItem;
+  const originalStorageGetItem = Storage.prototype.getItem;
+  const originalStorageClear = Storage.prototype.clear;
+  let clearMonthlyOnNextWrite = false;
+  let monthlyOpen = false;
+  let currentMonth = "2026-08";
+  let selectedWeekKey = "";
+  let selectedWeekIndex = 0;
+  let unlockedMonthlyDates = new Set();
+  let unlockedMonthlyWeeks = new Set();
+  let modalState = null;
+  let pendingMonthlyImport = null;
+  let pendingMonthlyImportPromise = null;
+  let replayingJsonImportAction = false;
+  let monthlyExcelRewriteInProgress = false;
+  let monthlyWriteInProgress = false;
+
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function toArray(value) {
+    if (Array.isArray(value)) return value.flatMap(toArray);
+    if (value == null) return [];
+    return [String(value)];
+  }
+
+  function parseOptionList(value) {
+    const seen = new Set();
+    const result = [];
+    for (const raw of toArray(value).flatMap((item) => item.split(/[,，、\r\n]+/))) {
+      const item = raw.trim();
+      if (!item || seen.has(item)) continue;
+      seen.add(item);
+      result.push(item);
+    }
+    return result;
+  }
+
+  function cloneCell(cell) {
+    if (typeof cell === "string") {
+      const value = cell.trim();
+      return value ? { mode: "custom", value } : null;
+    }
+    if (!cell || typeof cell !== "object" || Array.isArray(cell)) return null;
+    if (cell.mode === "course") {
+      const course = String(cell.course || "").trim();
+      const teacher = String(cell.teacher || "").trim();
+      const room = String(cell.room || "").trim();
+      return course || teacher || room ? { mode: "course", course, teacher, room } : null;
+    }
+    if (cell.mode === "work-study") {
+      const value = String(cell.value || "").trim();
+      return value ? { mode: "work-study", value } : null;
+    }
+    if (cell.mode === "custom") {
+      const value = String(cell.value || "").trim();
+      return value ? { mode: "custom", value } : null;
+    }
+    return null;
+  }
+
+  function isPlainObject(value) {
+    return !!value && typeof value === "object" && !Array.isArray(value);
+  }
+
+  function copyJson(value) {
+    return value == null ? value : JSON.parse(JSON.stringify(value));
+  }
+
+  function normalizeMonthlyTimetables(source) {
+    if (!isPlainObject(source)) return {};
+    const normalized = {};
+    for (const [monthKey, rawMonth] of Object.entries(source)) {
+      if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(monthKey) || !isPlainObject(rawMonth)) continue;
+      const rawWeeks = isPlainObject(rawMonth.weeks) ? rawMonth.weeks : {};
+      const weeks = {};
+      for (const [weekKey, rawWeek] of Object.entries(rawWeeks)) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(weekKey) || !isPlainObject(rawWeek)) continue;
+        const rawCells = isPlainObject(rawWeek.cells) ? rawWeek.cells : {};
+        const cells = {};
+        for (const [cellKey, rawCell] of Object.entries(rawCells)) {
+          const cell = cloneCell(rawCell);
+          if (cell) cells[cellKey] = cell;
+        }
+        const rawOverrides = isPlainObject(rawWeek.overrides) ? rawWeek.overrides : {};
+        const overrides = {};
+        for (const [cellKey, rawOverride] of Object.entries(rawOverrides)) {
+          if (rawOverride === null || rawOverride === "") {
+            overrides[cellKey] = null;
+            continue;
+          }
+          const override = cloneCell(rawOverride);
+          if (override) overrides[cellKey] = override;
+        }
+        const unlockedDates = Array.isArray(rawWeek.unlockedDates)
+          ? Array.from(new Set(rawWeek.unlockedDates.filter((dateIso) => /^\d{4}-\d{2}-\d{2}$/.test(String(dateIso))).map(String)))
+          : [];
+        const rawLinkedSnapshots = isPlainObject(rawWeek.linkedSnapshots) ? rawWeek.linkedSnapshots : {};
+        const linkedSnapshots = {};
+        for (const [cellKey, rawSnapshot] of Object.entries(rawLinkedSnapshots)) {
+          if (rawSnapshot === null || rawSnapshot === "") {
+            linkedSnapshots[cellKey] = null;
+            continue;
+          }
+          const snapshot = cloneCell(rawSnapshot);
+          if (snapshot) linkedSnapshots[cellKey] = snapshot;
+        }
+        weeks[weekKey] = {
+          ...copyJson(rawWeek),
+          weekStart: typeof rawWeek.weekStart === "string" ? rawWeek.weekStart : weekKey,
+          cells,
+          overrides,
+          linkedSnapshots,
+          unlockedDates,
+          unlockedWeek: rawWeek.unlockedWeek === true,
+          inheritsTotalTimetable: rawWeek.inheritsTotalTimetable === true
+        };
+      }
+      normalized[monthKey] = {
+        ...copyJson(rawMonth),
+        version: Math.max(Number(rawMonth.version) || 0, MONTHLY_VERSION),
+        weeks
+      };
+    }
+    return normalized;
+  }
+
+  function readData() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return { appConfig: {}, monthlyTimetables: {} };
+      const data = JSON.parse(raw);
+      if (!data || typeof data !== "object") return { appConfig: {}, monthlyTimetables: {} };
+      if (!data.appConfig || typeof data.appConfig !== "object") data.appConfig = {};
+      data.monthlyTimetables = normalizeMonthlyTimetables(data.monthlyTimetables);
+      return data;
+    } catch (error) {
+      return { appConfig: {}, monthlyTimetables: {}, __error: error };
+    }
+  }
+
+  function writeData(data, options) {
+    const next = data && typeof data === "object" ? data : {};
+    if (!next.appConfig || typeof next.appConfig !== "object") next.appConfig = {};
+    next.monthlyTimetables = normalizeMonthlyTimetables(next.monthlyTimetables);
+    monthlyWriteInProgress = true;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    } finally {
+      monthlyWriteInProgress = false;
+    }
+    window.dispatchEvent(new CustomEvent("monthly-timetable-updated", {
+      detail: { render: !options || options.render !== false }
+    }));
+  }
+
+  function ensureMonthlyStore(data, monthKey) {
+    const targetMonth = monthKey || currentMonth;
+    if (!data.monthlyTimetables || typeof data.monthlyTimetables !== "object") {
+      data.monthlyTimetables = {};
+    }
+    if (!data.monthlyTimetables[targetMonth]) {
+      data.monthlyTimetables[targetMonth] = {
+        version: MONTHLY_VERSION,
+        weeks: {}
+      };
+    }
+    const month = data.monthlyTimetables[targetMonth];
+    month.version = Math.max(Number(month.version) || 0, MONTHLY_VERSION);
+    if (!month.weeks || typeof month.weeks !== "object") month.weeks = {};
+    return month;
+  }
+
+  function dateToIso(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return year + "-" + month + "-" + day;
+  }
+
+  function isoToDate(iso) {
+    const [year, month, day] = String(iso).split("-").map(Number);
+    return new Date(year, month - 1, day);
+  }
+
+  function monthKeyToParts(monthKey) {
+    const [year, month] = monthKey.split("-").map(Number);
+    return { year, month };
+  }
+
+  function formatMonthDay(iso) {
+    const date = isoToDate(iso);
+    return (date.getMonth() + 1) + "/" + date.getDate();
+  }
+
+  function todayIso() {
+    return dateToIso(new Date());
+  }
+
+  function isPastDate(dateIso) {
+    return dateIso < todayIso();
+  }
+
+  function isDateUnlocked(dateIso, weekKey, record) {
+    const persistedDates = record && Array.isArray(record.unlockedDates)
+      ? record.unlockedDates
+      : [];
+    return unlockedMonthlyDates.has(dateIso) ||
+      unlockedMonthlyWeeks.has(weekKey) ||
+      (record && record.unlockedWeek === true) ||
+      persistedDates.includes(dateIso);
+  }
+
+  function isWeekEnded(week) {
+    return !!week && week.dates.length > 0 && week.dates.every((dateInfo) => isPastDate(dateInfo.iso));
+  }
+
+  function resetMonthlyEditingLocks() {
+    unlockedMonthlyDates = new Set();
+    unlockedMonthlyWeeks = new Set();
+  }
+
+  function getCellLockInfo(data, week, dateInfo, periodId, record) {
+    const datePast = isPastDate(dateInfo.iso);
+    const linkedCell = datePast ? null : getTotalTemplate(data, isoToDate(dateInfo.iso), periodId);
+    const key = dateInfo.iso + ":" + periodId;
+    const hasHistoricalSnapshot = datePast && record && isPlainObject(record.linkedSnapshots) &&
+      Object.prototype.hasOwnProperty.call(record.linkedSnapshots, key);
+    const dateUnlocked = isDateUnlocked(dateInfo.iso, week.key, record);
+    const dateLocked = datePast && !dateUnlocked;
+    return {
+      linked: Boolean(linkedCell),
+      linkedSnapshot: hasHistoricalSnapshot && dateLocked,
+      dateLocked,
+      locked: Boolean(linkedCell) || dateLocked
+    };
+  }
+
+  function getSunday(date) {
+    const result = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const day = result.getDay();
+    result.setDate(result.getDate() - day);
+    return result;
+  }
+
+  function buildMonthWeeks(monthKey) {
+    const { year, month } = monthKeyToParts(monthKey);
+    const firstDate = new Date(year, month - 1, 1);
+    const lastDate = new Date(year, month, 0);
+    let weekStart = getSunday(firstDate);
+    const weeks = [];
+    while (weekStart <= lastDate || weeks.length === 0) {
+      const dates = [];
+      for (let offset = 0; offset < 7; offset += 1) {
+        const date = new Date(
+          weekStart.getFullYear(),
+          weekStart.getMonth(),
+          weekStart.getDate() + offset
+        );
+        if (date.getFullYear() === year && date.getMonth() === month - 1) {
+          dates.push({
+            iso: dateToIso(date),
+            day: date.getDay(),
+            weekday: WEEKDAY_SHORT[date.getDay()],
+            weekdayLong: WEEKDAY_LONG[date.getDay()]
+          });
+        }
+      }
+      if (dates.length > 0) {
+        weeks.push({
+          key: dateToIso(weekStart),
+          dates
+        });
+      }
+      weekStart = new Date(
+        weekStart.getFullYear(),
+        weekStart.getMonth(),
+        weekStart.getDate() + 7
+      );
+      if (weekStart > lastDate && weeks.length > 0) break;
+    }
+    return weeks;
+  }
+
+  function getOptions(data) {
+    const options = data.appConfig && data.appConfig.timetableOptions
+      ? data.appConfig.timetableOptions
+      : {};
+    return {
+      courseNames: parseOptionList(options.courseNames),
+      teacherNames: parseOptionList(options.teacherNames || options.teachers),
+      rooms: parseOptionList(options.rooms),
+      workStudyOptions: parseOptionList(options.workStudyOptions)
+    };
+  }
+
+  function getTotalTemplate(data, date, periodId) {
+    const cells = data.appConfig && data.appConfig.timetableCells
+      ? data.appConfig.timetableCells
+      : {};
+    const dayIndex = date.getDay();
+    return cloneCell(cells[dayIndex + ":preset-" + periodId] || cells[dayIndex + ":" + periodId]);
+  }
+
+  function isRedDayOffStatus(status) {
+    return ["休息日", "例假日", "國定假日", "補假", "颱風假", "特休", "請假"].includes(status);
+  }
+
+  function getDateAnnotation(data, dateIso) {
+    const holidays = Array.isArray(data.holidays) ? data.holidays : [];
+    const activeDayOffHolidays = holidays
+      .filter((holiday) => holiday && holiday.date === dateIso && holiday.enabled !== false && holiday.isDayOff)
+      .sort((left, right) => {
+        const priority = { makeupHoliday: 0, nationalHoliday: 1, customHoliday: 2, holidayPeriod: 3 };
+        return (priority[left.type] ?? 9) - (priority[right.type] ?? 9);
+      });
+    if (activeDayOffHolidays.length) {
+      const holiday = activeDayOffHolidays[0];
+      return {
+        isDayOff: true,
+        label: String(holiday.name || holiday.type || "國定假日").trim() || "國定假日"
+      };
+    }
+
+    const workRecords = Array.isArray(data.workRecords) ? data.workRecords : [];
+    const actualRecord = workRecords.find((record) =>
+      record && record.date === dateIso && record.recordType !== "planned"
+    );
+    if (actualRecord) {
+      if (isRedDayOffStatus(actualRecord.status)) {
+        return { isDayOff: true, label: actualRecord.status };
+      }
+      return { isDayOff: false, label: "" };
+    }
+
+    const leaveRecords = Array.isArray(data.leaveRecords) ? data.leaveRecords : [];
+    const leaveRecord = leaveRecords.find((record) => record && record.date === dateIso);
+    if (leaveRecord) {
+      const label = String(leaveRecord.leaveType || "請假").trim() || "請假";
+      return { isDayOff: true, label };
+    }
+
+    if (!actualRecord) {
+      const weekday = isoToDate(dateIso).getDay();
+      const config = data.appConfig || {};
+      const defaultStatus = weekday === 6
+        ? config.saturdayDefaultStatus
+        : weekday === 0
+          ? config.sundayDefaultStatus
+          : "";
+      if (isRedDayOffStatus(defaultStatus)) {
+        return { isDayOff: true, label: defaultStatus };
+      }
+    }
+
+    return { isDayOff: false, label: "" };
+  }
+
+  function findLegacyWeekEntry(month, week) {
+    if (!month || !isPlainObject(month.weeks)) return null;
+    return Object.entries(month.weeks).find(([legacyKey, rawWeek]) => {
+      const legacyStart = isoToDate(
+        rawWeek && typeof rawWeek.weekStart === "string" ? rawWeek.weekStart : legacyKey
+      );
+      legacyStart.setDate(legacyStart.getDate() - 1);
+      return dateToIso(legacyStart) === week.key;
+    }) || null;
+  }
+
+  function ensureWeekRecord(data, monthKey, week, options) {
+    const persist = !options || options.persist !== false;
+    const month = ensureMonthlyStore(data, monthKey);
+    if (!month.weeks[week.key]) {
+      const legacyEntry = findLegacyWeekEntry(month, week);
+      if (legacyEntry) {
+        const [legacyKey, legacyWeek] = legacyEntry;
+        month.weeks[week.key] = {
+          ...copyJson(legacyWeek),
+          weekStart: week.key
+        };
+        delete month.weeks[legacyKey];
+        if (persist) writeData(data);
+      }
+    }
+    if (month.weeks[week.key] &&
+        month.weeks[week.key].initializedFromTotalTimetable &&
+        !month.weeks[week.key].inheritsTotalTimetable &&
+        Object.keys(month.weeks[week.key].cells || {}).length === 0) {
+      month.weeks[week.key].inheritsTotalTimetable = true;
+      month.weeks[week.key].overrides = isPlainObject(month.weeks[week.key].overrides)
+        ? month.weeks[week.key].overrides
+        : {};
+      if (persist) writeData(data);
+    }
+    if (!month.weeks[week.key]) {
+      const cells = {};
+      month.weeks[week.key] = {
+        weekStart: week.key,
+        initializedFromTotalTimetable: true,
+        inheritsTotalTimetable: true,
+        cells,
+        overrides: {},
+        linkedSnapshots: {},
+        unlockedDates: [],
+        unlockedWeek: false
+      };
+      if (persist) writeData(data);
+    } else if (!month.weeks[week.key].cells || typeof month.weeks[week.key].cells !== "object") {
+      month.weeks[week.key].cells = {};
+      if (persist) writeData(data);
+    }
+    if (!isPlainObject(month.weeks[week.key].overrides)) {
+      month.weeks[week.key].overrides = {};
+      if (persist) writeData(data);
+    }
+    if (!isPlainObject(month.weeks[week.key].linkedSnapshots)) {
+      month.weeks[week.key].linkedSnapshots = {};
+      if (persist) writeData(data);
+    }
+    return month.weeks[week.key];
+  }
+
+  function resolveUnfrozenCell(record, dateIso, periodId, data) {
+    const totalCell = getTotalTemplate(data, isoToDate(dateIso), periodId);
+    if (totalCell) return totalCell;
+    const key = dateIso + ":" + periodId;
+    if (record && isPlainObject(record.overrides) && Object.prototype.hasOwnProperty.call(record.overrides, key)) {
+      return cloneCell(record.overrides[key]);
+    }
+    return cloneCell(record && record.cells && record.cells[key]);
+  }
+
+  function syncMonthlyLinkedSnapshots(data, monthKey, weeks) {
+    let changed = false;
+    for (const week of weeks) {
+      const record = ensureWeekRecord(data, monthKey, week, { persist: false });
+      if (!isPlainObject(record.linkedSnapshots)) {
+        record.linkedSnapshots = {};
+        changed = true;
+      }
+      for (const key of Object.keys(record.linkedSnapshots)) {
+        const dateIso = key.split(":")[0];
+        if (!isPastDate(dateIso)) {
+          const copiedCell = record.cells && record.cells[key];
+          const snapshotCell = record.linkedSnapshots[key];
+          if (isPlainObject(record.cells) &&
+              JSON.stringify(cloneCell(copiedCell)) === JSON.stringify(cloneCell(snapshotCell))) {
+            delete record.cells[key];
+          }
+          delete record.linkedSnapshots[key];
+          changed = true;
+        }
+      }
+      for (const dateInfo of week.dates) {
+        if (!isPastDate(dateInfo.iso)) continue;
+        for (const period of PERIODS) {
+          const key = dateInfo.iso + ":" + period.id;
+          if (Object.prototype.hasOwnProperty.call(record.linkedSnapshots, key)) continue;
+          record.linkedSnapshots[key] = cloneCell(resolveUnfrozenCell(record, dateInfo.iso, period.id, data));
+          changed = true;
+        }
+      }
+    }
+    if (changed) writeData(data, { render: false });
+  }
+
+  function getSelectedWeek() {
+    const weeks = buildMonthWeeks(currentMonth);
+    if (!weeks.length) return null;
+    const selected = weeks.find((week) => week.key === selectedWeekKey);
+    return selected || weeks[Math.min(selectedWeekIndex, weeks.length - 1)];
+  }
+
+  function getWeekRecord() {
+    const data = readData();
+    const week = getSelectedWeek();
+    if (!week) return { data, week: null, record: null };
+    const month = ensureMonthlyStore(data, currentMonth);
+    const record = ensureWeekRecord(data, currentMonth, week);
+    return { data, week, record };
+  }
+
+  function getCell(record, dateIso, periodId, data) {
+    const key = dateIso + ":" + periodId;
+    const datePast = isPastDate(dateIso);
+    const totalCell = data
+      ? getTotalTemplate(data, isoToDate(dateIso), periodId)
+      : null;
+    const isUnlockedPastDate = datePast && record &&
+      isDateUnlocked(dateIso, record.weekStart || "", record);
+    const hasSnapshot = record && isPlainObject(record.linkedSnapshots) &&
+      Object.prototype.hasOwnProperty.call(record.linkedSnapshots, key);
+    const hasOverride = record && isPlainObject(record.overrides) &&
+      Object.prototype.hasOwnProperty.call(record.overrides, key);
+
+    if (!datePast && totalCell) return totalCell;
+    if (datePast && isUnlockedPastDate && hasOverride) return cloneCell(record.overrides[key]);
+    if (datePast && hasSnapshot) return cloneCell(record.linkedSnapshots[key]);
+    if (hasOverride) return cloneCell(record.overrides[key]);
+    const legacyCell = cloneCell(record && record.cells && record.cells[key]);
+    if (legacyCell) return legacyCell;
+    if (datePast) return totalCell;
+    if (totalCell) return totalCell;
+    return null;
+  }
+
+  function formatCell(cell) {
+    if (!cell) return "＋";
+    if (cell.mode === "course") {
+      const first = cell.course || "未填課程";
+      const second = [cell.teacher, cell.room].filter(Boolean).join(" ");
+      return escapeHtml(first) + (second ? "<small>" + escapeHtml(second) + "</small>" : "");
+    }
+    if (cell.mode === "work-study") return escapeHtml(cell.value);
+    return escapeHtml(cell.value).replace(/\n/g, "<br>");
+  }
+
+  function cellLabel(cell) {
+    if (!cell) return "空白";
+    if (cell.mode === "course") return [cell.course, cell.teacher, cell.room].filter(Boolean).join(" ");
+    return cell.value || "空白";
+  }
+
+  function saveCell(dateIso, periodId, cell, options) {
+    const data = readData();
+    const weeks = buildMonthWeeks(currentMonth);
+    const week = weeks.find((item) => item.key === selectedWeekKey) || weeks[selectedWeekIndex];
+    if (!week) return;
+    const month = ensureMonthlyStore(data);
+    const record = ensureWeekRecord(data, currentMonth, week);
+    const datePast = isPastDate(dateIso);
+    if (!datePast && getTotalTemplate(data, isoToDate(dateIso), periodId)) return;
+    const key = dateIso + ":" + periodId;
+    if (datePast && !isDateUnlocked(dateIso, week.key, record)) return;
+    const normalized = cloneCell(cell);
+    record.inheritsTotalTimetable = true;
+    if (!isPlainObject(record.overrides)) record.overrides = {};
+    record.overrides[key] = normalized;
+    if (normalized) record.cells[key] = normalized;
+    else delete record.cells[key];
+    if (datePast) {
+      if (!isPlainObject(record.linkedSnapshots)) record.linkedSnapshots = {};
+      record.linkedSnapshots[key] = normalized;
+    }
+    writeData(data, options);
+    if (!options || options.render !== false) renderMonthlyPage();
+  }
+
+  function currentCellForModal() {
+    if (!modalState) return null;
+    const data = readData();
+    const month = data.monthlyTimetables && data.monthlyTimetables[modalState.month];
+    const weekRecord = month && month.weeks && month.weeks[modalState.weekKey];
+    return getCell(weekRecord, modalState.dateIso, modalState.periodId, data);
+  }
+
+  function optionsButtons(list, kind, selected) {
+    if (!list.length) {
+      return '<p class="monthly-empty-options">總設定目前沒有可用選項，請先到「設定與備份」建立。</p>';
+    }
+    return '<div class="monthly-option-buttons" role="group" aria-label="' +
+      escapeHtml(kind + "選項") + '">' +
+      list.map((item) => {
+        const isSelected = item === selected;
+        return '<button type="button" class="monthly-option-button' +
+          (isSelected ? " is-selected" : "") +
+          '" data-monthly-choice="' + escapeHtml(kind) +
+          '" data-monthly-value="' + escapeHtml(item) + '"' +
+          (isSelected ? ' aria-pressed="true"' : ' aria-pressed="false"') +
+          ">" + escapeHtml(item) + "</button>";
+      }).join("") + "</div>";
+  }
+
+  function modalCourseFields(cell, options) {
+    const course = cell && cell.mode === "course" ? cell : { mode: "course", course: "", teacher: "", room: "" };
+    return [
+      '<div class="monthly-choice-field">',
+      '<span>課程名稱</span>',
+      optionsButtons(options.courseNames, "課程名稱", course.course),
+      '<input type="text" data-monthly-input="course" aria-label="自行輸入課程名稱" placeholder="自行輸入單一課程名稱" value="' + escapeHtml(course.course) + '">',
+      "</div>",
+      '<div class="monthly-choice-field">',
+      '<span>老師名字</span>',
+      optionsButtons(options.teacherNames, "老師名字", course.teacher),
+      '<input type="text" data-monthly-input="teacher" aria-label="自行輸入老師名字" placeholder="自行輸入單一老師名字" value="' + escapeHtml(course.teacher) + '">',
+      "</div>",
+      '<div class="monthly-choice-field">',
+      '<span>教室</span>',
+      optionsButtons(options.rooms, "教室", course.room),
+      '<input type="text" data-monthly-input="room" aria-label="自行輸入教室" placeholder="自行輸入單一教室" value="' + escapeHtml(course.room) + '">',
+      "</div>"
+    ].join("");
+  }
+
+  function renderModal() {
+    if (!modalState) return "";
+    const data = readData();
+    const cell = currentCellForModal();
+    const mode = modalState.mode || (cell && cell.mode) || "course";
+    const options = getOptions(data);
+    const period = PERIODS.find((item) => item.id === modalState.periodId);
+    const date = isoToDate(modalState.dateIso);
+    let content = "";
+    if (mode === "course") {
+      content = modalCourseFields(cell, options);
+    } else if (mode === "work-study") {
+      const value = cell && cell.mode === "work-study" ? cell.value : "";
+      content = [
+        '<div class="monthly-choice-field">',
+        '<span>工讀項目</span>',
+        optionsButtons(options.workStudyOptions, "工讀項目", value),
+        '<input type="text" data-monthly-input="workStudy" aria-label="自行輸入工讀項目" placeholder="自行輸入單一工讀項目" value="' + escapeHtml(value) + '">',
+        "</div>"
+      ].join("");
+    } else {
+      const value = cell && cell.mode === "custom" ? cell.value : "";
+      content = [
+        '<div class="monthly-choice-field">',
+        '<span>自訂內容</span>',
+        '<textarea data-monthly-input="custom" aria-label="自訂內容" placeholder="例如：社團活動支援">' +
+          escapeHtml(value) + "</textarea>",
+        "</div>"
+      ].join("");
+    }
+    return [
+      '<div class="monthly-modal-backdrop" data-monthly-close="backdrop">',
+      '<div class="monthly-modal-card" role="dialog" aria-modal="true" aria-label="編輯每月班表內容">',
+      '<div class="monthly-modal-heading">',
+      '<div><p class="section-kicker">每月班表</p><h3>',
+      escapeHtml((date.getMonth() + 1) + "月" + date.getDate() + "日（" + WEEKDAY_SHORT[date.getDay()] + "）／" + period.label),
+      "</h3><small>" + escapeHtml(period.time) + "</small></div>",
+      '<button type="button" class="icon-button" data-monthly-close="button" aria-label="關閉每月班表編輯">×</button>',
+      "</div>",
+      '<div class="monthly-choice-tabs" role="tablist">',
+      '<button type="button" class="' + (mode === "course" ? "is-active" : "") + '" data-monthly-mode="course">課程</button>',
+      '<button type="button" class="' + (mode === "work-study" ? "is-active" : "") + '" data-monthly-mode="work-study">工讀</button>',
+      '<button type="button" class="' + (mode === "custom" ? "is-active" : "") + '" data-monthly-mode="custom">自訂</button>',
+      "</div>",
+      '<div class="monthly-modal-content">' + content + "</div>",
+      '<div class="monthly-modal-footer">',
+      '<span role="status">每月班表變更會立即自動儲存。</span>',
+      '<button type="button" class="button button-danger button-small" data-monthly-clear>清空此格</button>',
+      "</div>",
+      "</div></div>"
+    ].join("");
+  }
+
+  function renderWeekEditor() {
+    const week = getSelectedWeek();
+    if (!week) {
+      return '<div class="card monthly-empty-card"><strong>目前月份沒有可顯示的週次。</strong></div>';
+    }
+    const data = readData();
+    const record = ensureWeekRecord(data, currentMonth, week);
+    const weekEnded = isWeekEnded(week);
+    const weekUnlocked = unlockedMonthlyWeeks.has(week.key) || record.unlockedWeek === true;
+    const dateHeaders = week.dates.map((dateInfo) => {
+      const date = isoToDate(dateInfo.iso);
+      const annotation = getDateAnnotation(data, dateInfo.iso);
+      const dateUnlocked = isDateUnlocked(dateInfo.iso, week.key, record);
+      const datePast = isPastDate(dateInfo.iso);
+      const headerLabel = dateInfo.weekdayLong + (annotation.label ? "（" + annotation.label + "）" : "") +
+        (datePast ? (dateUnlocked ? "（可編輯）" : "（已結束，預設鎖定）") : "");
+      const dateEditButton = datePast && !weekEnded
+        ? '<button type="button" class="monthly-date-edit-button' + (dateUnlocked ? " is-unlocked" : "") +
+          '" data-monthly-edit-date="' + escapeHtml(dateInfo.iso) + '" aria-label="' +
+          escapeHtml(dateUnlocked ? dateInfo.iso + " 鎖定此日" : dateInfo.iso + " 編輯此日") + '">' +
+          (dateUnlocked ? "鎖定" : "編輯") + "</button>"
+        : (datePast ? '<small class="monthly-day-lock-note">' + (dateUnlocked ? "可編輯" : "已結束") + "</small>" : "");
+      return '<div class="monthly-grid-head' + (annotation.isDayOff ? " is-day-off" : "") + '" aria-label="' + escapeHtml(headerLabel) + '">' +
+        '<strong>' + escapeHtml((date.getMonth() + 1) + "/" + date.getDate()) + "</strong>" +
+        '<small>星期' + escapeHtml(dateInfo.weekday) + "</small>" +
+        (annotation.label ? '<small class="monthly-day-note">（' + escapeHtml(annotation.label) + "）</small>" : "") +
+        dateEditButton +
+        "</div>";
+    }).join("");
+    const rows = PERIODS.map((period) => {
+      const cells = week.dates.map((dateInfo) => {
+        const cell = getCell(record, dateInfo.iso, period.id, data);
+        const lockInfo = getCellLockInfo(data, week, dateInfo, period.id, record);
+        const lockLabel = lockInfo.linked ? "總設定" : lockInfo.linkedSnapshot ? "總設定快照" : "日期已結束";
+        const lockTitle = lockInfo.linked || lockInfo.linkedSnapshot
+          ? "總設定課表已設定，請到設定與備份修改"
+          : "日期已結束，按編輯後才可修改";
+        const cellClass = "monthly-grid-cell" + (cell ? " has-content" : "") +
+          (lockInfo.locked ? " is-locked" : "") + (lockInfo.linked || lockInfo.linkedSnapshot ? " is-linked" : "");
+        const lockMarkup = lockInfo.locked
+          ? '<small class="monthly-cell-lock">' + escapeHtml(lockLabel) + " · 鎖定</small>"
+          : "";
+        const ariaLabel = dateInfo.iso + " " + period.label + " " + cellLabel(cell) +
+          (lockInfo.locked ? "（" + lockLabel + "，已鎖定）" : "");
+        return '<button type="button" class="' + cellClass + '"' +
+          ' data-monthly-cell="' + escapeHtml(dateInfo.iso) + ":" + period.id + '"' +
+          ' aria-label="' + escapeHtml(ariaLabel) + '"' +
+          (lockInfo.locked ? ' disabled aria-disabled="true" title="' + escapeHtml(lockTitle) + '"' : "") + ">" +
+          formatCell(cell) + lockMarkup + "</button>";
+      }).join("");
+      return '<div class="monthly-grid-period"><strong>' + escapeHtml(period.label) +
+        '</strong><small>' + escapeHtml(period.time) + "</small></div>" + cells;
+    }).join("");
+    return [
+      '<section class="card monthly-editor-card">',
+      '<div class="card-heading"><div><p class="section-kicker">週次班表</p><h3>',
+      escapeHtml("第 " + (selectedWeekIndex + 1) + " 週"),
+      '</h3><p>' + escapeHtml(formatMonthDay(week.dates[0].iso) + "～" + formatMonthDay(week.dates[week.dates.length - 1].iso)) +
+      " · 總設定內容鎖定，空白格可補充 · 即時自動儲存</p></div>",
+      '<div class="monthly-week-edit-actions"><span class="soft-badge">獨立儲存</span>' +
+      (weekEnded
+        ? '<button type="button" class="button button-outline button-small monthly-week-edit-button" data-monthly-edit-week="' +
+          escapeHtml(week.key) + '" aria-label="' + escapeHtml(weekUnlocked ? "鎖定本週" : "編輯本週") + '">' +
+          (weekUnlocked ? "鎖定本週" : "編輯本週") + "</button>"
+        : "") +
+      "</div></div>",
+      '<div class="monthly-grid" role="grid" aria-label="每月班表" style="grid-template-columns:minmax(108px,1.08fr) repeat(' + week.dates.length + ',minmax(100px,1fr));">',
+      '<div class="monthly-grid-corner">節次／時間</div>' + dateHeaders + rows +
+      "</div>",
+      "</section>"
+    ].join("");
+  }
+
+  function renderMonthlyPage() {
+    const page = document.getElementById(MONTHLY_PAGE_ID);
+    if (!page) return;
+    const weeks = buildMonthWeeks(currentMonth);
+    const data = readData();
+    syncMonthlyLinkedSnapshots(data, currentMonth, weeks);
+    if (selectedWeekIndex >= weeks.length) selectedWeekIndex = Math.max(weeks.length - 1, 0);
+    if (!weeks.some((week) => week.key === selectedWeekKey)) {
+      selectedWeekKey = weeks[selectedWeekIndex] ? weeks[selectedWeekIndex].key : "";
+    }
+    const monthIndex = monthKeyToParts(currentMonth).month - 1;
+    const weekCards = weeks.map((week, index) => {
+      const isSelected = week.key === selectedWeekKey;
+      const weekEnded = isWeekEnded(week);
+      const start = formatMonthDay(week.dates[0].iso);
+      const end = formatMonthDay(week.dates[week.dates.length - 1].iso);
+      return '<button type="button" class="monthly-week-card' + (isSelected ? " is-selected" : "") + (weekEnded ? " is-ended" : "") +
+        '" data-monthly-week="' + escapeHtml(week.key) + '" data-monthly-week-index="' + index + '"' +
+        (isSelected ? ' aria-pressed="true"' : ' aria-pressed="false"') + '>' +
+        '<strong>第 ' + (index + 1) + " 週</strong><span>" + escapeHtml(start + "～" + end) +
+        '</span><small>' + escapeHtml(week.dates.length + " 個實際日期") + "</small>" +
+        (weekEnded ? '<small class="monthly-week-lock-note">已結束 · 預設鎖定</small>' : "") +
+        "</button>";
+    }).join("");
+    page.innerHTML = [
+      '<header class="topbar">',
+      '<div class="topbar-title"><div><p class="section-kicker">工作紀錄</p><h1>每月班表</h1></div></div>',
+      '<div class="topbar-actions"><span class="year-pill">2026／民國 115 年</span><span class="soft-badge">本機資料模式</span></div>',
+      "</header>",
+      '<div class="content-scroll"><section class="page-section monthly-page-section">',
+      '<div class="page-intro compact-page-intro monthly-page-intro"><div><h2>每月班表</h2><p class="monthly-link-note">總設定課表優先；每月只能補充空白格，已過日期預設鎖定，連動鎖定內容會獨立保存。</p></div>',
+      '<div class="monthly-summary-inline">民國 115 年 ' + (monthIndex + 1) + " 月 · " + weeks.length + " 個實際週次</div></div>",
+      '<div class="card monthly-month-card"><div class="monthly-section-heading"><h3>選擇月份</h3><label class="monthly-month-select-label" for="monthly-month-select"><span>月份</span><select id="monthly-month-select" aria-label="每月班表月份">' +
+      MONTH_NAMES.map((name, index) => '<option value="2026-' + String(index + 1).padStart(2, "0") + '"' +
+        (index === monthIndex ? " selected" : "") + ">" + escapeHtml("民國 115 年 " + name) + "</option>").join("") +
+      "</select></label></div></div>",
+      '<div class="monthly-week-section"><div class="monthly-section-heading"><h3>選擇週次</h3></div>',
+      '<div class="monthly-week-list">' + weekCards + "</div></div>",
+      '<div id="monthly-week-editor">' + renderWeekEditor() + "</div>",
+      modalState ? renderModal() : "",
+      "</section></div>"
+    ].join("");
+  }
+
+  function updateOriginalNavState(active) {
+    const sidebar = document.querySelector(".sidebar");
+    if (!sidebar) return;
+    sidebar.querySelectorAll(".nav-item").forEach((item) => item.classList.remove("is-active"));
+    if (active) active.classList.add("is-active");
+  }
+
+  function getOriginalMain() {
+    return Array.from(document.querySelectorAll(".main-content")).find((element) => element.id !== MONTHLY_PAGE_ID) || null;
+  }
+
+  function closeModal() {
+    modalState = null;
+    renderMonthlyPage();
+  }
+
+  function openCellModal(dateIso, periodId) {
+    const weekState = getWeekRecord();
+    if (!weekState.week) return;
+    if (!isPastDate(dateIso) && getTotalTemplate(weekState.data, isoToDate(dateIso), periodId)) return;
+    if (isPastDate(dateIso) && !isDateUnlocked(dateIso, weekState.week.key, weekState.record)) return;
+    const cell = getCell(weekState.record, dateIso, periodId, weekState.data);
+    modalState = {
+      month: currentMonth,
+      weekKey: selectedWeekKey,
+      dateIso,
+      periodId: Number(periodId),
+      mode: cell && cell.mode ? cell.mode : "course"
+    };
+    renderMonthlyPage();
+    const dialog = document.querySelector(".monthly-modal-card");
+    if (dialog) {
+      const focusable = dialog.querySelector("button, input, textarea");
+      if (focusable) focusable.focus();
+    }
+  }
+
+  function updateModalInput(input) {
+    if (!modalState) return;
+    const current = currentCellForModal() || { mode: "course", course: "", teacher: "", room: "" };
+    const value = input.value;
+    if (input.dataset.monthlyInput === "course" ||
+        input.dataset.monthlyInput === "teacher" ||
+        input.dataset.monthlyInput === "room") {
+      const next = {
+        mode: "course",
+        course: input.dataset.monthlyInput === "course" ? value.trim() : String(current.course || "").trim(),
+        teacher: input.dataset.monthlyInput === "teacher" ? value.trim() : String(current.teacher || "").trim(),
+        room: input.dataset.monthlyInput === "room" ? value.trim() : String(current.room || "").trim()
+      };
+      saveCell(modalState.dateIso, modalState.periodId, next, { render: false });
+      modalState = { ...modalState, mode: "course" };
+      return;
+    }
+    if (input.dataset.monthlyInput === "workStudy") {
+      saveCell(modalState.dateIso, modalState.periodId, { mode: "work-study", value: value.trim() }, { render: false });
+      modalState = { ...modalState, mode: "work-study" };
+      return;
+    }
+    if (input.dataset.monthlyInput === "custom") {
+      saveCell(modalState.dateIso, modalState.periodId, { mode: "custom", value }, { render: false });
+      modalState = { ...modalState, mode: "custom" };
+    }
+  }
+
+  function chooseModalValue(kind, value) {
+    if (!modalState) return;
+    if (kind === "課程名稱" || kind === "老師名字" || kind === "教室") {
+      const current = currentCellForModal() || { mode: "course", course: "", teacher: "", room: "" };
+      const next = {
+        mode: "course",
+        course: kind === "課程名稱" ? value : String(current.course || "").trim(),
+        teacher: kind === "老師名字" ? value : String(current.teacher || "").trim(),
+        room: kind === "教室" ? value : String(current.room || "").trim()
+      };
+      saveCell(modalState.dateIso, modalState.periodId, next);
+      modalState.mode = "course";
+    } else {
+      saveCell(modalState.dateIso, modalState.periodId, { mode: "work-study", value });
+      modalState.mode = "work-study";
+    }
+  }
+
+  function clearModalCell() {
+    if (!modalState) return;
+    saveCell(modalState.dateIso, modalState.periodId, null);
+    closeModal();
+  }
+
+  function openMonthlyPage(navButton) {
+    const page = document.getElementById(MONTHLY_PAGE_ID);
+    const originalMain = getOriginalMain();
+    if (!page || !originalMain) return;
+    monthlyOpen = true;
+    resetMonthlyEditingLocks();
+    originalMain.classList.add("monthly-original-hidden");
+    page.hidden = false;
+    const sidebar = document.querySelector(".sidebar");
+    if (sidebar) sidebar.classList.remove("is-open");
+    updateOriginalNavState(navButton || document.querySelector("." + MONTHLY_NAV_CLASS));
+    const stored = readData();
+    const preferredMonth = stored.__monthlyUi && stored.__monthlyUi.month;
+    if (preferredMonth && /^2026-(0[1-9]|1[0-2])$/.test(preferredMonth)) {
+      currentMonth = preferredMonth;
+    }
+    renderMonthlyPage();
+  }
+
+  function closeMonthlyPage() {
+    const page = document.getElementById(MONTHLY_PAGE_ID);
+    const originalMain = getOriginalMain();
+    if (page) page.hidden = true;
+    if (originalMain) originalMain.classList.remove("monthly-original-hidden");
+    monthlyOpen = false;
+    modalState = null;
+    resetMonthlyEditingLocks();
+    const sidebar = document.querySelector(".sidebar");
+    if (sidebar) sidebar.classList.remove("is-open");
+  }
+
+  function createMonthlyNav() {
+    const sidebar = document.querySelector(".sidebar");
+    if (!sidebar) return null;
+    const existing = sidebar.querySelector("." + MONTHLY_NAV_CLASS);
+    if (existing) return existing;
+    const dailyButton = Array.from(sidebar.querySelectorAll(".nav-item")).find((button) =>
+      (button.textContent || "").includes("每日紀錄")
+    );
+    if (!dailyButton) return null;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "nav-item " + MONTHLY_NAV_CLASS;
+    button.setAttribute("aria-label", "每月班表");
+    button.innerHTML = '<span class="nav-icon">▤</span><span>每月班表</span>';
+    dailyButton.insertAdjacentElement("afterend", button);
+    return button;
+  }
+
+  function createMonthlyPage() {
+    if (document.getElementById(MONTHLY_PAGE_ID)) return document.getElementById(MONTHLY_PAGE_ID);
+    const appShell = document.querySelector(".app-shell");
+    if (!appShell) return null;
+    const page = document.createElement("main");
+    page.id = MONTHLY_PAGE_ID;
+    page.className = "main-content monthly-page-main";
+    page.hidden = true;
+    appShell.appendChild(page);
+    return page;
+  }
+
+  function saveUiMonth() {
+    const data = readData();
+    data.__monthlyUi = { month: currentMonth };
+    writeData(data);
+  }
+
+  function toggleMonthlyDateUnlock(dateIso) {
+    const data = readData();
+    const weeks = buildMonthWeeks(currentMonth);
+    const week = weeks.find((item) => item.dates.some((dateInfo) => dateInfo.iso === dateIso));
+    if (!week) return;
+    const record = ensureWeekRecord(data, currentMonth, week);
+    const unlockedDates = new Set(Array.isArray(record.unlockedDates) ? record.unlockedDates : []);
+    if (unlockedDates.has(dateIso)) {
+      unlockedDates.delete(dateIso);
+      unlockedMonthlyDates.delete(dateIso);
+    } else {
+      unlockedDates.add(dateIso);
+      unlockedMonthlyDates.add(dateIso);
+    }
+    record.unlockedDates = Array.from(unlockedDates).sort();
+    writeData(data, { render: false });
+    renderMonthlyPage();
+  }
+
+  function toggleMonthlyWeekUnlock(weekKey) {
+    const data = readData();
+    const week = buildMonthWeeks(currentMonth).find((item) => item.key === weekKey);
+    if (!week) return;
+    const record = ensureWeekRecord(data, currentMonth, week);
+    record.unlockedWeek = record.unlockedWeek !== true;
+    if (record.unlockedWeek) unlockedMonthlyWeeks.add(weekKey);
+    else unlockedMonthlyWeeks.delete(weekKey);
+    writeData(data, { render: false });
+    renderMonthlyPage();
+  }
+
+  function handleMonthlyClick(event) {
+    const target = event.target.closest ? event.target.closest("[data-monthly-cell],[data-monthly-week],[data-monthly-edit-date],[data-monthly-edit-week],[data-monthly-mode],[data-monthly-choice],[data-monthly-close],[data-monthly-clear]") : null;
+    if (!target) return;
+    if (target.dataset.monthlyClose) {
+      if (target.dataset.monthlyClose === "backdrop" && event.target !== target) return;
+      event.preventDefault();
+      closeModal();
+      return;
+    }
+    if (target.dataset.monthlyEditDate != null) {
+      event.preventDefault();
+      toggleMonthlyDateUnlock(target.dataset.monthlyEditDate);
+      return;
+    }
+    if (target.dataset.monthlyEditWeek != null) {
+      event.preventDefault();
+      toggleMonthlyWeekUnlock(target.dataset.monthlyEditWeek);
+      return;
+    }
+    if (target.dataset.monthlyWeek != null) {
+      event.preventDefault();
+      selectedWeekKey = target.dataset.monthlyWeek;
+      selectedWeekIndex = Number(target.dataset.monthlyWeekIndex || 0);
+      renderMonthlyPage();
+      return;
+    }
+    if (target.dataset.monthlyCell) {
+      event.preventDefault();
+      const [dateIso, periodId] = target.dataset.monthlyCell.split(":");
+      openCellModal(dateIso, periodId);
+      return;
+    }
+    if (target.dataset.monthlyMode) {
+      event.preventDefault();
+      if (modalState) {
+        modalState.mode = target.dataset.monthlyMode;
+        renderMonthlyPage();
+      }
+      return;
+    }
+    if (target.dataset.monthlyChoice) {
+      event.preventDefault();
+      chooseModalValue(target.dataset.monthlyChoice, target.dataset.monthlyValue || "");
+      renderMonthlyPage();
+      return;
+    }
+    if (target.dataset.monthlyClear != null) {
+      event.preventDefault();
+      clearModalCell();
+    }
+  }
+
+  function handleMonthlyInput(event) {
+    if (event.target && event.target.matches("[data-monthly-input]")) {
+      updateModalInput(event.target);
+    }
+  }
+
+  function handleGlobalClick(event) {
+    const monthlyNav = event.target.closest ? event.target.closest("." + MONTHLY_NAV_CLASS) : null;
+    if (monthlyNav) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      openMonthlyPage(monthlyNav);
+      return;
+    }
+    if (monthlyOpen) {
+      const originalNav = event.target.closest ? event.target.closest(".sidebar .nav-item, .mobile-bottom-nav button") : null;
+      if (originalNav && !originalNav.classList.contains(MONTHLY_NAV_CLASS)) {
+        closeMonthlyPage();
+        if (originalNav.closest && originalNav.closest(".sidebar")) {
+          updateOriginalNavState(originalNav);
+        }
+      }
+    }
+    const jsonButton = event.target.closest ? event.target.closest("button") : null;
+    if (jsonButton && (jsonButton.textContent || "").includes("下載 JSON 備份")) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      downloadCompleteBackup();
+      return;
+    }
+    if (jsonButton && (jsonButton.textContent || "").trim() === "清除全部") {
+      clearMonthlyOnNextWrite = true;
+      window.setTimeout(() => {
+        clearMonthlyOnNextWrite = false;
+      }, 10000);
+    }
+  }
+
+  function handleGlobalChange(event) {
+    if (event.target && event.target.id === "monthly-month-select") {
+      currentMonth = event.target.value;
+      selectedWeekKey = "";
+      selectedWeekIndex = 0;
+      resetMonthlyEditingLocks();
+      saveUiMonth();
+      renderMonthlyPage();
+    }
+  }
+
+  function downloadCompleteBackup() {
+    const data = readData();
+    const json = JSON.stringify(data, null, 2);
+    const blob = new Blob([json], { type: "application/json;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "工時紀錄備份-2026.json";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function mergeMonthlyTimetables(current, incoming) {
+    const merged = normalizeMonthlyTimetables(current);
+    const imported = normalizeMonthlyTimetables(incoming);
+    for (const [monthKey, importedMonth] of Object.entries(imported)) {
+      const targetMonth = merged[monthKey] || { version: MONTHLY_VERSION, weeks: {} };
+      targetMonth.version = Number(importedMonth.version) || targetMonth.version || MONTHLY_VERSION;
+      targetMonth.weeks = isPlainObject(targetMonth.weeks) ? targetMonth.weeks : {};
+      for (const [weekKey, importedWeek] of Object.entries(importedMonth.weeks || {})) {
+        const existingWeek = targetMonth.weeks[weekKey] || {};
+        targetMonth.weeks[weekKey] = {
+          ...copyJson(existingWeek),
+          ...copyJson(importedWeek),
+          weekStart: importedWeek.weekStart || existingWeek.weekStart || weekKey,
+          cells: {
+            ...(isPlainObject(existingWeek.cells) ? copyJson(existingWeek.cells) : {}),
+            ...(isPlainObject(importedWeek.cells) ? copyJson(importedWeek.cells) : {})
+          },
+          overrides: {
+            ...(isPlainObject(existingWeek.overrides) ? copyJson(existingWeek.overrides) : {}),
+            ...(isPlainObject(importedWeek.overrides) ? copyJson(importedWeek.overrides) : {})
+          },
+          linkedSnapshots: {
+            ...(isPlainObject(existingWeek.linkedSnapshots) ? copyJson(existingWeek.linkedSnapshots) : {}),
+            ...(isPlainObject(importedWeek.linkedSnapshots) ? copyJson(importedWeek.linkedSnapshots) : {})
+          }
+        };
+      }
+      merged[monthKey] = targetMonth;
+    }
+    return normalizeMonthlyTimetables(merged);
+  }
+
+  function captureJsonImportFile(event) {
+    const input = event.target;
+    if (!input || input.tagName !== "INPUT" || input.type !== "file" ||
+      !String(input.accept || "").includes("json")) return;
+    const file = input.files && input.files[0];
+    if (!file) {
+      pendingMonthlyImport = null;
+      pendingMonthlyImportPromise = null;
+      return;
+    }
+    pendingMonthlyImport = null;
+    pendingMonthlyImportPromise = file.text().then((text) => {
+      const parsed = JSON.parse(text);
+      pendingMonthlyImport = isPlainObject(parsed) && Object.prototype.hasOwnProperty.call(parsed, "monthlyTimetables")
+        ? normalizeMonthlyTimetables(parsed.monthlyTimetables)
+        : null;
+      return pendingMonthlyImport;
+    }).catch(() => {
+      pendingMonthlyImport = null;
+      return null;
+    });
+  }
+
+  function getJsonImportAction(target) {
+    const button = target && target.closest ? target.closest("button") : null;
+    if (!button) return null;
+    const text = (button.textContent || "").trim();
+    if (text !== "合併資料" && text !== "覆蓋目前資料") return null;
+    const modal = button.closest(".modal-card");
+    if (!modal || !(modal.textContent || "").includes("確認匯入備份")) return null;
+    return { button, overwrite: text === "覆蓋目前資料" };
+  }
+
+  function applyImportedMonthlyTimetables(importedMonthly, overwrite) {
+    if (importedMonthly === null) return;
+    const data = readData();
+    data.monthlyTimetables = overwrite
+      ? normalizeMonthlyTimetables(importedMonthly)
+      : mergeMonthlyTimetables(data.monthlyTimetables, importedMonthly);
+    writeData(data);
+  }
+
+  function handleJsonImportAction(event) {
+    const action = getJsonImportAction(event.target);
+    if (!action) return;
+    if (replayingJsonImportAction) {
+      const imported = copyJson(pendingMonthlyImport);
+      window.setTimeout(() => {
+        window.requestAnimationFrame(() => {
+          applyImportedMonthlyTimetables(imported, action.overwrite);
+        });
+      }, 0);
+      return;
+    }
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const ready = pendingMonthlyImportPromise || Promise.resolve(pendingMonthlyImport);
+    Promise.resolve(ready).then(() => {
+      if (!document.documentElement.contains(action.button)) return;
+      replayingJsonImportAction = true;
+      action.button.click();
+      replayingJsonImportAction = false;
+    });
+  }
+
+  function setReactControlledValue(field, value) {
+    const prototype = field && field.tagName === "TEXTAREA"
+      ? HTMLTextAreaElement.prototype
+      : HTMLInputElement.prototype;
+    const descriptor = Object.getOwnPropertyDescriptor(prototype, "value");
+    if (!descriptor || typeof descriptor.set !== "function") return;
+    descriptor.set.call(field, value);
+    field.dispatchEvent(new Event("input", { bubbles: true }));
+  }
+
+  function enhanceLegacyTimetableModal(modal) {
+    if (!modal || !modal.classList.contains("timetable-editor-modal")) return;
+    modal.classList.add("legacy-timetable-modern");
+    const backdrop = modal.closest(".modal-backdrop");
+    if (backdrop) backdrop.classList.add("legacy-timetable-backdrop");
+
+    modal.querySelectorAll(".timetable-choice-field").forEach((field) => {
+      const options = field.querySelector(".timetable-option-buttons");
+      if (!options) return;
+      const emptyHint = field.querySelector(".legacy-empty-options");
+      if (options.querySelector("button")) {
+        if (emptyHint) emptyHint.remove();
+        return;
+      }
+      if (!emptyHint) {
+        const hint = document.createElement("p");
+        hint.className = "legacy-empty-options";
+        hint.textContent = "總設定目前沒有可用選項，請先在下方輸入或到「設定與備份」建立。";
+        options.insertAdjacentElement("afterend", hint);
+      }
+    });
+
+    if (!modal.querySelector(".legacy-timetable-modal-footer")) {
+      const footer = document.createElement("div");
+      footer.className = "legacy-timetable-modal-footer";
+      footer.innerHTML = '<span role="status">課表變更會立即自動儲存。</span><button type="button" class="button button-danger button-small" data-legacy-timetable-clear>清空此格</button>';
+      modal.appendChild(footer);
+    }
+  }
+
+  function enhanceLegacyTimetableModals() {
+    document.querySelectorAll(".timetable-editor-modal").forEach(enhanceLegacyTimetableModal);
+  }
+
+  async function clearLegacyTimetableCell() {
+    const modal = document.querySelector(".timetable-editor-modal.legacy-timetable-modern");
+    if (!modal) return;
+    const activeTab = modal.querySelector(".choice-tabs button.is-active");
+    const mode = (activeTab && activeTab.textContent || "").trim();
+    const labels = mode === "課程"
+      ? ["自行輸入課程名稱", "自行輸入老師名字", "自行輸入教室"]
+      : mode === "工讀"
+        ? ["自行輸入工讀項目"]
+        : ["自訂內容"];
+    for (const label of labels) {
+      const field = Array.from(modal.querySelectorAll("input, textarea"))
+        .find((item) => item.getAttribute("aria-label") === label);
+      if (!field || field.value === "") continue;
+      setReactControlledValue(field, "");
+      await new Promise((resolve) => window.setTimeout(resolve, 0));
+    }
+    window.setTimeout(enhanceLegacyTimetableModals, 0);
+  }
+
+  function handleLegacyTimetableClick(event) {
+    const clearButton = event.target && event.target.closest
+      ? event.target.closest("[data-legacy-timetable-clear]")
+      : null;
+    if (!clearButton) return;
+    event.preventDefault();
+    clearLegacyTimetableCell();
+  }
+
+  function getMonthlyWeekCellsForExport(data, monthKey, week) {
+    const month = normalizeMonthlyTimetables(data.monthlyTimetables)[monthKey];
+    const legacyEntry = month && !month.weeks[week.key] ? findLegacyWeekEntry(month, week) : null;
+    const storedWeek = month && month.weeks && (month.weeks[week.key] || (legacyEntry && legacyEntry[1]));
+    const cells = {};
+    for (const dateInfo of week.dates) {
+      for (const period of PERIODS) {
+        const cellKey = dateInfo.iso + ":" + period.id;
+        const cell = storedWeek
+          ? getCell(storedWeek, dateInfo.iso, period.id, data)
+          : getTotalTemplate(data, isoToDate(dateInfo.iso), period.id);
+        if (cell) cells[cellKey] = cell;
+      }
+    }
+    return cells;
+  }
+
+  function cellTextForExcel(cell) {
+    if (!cell) return "";
+    if (cell.mode === "course") {
+      return [cell.course, cell.teacher, cell.room].filter(Boolean).join("\n");
+    }
+    return String(cell.value || "");
+  }
+
+  function excelColumnName(columnNumber) {
+    let number = columnNumber;
+    let name = "";
+    while (number > 0) {
+      const remainder = (number - 1) % 26;
+      name = String.fromCharCode(65 + remainder) + name;
+      number = Math.floor((number - 1) / 26);
+    }
+    return name;
+  }
+
+  function escapeXml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&apos;");
+  }
+
+  function inlineStringCell(reference, value, style) {
+    const styleAttribute = style == null ? "" : ' s="' + style + '"';
+    return '<c r="' + reference + '"' + styleAttribute + ' t="inlineStr"><is><t xml:space="preserve">' +
+      escapeXml(value) + "</t></is></c>";
+  }
+
+  function monthlyDayHeaderForExcel(data, dateInfo) {
+    const annotation = getDateAnnotation(data, dateInfo.iso);
+    const date = isoToDate(dateInfo.iso);
+    const label = (date.getMonth() + 1) + "/" + date.getDate() + "\n星期" + dateInfo.weekday +
+      (annotation.label ? "\n（" + annotation.label + "）" : "");
+    return { label, style: annotation.isDayOff ? 21 : 8 };
+  }
+
+  function worksheetRow(rowNumber, cells, height) {
+    return '<row r="' + rowNumber + '"' + (height ? ' ht="' + height + '" customHeight="1"' : "") + ">" +
+      cells.join("") + "</row>";
+  }
+
+  function buildMonthlyTimetableWorksheetXml(data, monthNumber) {
+    const monthKey = "2026-" + String(monthNumber).padStart(2, "0");
+    const weeks = buildMonthWeeks(monthKey);
+    const rows = [];
+    const merges = ["A1:H1"];
+    rows.push(worksheetRow(1, [inlineStringCell("A1", monthNumber + "月份課表", 8)], 26));
+    let row = 3;
+    weeks.forEach((week, weekIndex) => {
+      const range = formatMonthDay(week.dates[0].iso) + "～" + formatMonthDay(week.dates[week.dates.length - 1].iso);
+      rows.push(worksheetRow(row, [inlineStringCell("A" + row, "第 " + (weekIndex + 1) + " 週｜" + range, 8)], 24));
+      merges.push("A" + row + ":H" + row);
+      row += 1;
+
+      const headerCells = [inlineStringCell("A" + row, "節次／時間", 8)];
+      week.dates.forEach((dateInfo, dateIndex) => {
+        const header = monthlyDayHeaderForExcel(data, dateInfo);
+        headerCells.push(inlineStringCell(excelColumnName(dateIndex + 2) + row, header.label, header.style));
+      });
+      rows.push(worksheetRow(row, headerCells, 46));
+      row += 1;
+
+      const weekCells = getMonthlyWeekCellsForExport(data, monthKey, week);
+      PERIODS.forEach((period) => {
+        const periodCells = [inlineStringCell("A" + row, period.label + "\n" + period.time, 14)];
+        week.dates.forEach((dateInfo, dateIndex) => {
+          const cell = cloneCell(weekCells[dateInfo.iso + ":" + period.id]);
+          periodCells.push(inlineStringCell(excelColumnName(dateIndex + 2) + row, cellTextForExcel(cell), 13));
+        });
+        rows.push(worksheetRow(row, periodCells, 42));
+        row += 1;
+      });
+      row += 1;
+    });
+
+    return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">' +
+      '<sheetViews><sheetView workbookViewId="0"><pane ySplit="4" topLeftCell="A5" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>' +
+      '<sheetFormatPr defaultRowHeight="18"/>' +
+      '<cols><col min="1" max="1" width="20" customWidth="1"/><col min="2" max="8" width="25" customWidth="1"/></cols>' +
+      "<sheetData>" + rows.join("") + "</sheetData>" +
+      '<mergeCells count="' + merges.length + '">' + merges.map((merge) => '<mergeCell ref="' + merge + '"/>').join("") + "</mergeCells>" +
+      '<pageMargins left="0.3" right="0.3" top="0.5" bottom="0.5" header="0.2" footer="0.2"/>' +
+      '<pageSetup orientation="landscape" paperSize="9" fitToWidth="1" fitToHeight="0"/>' +
+      "</worksheet>";
+  }
+
+  function readU16(view, offset) {
+    return view.getUint16(offset, true);
+  }
+
+  function readU32(view, offset) {
+    return view.getUint32(offset, true);
+  }
+
+  function u16(value) {
+    return new Uint8Array([value & 255, (value >>> 8) & 255]);
+  }
+
+  function u32(value) {
+    return new Uint8Array([
+      value & 255,
+      (value >>> 8) & 255,
+      (value >>> 16) & 255,
+      (value >>> 24) & 255
+    ]);
+  }
+
+  function concatBytes(parts) {
+    const length = parts.reduce((total, part) => total + part.length, 0);
+    const result = new Uint8Array(length);
+    let offset = 0;
+    parts.forEach((part) => {
+      result.set(part, offset);
+      offset += part.length;
+    });
+    return result;
+  }
+
+  let crcTable = null;
+
+  function getCrcTable() {
+    if (crcTable) return crcTable;
+    crcTable = new Uint32Array(256);
+    for (let index = 0; index < 256; index += 1) {
+      let value = index;
+      for (let bit = 0; bit < 8; bit += 1) {
+        value = value & 1 ? (value >>> 1) ^ 0xedb88320 : value >>> 1;
+      }
+      crcTable[index] = value >>> 0;
+    }
+    return crcTable;
+  }
+
+  function crc32(bytes) {
+    const table = getCrcTable();
+    let value = 0xffffffff;
+    for (let index = 0; index < bytes.length; index += 1) {
+      value = table[(value ^ bytes[index]) & 255] ^ (value >>> 8);
+    }
+    return (value ^ 0xffffffff) >>> 0;
+  }
+
+  async function readStoredZip(blob) {
+    const bytes = new Uint8Array(await blob.arrayBuffer());
+    const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+    const decoder = new TextDecoder("utf-8");
+    const entries = [];
+    let offset = 0;
+    while (offset + 30 <= bytes.length && readU32(view, offset) === 0x04034b50) {
+      const flags = readU16(view, offset + 6);
+      const method = readU16(view, offset + 8);
+      const compressedSize = readU32(view, offset + 18);
+      const nameLength = readU16(view, offset + 26);
+      const extraLength = readU16(view, offset + 28);
+      if (method !== 0 || (flags & 8)) {
+        throw new Error("月份 Excel 不是可安全改寫的未壓縮格式。");
+      }
+      const nameStart = offset + 30;
+      const contentStart = nameStart + nameLength + extraLength;
+      const contentEnd = contentStart + compressedSize;
+      if (contentEnd > bytes.length) throw new Error("月份 Excel 壓縮檔內容不完整。");
+      entries.push({
+        name: decoder.decode(bytes.slice(nameStart, nameStart + nameLength)),
+        content: bytes.slice(contentStart, contentEnd)
+      });
+      offset = contentEnd;
+    }
+    if (!entries.length) throw new Error("找不到月份 Excel 的工作表資料。");
+    return entries;
+  }
+
+  function buildStoredZip(entries) {
+    const encoder = new TextEncoder();
+    const localParts = [];
+    const centralParts = [];
+    let offset = 0;
+    entries.forEach((entry) => {
+      const name = encoder.encode(entry.name);
+      const content = entry.content instanceof Uint8Array ? entry.content : new Uint8Array(entry.content);
+      const checksum = crc32(content);
+      const local = concatBytes([
+        u32(0x04034b50), u16(20), u16(0), u16(0), u16(0), u16(0),
+        u32(checksum), u32(content.length), u32(content.length), u16(name.length), u16(0), name, content
+      ]);
+      localParts.push(local);
+      centralParts.push(concatBytes([
+        u32(0x02014b50), u16(20), u16(20), u16(0), u16(0), u16(0), u16(0),
+        u32(checksum), u32(content.length), u32(content.length), u16(name.length), u16(0), u16(0),
+        u16(0), u16(0), u32(0), u32(offset), name
+      ]));
+      offset += local.length;
+    });
+    const central = concatBytes(centralParts);
+    return concatBytes([
+      ...localParts,
+      central,
+      u32(0x06054b50), u16(0), u16(0), u16(entries.length), u16(entries.length),
+      u32(central.length), u32(offset), u16(0)
+    ]);
+  }
+
+  async function rewriteMonthlyExcelBlob(sourceBlob, monthNumber) {
+    const entries = await readStoredZip(sourceBlob);
+    const sheetIndex = entries.findIndex((entry) => entry.name === "xl/worksheets/sheet6.xml");
+    if (sheetIndex < 0) throw new Error("月份 Excel 找不到第六張「課表」工作表。");
+    const data = readData();
+    entries[sheetIndex] = {
+      ...entries[sheetIndex],
+      content: new TextEncoder().encode(buildMonthlyTimetableWorksheetXml(data, monthNumber))
+    };
+    return new Blob([buildStoredZip(entries)], {
+      type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    });
+  }
+
+  function parseMonthlyExcelMonth(filename) {
+    const match = /^民國115年(1[0-2]|[1-9])月份時數表\.xlsx$/.exec(String(filename || ""));
+    return match ? Number(match[1]) : null;
+  }
+
+  async function rewriteMonthlyExcelDownload(anchor, nativeClick, monthNumber) {
+    const sourceUrl = anchor.href;
+    const filename = anchor.download;
+    try {
+      const response = await fetch(sourceUrl);
+      if (!response.ok) throw new Error("無法讀取原始月份 Excel。");
+      const rewritten = await rewriteMonthlyExcelBlob(await response.blob(), monthNumber);
+      const url = URL.createObjectURL(rewritten);
+      const download = document.createElement("a");
+      download.href = url;
+      download.download = filename;
+      document.body.appendChild(download);
+      monthlyExcelRewriteInProgress = true;
+      nativeClick.call(download);
+      monthlyExcelRewriteInProgress = false;
+      download.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch (error) {
+      console.error("月份班表 Excel 改寫失敗，已改用原始匯出：", error);
+      if (!document.documentElement.contains(anchor)) document.body.appendChild(anchor);
+      monthlyExcelRewriteInProgress = true;
+      nativeClick.call(anchor);
+      monthlyExcelRewriteInProgress = false;
+      anchor.remove();
+    }
+  }
+
+  function patchMonthlyExcelExport() {
+    if (!window.HTMLAnchorElement || HTMLAnchorElement.prototype.__monthlyTimetableExcelPatched) return;
+    const nativeClick = HTMLAnchorElement.prototype.click;
+    HTMLAnchorElement.prototype.click = function () {
+      const monthNumber = parseMonthlyExcelMonth(this.download);
+      const isBlobDownload = typeof this.href === "string" && this.href.startsWith("blob:");
+      if (monthlyExcelRewriteInProgress || !monthNumber || !isBlobDownload) {
+        return nativeClick.call(this);
+      }
+      void rewriteMonthlyExcelDownload(this, nativeClick, monthNumber);
+      return undefined;
+    };
+    HTMLAnchorElement.prototype.__monthlyTimetableExcelPatched = true;
+  }
+
+  function patchStorage() {
+    if (Storage.prototype.__monthlyTimetablePatched) return;
+    Storage.prototype.setItem = function (key, value) {
+      if (key !== STORAGE_KEY || this !== window.localStorage) {
+        return originalStorageSetItem.call(this, key, value);
+      }
+      let next;
+      try {
+        next = JSON.parse(String(value));
+      } catch (error) {
+        return originalStorageSetItem.call(this, key, value);
+      }
+      let current = {};
+      try {
+        current = JSON.parse(originalStorageGetItem.call(this, key) || "{}") || {};
+      } catch (error) {
+        current = {};
+      }
+      if (!clearMonthlyOnNextWrite && next.monthlyTimetables === undefined) {
+        next.monthlyTimetables = current.monthlyTimetables || {};
+      }
+      if (clearMonthlyOnNextWrite) {
+        next.monthlyTimetables = {};
+      }
+      next.monthlyTimetables = normalizeMonthlyTimetables(next.monthlyTimetables);
+      const result = originalStorageSetItem.call(this, key, JSON.stringify(next));
+      if (!monthlyWriteInProgress) {
+        window.dispatchEvent(new CustomEvent("monthly-timetable-updated"));
+      }
+      return result;
+    };
+    Storage.prototype.clear = function () {
+      const result = originalStorageClear.call(this);
+      window.dispatchEvent(new CustomEvent("monthly-timetable-updated"));
+      return result;
+    };
+    Storage.prototype.__monthlyTimetablePatched = true;
+  }
+
+  function ensurePageAndNav() {
+    createMonthlyPage();
+    createMonthlyNav();
+    if (monthlyOpen) {
+      const page = document.getElementById(MONTHLY_PAGE_ID);
+      if (page && page.hidden) page.hidden = false;
+    }
+  }
+
+  function start() {
+    patchStorage();
+    patchMonthlyExcelExport();
+    document.addEventListener("click", handleGlobalClick, true);
+    document.addEventListener("click", handleJsonImportAction, true);
+    document.addEventListener("click", handleLegacyTimetableClick, true);
+    document.addEventListener("click", handleMonthlyClick);
+    document.addEventListener("input", handleMonthlyInput);
+    document.addEventListener("change", captureJsonImportFile, true);
+    document.addEventListener("change", handleGlobalChange);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modalState) {
+        event.preventDefault();
+        closeModal();
+      }
+    });
+    const observer = new MutationObserver(() => {
+      ensurePageAndNav();
+      enhanceLegacyTimetableModals();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    ensurePageAndNav();
+    enhanceLegacyTimetableModals();
+    let attempts = 0;
+    const timer = window.setInterval(() => {
+      ensurePageAndNav();
+      attempts += 1;
+      if (document.querySelector("." + MONTHLY_NAV_CLASS) || attempts > 120) {
+        window.clearInterval(timer);
+      }
+    }, 100);
+    window.addEventListener("monthly-timetable-updated", (event) => {
+      if (monthlyOpen && (!event.detail || event.detail.render !== false)) renderMonthlyPage();
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start, { once: true });
+  } else {
+    start();
+  }
+
+  window.MonthlyTimetable = {
+    parseOptionList,
+    buildMonthWeeks,
+    normalizeMonthlyTimetables,
+    getDateAnnotation,
+    getTotalTemplate,
+    getMonthlyWeekCellsForExport,
+    buildMonthlyTimetableWorksheetXml,
+    mergeMonthlyTimetables,
+    readData,
+    render: renderMonthlyPage
+  };
+})();
